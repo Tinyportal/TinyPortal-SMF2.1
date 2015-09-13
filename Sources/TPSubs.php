@@ -2092,13 +2092,7 @@ function TPadminIndex($tpsub = '', $module_admin = false)
 				'title' => $txt['tp-modules'],
 				'description' => $txt['tp-moduledesc1'],
 				'href' => $scripturl . '?action=tpadmin;sa=modules',
-				'is_selected' => $tpsub == 'modules' && !isset($_GET['import']) && !isset($_GET['tags']),
-			),
-				'tags' => array(
-				'title' => $txt['tp-tags'],
-				'description' => $txt['tp-tags2'],
-				'href' => $scripturl . '?action=tpadmin;sa=modules;tags',
-				'is_selected' => $tpsub == 'tags',
+				'is_selected' => $tpsub == 'modules' && !isset($_GET['import']),
 			),
 		);
 	}
