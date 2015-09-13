@@ -47,7 +47,7 @@ if ($manual)
 	$render .= '
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml"><head>
-		<title>TinyPortal - v2.0 for SMF2.0.x</title>
+		<title>TinyPortal - v2.0 for SMF2.1.x</title>
 		 <link rel="stylesheet" type="text/css" href="Themes/default/style.css" />
 	</head><body>';
 

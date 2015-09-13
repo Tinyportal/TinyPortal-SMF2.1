@@ -1955,6 +1955,7 @@ function do_modules()
 			'state' => $context['TPortal']['show_download'],
 			'fieldname' => 'tp_show_download',
 		);
+	}
 }
 
 function do_tags()
