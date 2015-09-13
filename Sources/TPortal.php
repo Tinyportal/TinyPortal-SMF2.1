@@ -2828,7 +2828,7 @@ function doModules() {
 
 	$request = $smcFunc['db_query']('', '
 		SELECT id, modulename, blockrender, autoload_run, adminhook, 
-		frontsection, permissions, 
+		frontsection, permissions
 		FROM {db_prefix}tp_modules WHERE active = {int:active}',
 		array('active' => 1)
 	);
