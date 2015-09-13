@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -49,5 +49,8 @@ $txt['tp-shout-refresh'] = 'Refresh';
 $txt['tp-shout-allow-links'] = 'Allow links to be posted?';
 $txt['shoutbox_layout'] = 'Shoutbox layout';
 $txt['shout_submit_returnkey'] = 'Submit Shout on enter key?';
-
+$txt['bold'] = 'Bold';
+$txt['italic'] = 'Italicized';
+$txt['bbc_quote'] = 'Insert Quote';
+$txt['image'] = 'Insert Image';
 ?>

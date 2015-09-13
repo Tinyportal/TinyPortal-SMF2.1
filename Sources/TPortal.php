@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -48,11 +48,6 @@ function TPortal_init()
 
 	// Grab the SSI for its functionality
 	require_once($boarddir. '/SSI.php');
-
-	// Load JQuery if it's not set (anticipated for SMF2.1)
-	if (!isset($modSettings['jquery_source']))
-		$context['html_headers'] .= '
-			<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>';
 
 	fetchTPhooks();
 	doModules();
@@ -123,7 +118,7 @@ function TPortal_init()
 function addPromoteButton(&$normal_buttons) 
 {
 	global $context, $scripturl;
-
+	
 	if(allowedTo(array('tp_settings')))
 	{
 		if(!in_array($context['current_topic'], explode(',', $context['TPortal']['frontpage_topics'])))
@@ -184,12 +179,12 @@ function TP_loadCSS()
 	global $context, $settings;
 
 	// load both stylesheets to be sure all is in, but not if things aren't setup!
-	if(!empty($settings['default_theme_url']) && !empty($settings['theme_url']) && file_exists($settings['theme_dir'].'/tp-style.css'))
+	if(!empty($settings['default_theme_url']) && !empty($settings['theme_url']) && file_exists($settings['theme_dir'].'/css/tp-style.css'))
 		$context['html_headers'] .= '
-	<link rel="stylesheet" type="text/css" href="' . $settings['theme_url'] . '/tp-style.css?fin11" />';
+	<link rel="stylesheet" type="text/css" href="' . $settings['theme_url'] . '/css/tp-style.css?fin11" />';
 	else
 		$context['html_headers'] .= '
-	<link rel="stylesheet" type="text/css" href="' . $settings['default_theme_url'] . '/tp-style.css?fin11" />
+	<link rel="stylesheet" type="text/css" href="' . $settings['default_theme_url'] . '/css/tp-style.css?fin11" />
 	<style type="text/css">
 		.tp_half h3.titlebg
 		{
@@ -413,7 +408,6 @@ function setupTPsettings()
 		'tp_block' => 'TPblock',
 	);
 	
-
 	// start of things
 	$context['TPortal']['mystart'] = 0;
 	if(isset($_GET['p']) && $_GET['p'] != '' && is_numeric($_GET['p']))
@@ -948,14 +942,6 @@ function doTPpage()
 
 				$context['page_title'] = $context['TPortal']['article']['subject'];
 
-				if (WIRELESS)
-				{
-					$context['TPortal']['single_article'] = true;
-					loadtemplate('TPwireless');
-					// decide what subtemplate
-					$context['sub_template'] = WIRELESS_PROTOCOL . '_tp_page';
-				}
-
 			}
 			if(allowedTo('tp_articles'))
 			{
@@ -1151,15 +1137,7 @@ function doTPcat()
 				// do the category have any parents?
 				$parents = array();
 				$parent = $context['TPortal']['category']['value2'];
-				// save the immediate for wireless
-
-				if(WIRELESS)
-				{
-					if($context['TPortal']['category']['value2'] > 0)
-						$context['TPortal']['category']['catname'] =  $allcats[$context['TPortal']['category']['value2']]['value1'];
-					else
-						$context['TPortal']['category']['catname'] =  $txt['tp-frontpage'];
-				}
+				
 				while($parent != 0)
 				{
 					$parents[] = array(
@@ -1196,13 +1174,6 @@ function doTPcat()
 				}
 				$context['TPortal']['show_catlist'] = sizeof($context['TPortal']['clist']) > 0 ? true : false;
 
-				if (WIRELESS)
-				{
-					$context['TPortal']['single_article'] = false;
-					loadtemplate('TPwireless');
-					// decide what subtemplate
-					$context['sub_template'] = WIRELESS_PROTOCOL . '_tp_cat';
-				}
 				$context['page_title'] = $context['TPortal']['category']['value1'];
 				return $category['id'];
 			}
@@ -2024,13 +1995,6 @@ function doTPfrontpage()
 	
 	$context['TPortal']['frontblocks'] = $blocks;
 
-	if (WIRELESS)
-	{
-		$context['TPortal']['single_article'] = false;
-		loadtemplate('TPwireless');
-		// decide what subtemplate
-		$context['sub_template'] = WIRELESS_PROTOCOL . '_tp_frontpage';
-	}
 }
 
 // do the blocks
@@ -2864,7 +2828,7 @@ function doModules() {
 
 	$request = $smcFunc['db_query']('', '
 		SELECT id, modulename, blockrender, autoload_run, adminhook, 
-		frontsection, permissions
+		frontsection, permissions, 
 		FROM {db_prefix}tp_modules WHERE active = {int:active}',
 		array('active' => 1)
 	);
@@ -2896,7 +2860,7 @@ function doModules() {
 					'function' => $row['frontsection'],
 					'sourcefile' => $boarddir .'/tp-files/tp-modules/' . $row['modulename']. '/Sources/'. $row['autoload_run'],
 				);
-		}
+			}
 		if(file_exists($boarddir .'/tp-files/tp-modules/' . $row['modulename']. '/Sources/'. $row['autoload_run']))
 		{
 			if(!empty($row['adminhook']))

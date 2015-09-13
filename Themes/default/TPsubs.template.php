@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -174,7 +174,7 @@ function TPortal_recentbox()
 				<a href="' . $w['href'] . '" title="' . $w['subject'] . '">' . $w['short_subject'] . '</a>
 				 ', $txt['by'], ' <b>', $w['poster']['link'],'</b> ';
 			if(!$w['new'])
-				echo ' <a href="'.$w['href'].'"><img src="'. $settings['images_url'].'/'.$context['user']['language'].'/new.gif" alt="new" /></a> ';
+				echo ' <a href="'.$w['href'].'"><span class="new_posts">' . $txt['new'] . '</span></a> ';
 
 			echo '<br /><span class="smalltext">['.$w['time'].']</span>
 			</li>';
@@ -198,7 +198,7 @@ function TPortal_recentbox()
 					<span class="tpavatar"><a href="' . $scripturl. '?action=profile;u=' . $w['poster']['id'] . '">' , empty($w['poster']['avatar']) ? '<img src="' . $settings['tp_images_url'] . '/TPguest.png" alt="" />' : $w['poster']['avatar'] , '</a></span><a href="'.$w['href'].'">' . $w['short_subject'].'</a>
 				 ', $txt['by'], ' <b>', $w['poster']['link'],'</b> ';
 			if(!$w['new'])
-				echo ' <a href="'.$w['href'].'"><img src="'. $settings['images_url'].'/'.$context['user']['language'].'/new.gif" alt="new" /></a> ';
+				echo ' <a href="'.$w['href'].'"><span class="new_posts">' . $txt['new'] . '</span></a> ';
 
 			echo '<br /><span class="smalltext">['.$w['time'].']</span>
 			</li>';
@@ -320,7 +320,7 @@ function TPortal_userbox()
 			echo '
 				<li><a href="', $scripturl, '?action=admin;area=viewmembers;sa=browse;type=approve;' . $context['session_var'] . '=' . $context['session_id'].'">'. $bullet. $txt['tp_unapproved_members'].' '. $context['unapproved_members']  . '</a></li>';
 
-		if (!empty($context['open_mod_reports']) && $context['show_open_reports'])
+		if (!empty($context['open_mod_reports']))
 			echo '
 				<li><a href="', $scripturl, '?action=moderate;area=reports">'.$bullet.$txt['tp_modreports'].' ' . $context['open_mod_reports']. '</a></li>';
 
@@ -406,7 +406,7 @@ function TPortal_userbox()
 	// Otherwise they're a guest - so politely ask them to register or login.
 	else{
 		echo '
-		<div style="line-height: 1.4em;">', $bullet , sprintf($txt['welcome_guest'], $txt['guest_title']), '<br />', $bullet2, $context['current_time'], '</div>
+		<div style="line-height: 1.4em;">', $bullet , sprintf($txt[$context['can_register'] ? 'welcome_guest_register' : 'welcome_guest'], $txt['guest_title'], $context['forum_name_html_safe'], $scripturl . '?action=login', 'return reqOverlayDiv(this.href, ' . JavaScriptEscape($txt['login']) . ');', $scripturl . '?action=signup'), '<br />', $bullet2, $context['current_time'], '</div>
 		<form style="margin-top: 5px;" action="', $scripturl, '?action=login2" method="post" >
 			<input type="text" name="user" size="10" /> <input type="password" name="passwrd" size="10" /><br />
 			<select name="cookielength">
@@ -1721,7 +1721,7 @@ function article_comments($render = true)
 					<a id="comment'.$comment['id'].'"></a>
 					<span class="comment_author">' . (!empty($comment['avatar']['image']) ? $comment['avatar']['image'] : '') . '</span>
 					<strong>' . $counter++ .') ' . $comment['subject'] . '</strong>
-						' . (($comment['is_new'] && $context['user']['is_logged']) ? '<img src="' . $settings['images_url'] . '/' . $context['user']['language'] . '/new.gif" alt="" />' : '') . '
+						' . (($comment['is_new'] && $context['user']['is_logged']) ? '<span class="new_posts">' . $txt['new'] . '</span>' : '') . '
 						<div class="middletext" style="padding-top: 0.5em;"> '.$txt['tp-by'].' <a href="'.$scripturl.'?action=profile;u='.$comment['posterID'].'">'.$comment['poster'].'</a>
 							' . $txt['on'] . ' ' . $comment['date'] . '
 						</div>

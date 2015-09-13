@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -47,7 +47,7 @@ function tpAddCopy($buffer)
 
 	$string = '<a target="_blank" href="http://www.tinyportal.net" title="TinyPortal">TinyPortal</a> <a href="' . $scripturl . '?action=tpmod;sa=credits" title="TP 1.1">&copy; 2005-2015</a>';
 
-	if (SMF == 'SSI' || empty($context['template_layers']) || WIRELESS || strpos($buffer, $string) !== false)
+	if (SMF == 'SSI' || empty($context['template_layers']) || strpos($buffer, $string) !== false)
 		return $buffer;
 
 	$find = array(

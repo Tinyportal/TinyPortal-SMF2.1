@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -1093,20 +1093,6 @@ function TPortalDLManager()
 		TPadd_linktree($scripturl.'?action=tpmod;dl=cat'.$currentcat, $currentname);
 		$context['TPortal']['dlheader'] = $currentname;
 	}
-	// tptags
-	elseif($context['TPortal']['dlaction'] == 'tptag')
-	{
-		$context['TPortal']['dlsort'] = $dlsort = 'id';
-		$context['TPortal']['dlsort_way'] = $dlsort_way = 'desc';
-
-		// get any items in the category
-		$context['TPortal']['dlitem'] = array();
-		$start = 0;
-		if(isset($_GET['p']) && !is_numeric($_GET['p']))
-			fatal_error($txt['tp-dlnonint']);
-		elseif(isset($_GET['p']) && is_numeric($_GET['p']))
-			$start = $_GET['p'];
-
 		// get total count
 		$request = $smcFunc['db_query']('', '
 			SELECT COUNT(*) FROM {db_prefix}tp_dlmanager 
@@ -1119,10 +1105,9 @@ function TPortalDLManager()
 
 		$request = $smcFunc['db_query']('', '
 			SELECT id, name, category, file, downloads, views, link, created,
-				last_access, author_id as authorID, icon, screenshot, filesize,
-				global_tag 
+				last_access, author_id as authorID, icon, screenshot, filesize
 			FROM {db_prefix}tp_dlmanager 
-			WHERE type = {string:type} 
+			WHERE type = {string:type}
 			AND subitem = {int:sub} LIMIT {int:start}, 10',
 			array('type' => 'dlitem', 'sub' => 0, 'start' => $start)
 		);
@@ -1357,7 +1342,6 @@ function TPortalDLManager()
 					'rating_votes' => $rating_votes,
 					'rating_average' => $rating_average,
 					'can_rate' => $can_rate,
-					'global_tag' => $row['global_tag'],
 				);
 				$author = $row['authorID'];
 				$parent_cat = $row['category'];
@@ -1418,19 +1402,7 @@ function TPortalDLManager()
 	elseif($context['TPortal']['dlaction'] == 'search')
 		TPdlsearch();
 
-	// For wireless, we use the Wireless template...
-	if (WIRELESS)
-	{
-		loadTemplate('TPwireless');
-		if($context['TPortal']['dlaction'] == 'item' || $context['TPortal']['dlaction']=='cat')
-			$what = $context['TPortal']['dlaction'];
-		else
-			$what = 'main';
-
-		$context['sub_template'] = WIRELESS_PROTOCOL . '_tp_dl_'. $what;
-	}
-	else
-		loadTemplate('TPdlmanager');
+	loadTemplate('TPdlmanager');
 
 }
 
@@ -2083,99 +2055,7 @@ function TPortalDLAdmin()
 	}
 
 	$myid = 0;
-	// check if tag links are present
-	if(isset($_POST['dladmin_itemtags']))
-	{
-		$itemid = $_POST['dladmin_itemtags'];
-		// get title
-		$request = $smcFunc['db_query']('', '
-			SELECT name FROM {db_prefix}tp_dlmanager 
-			WHERE id = {int:item} LIMIT 1',
-			array('item' => $itemid)
-		);
-		$title = $smcFunc['db_fetch_row']($request);
-		// remove old ones first
-		$smcFunc['db_query']('', '
-			DELETE FROM {db_prefix}tp_variables 
-			WHERE value3 = {string:val3} 
-			AND subtype2 = {int:sub}',
-			array('val3' => 'dladmin_itemtags', 'sub' => $itemid)
-		);
-		$alltags = array();
-		foreach($_POST as $what => $value)
-		{
-			// a tag from edit items
-			if(substr($what, 0, 17) == 'dladmin_itemtags_')
-			{
-				$tag = substr($what, 17);
-				$itemid = $value;
-				// insert new one
-				$href = '?action=tpmod;dl=item'.$itemid;
-				$tg = '<span style="background: url('.$settings['tp_images_url'].'/glyph_download.png) no-repeat;" class="taglink">' . $title[0] . '</span>';
-				if(!empty($tag))
-				{
-					$smcFunc['db_query']('INSERT', 
-						'{db_prefix}tp_variables',
-						array('value1' => 'string', 'value2' => 'string', 'value3' => 'string', 'type' => 'string', 'value4' => 'string', 'value5' => 'int', 'subtype' => 'string', 'value7' => 'string', 'value8' => 'string', 'subtype2' => 'int'),
-						array($href, $tg, 'dladmin_itemtags', '', 0, $tag, '', '', $itemid),
-						array('id')
-					);
-					$alltags[] = $tag;
-				}
-			}
-		}
-		$tg = implode(',', $alltags);
-		$smcFunc['db_query']('', '
-			UPDATE {db_prefix}tp_dlmanager 
-			SET global_tag = {string:tag} 
-			WHERE id = {int:item}',
-			array('tag' => $tg, 'item' => $itemid)
-		);
-
-		$myid = $itemid;
-		$go = 2;
-		$newgo = 2;
-	}
-	// check if tag links are present -categories
-	if(isset($_POST['dladmin_cattags']))
-	{
-		$itemid = $_POST['dladmin_cattags'];
-		// get title
-		$request = $smcFunc['db_query']('', '
-			SELECT name FROM {db_prefix}tp_dlmanager 
-			WHERE id = {int:item} LIMIT 1',
-			array('item' => $itemid)
-		);
-		$title = $smcFunc['db_fetch_row']($request);
-		// remove old ones first
-		$smcFunc['db_query']('', '
-			DELETE FROM {db_prefix}tp_variables 
-			WHERE value3 = {string:val3} 
-			AND subtype2 = {int:sub}',
-			array('val3' => 'dladmin_cattags', 'sub' => $itemid));
-		foreach($_POST as $what => $value)
-		{
-			// a tag from edit category
-			if(substr($what, 0, 16) == 'dladmin_cattags_')
-			{
-				$tag = substr($what, 16);
-				$itemid = $value;
-				// insert new one
-				$href = '?action=tpmod;dl=cat'.$itemid;
-				$title = $title[0].' ['.strtolower($txt['tp-downloads']).'] ';
-				$smcFunc['db_query']('INSERT', 
-					'{db_prefix}tp_variables',
-					array('value1' => 'string', 'value2' => 'string', 'value3' => 'string', 'type' => 'string', 'value4' => 'string', 'value5' => 'int', 'subtype' => 'string', 'value7' => 'string', 'value8' => 'string', 'subtype2' => 'int'), 
-					array($href, $title, 'dladmin_cattags', '', 0, $tag, '', '', $itemid),
-					array('id')
-				);
-			}
-		}
-		$myid = $itemid;
-		$go = 3;
-		$newgo = 3;
-	}
-
+	
 	// check for access value
 	if(!empty($_POST['dlsend']))
 	{

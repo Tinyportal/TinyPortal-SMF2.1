@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -1423,12 +1423,6 @@ function TPortal()
 {
 	global $context;
 
-	// For wireless, we use the Wireless template...
-	if (WIRELESS){
-		loadTemplate('TPwireless');
-		$context['sub_template'] = WIRELESS_PROTOCOL . '_tp';
-	}
-	else
 		loadTemplate('TPortal');
 }
 
@@ -1458,10 +1452,6 @@ function TPageIndex($base_url, &$start, $max_value, $num_per_page)
 	// And it has to be a multiple of $num_per_page!
 	else
 		$start = max(0, (int) $start - ((int) $start % (int) $num_per_page));
-
-	// Wireless will need the protocol on the URL somewhere.
-	if (WIRELESS)
-		$base_url .= ';' . WIRELESS_PROTOCOL;
 
 	$base_link = '<a class="navPages" href="' . ($flexible_start ? $base_url : strtr($base_url, array('%' => '%%')) . ';p=%d') . '">%s</a> ';
 
@@ -1547,21 +1537,15 @@ function tp_renderarticle($intro = '')
 		if($context['TPortal']['article']['rendertype'] == 'php')
 		{
 			echo eval(tp_convertphp($context['TPortal']['article']['intro'], true)), '
-			<p><b><a href="' .$scripturl . '?page=' , !empty($context['TPortal']['article']['shortname']) ? $context['TPortal']['article']['shortname'] : $context['TPortal']['article']['id'] , '' , WIRELESS ? ';' . WIRELESS_PROTOCOL : '' , '">'.$txt['tp-readmore'].'</a></b></p>';
+			<p><b><a href="' .$scripturl . '?page=' , !empty($context['TPortal']['article']['shortname']) ? $context['TPortal']['article']['shortname'] : $context['TPortal']['article']['id'] ,'">'.$txt['tp-readmore'].'</a></b></p>';
 		}
 		elseif($context['TPortal']['article']['rendertype'] == 'bbc' || $context['TPortal']['article']['rendertype'] == 'import')
 		{
-			if(!WIRELESS)
-				echo parse_bbc($context['TPortal']['article']['intro']), '<p><b><a href="' .$scripturl . '?page=' , !empty($context['TPortal']['article']['shortname']) ? $context['TPortal']['article']['shortname'] : $context['TPortal']['article']['id'] , '' , WIRELESS ? ';' . WIRELESS_PROTOCOL : '' , '">'.$txt['tp-readmore'].'</a></b></p>';
-			else
-				echo parse_bbc($context['TPortal']['article']['intro']);
+			echo parse_bbc($context['TPortal']['article']['intro']);
 		}
 		else
 		{
-			if(!WIRELESS)
-				echo $context['TPortal']['article']['intro'], '<p><b><a href="' .$scripturl . '?page=' , !empty($context['TPortal']['article']['shortname']) ? $context['TPortal']['article']['shortname'] : $context['TPortal']['article']['id'] , '' , WIRELESS ? ';'.WIRELESS_PROTOCOL : '' , '">'.$txt['tp-readmore'].'</a></b></p>';
-			else
-				echo $context['TPortal']['article']['intro'];
+			echo $context['TPortal']['article']['intro'];
 		}
 	}
 	else
@@ -2109,6 +2093,12 @@ function TPadminIndex($tpsub = '', $module_admin = false)
 				'description' => $txt['tp-moduledesc1'],
 				'href' => $scripturl . '?action=tpadmin;sa=modules',
 				'is_selected' => $tpsub == 'modules' && !isset($_GET['import']) && !isset($_GET['tags']),
+			),
+				'tags' => array(
+				'title' => $txt['tp-tags'],
+				'description' => $txt['tp-tags2'],
+				'href' => $scripturl . '?action=tpadmin;sa=modules;tags',
+				'is_selected' => $tpsub == 'tags',
 			),
 		);
 	}

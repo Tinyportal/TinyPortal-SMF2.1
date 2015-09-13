@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -2416,6 +2416,10 @@ function template_editarticle($type = '')
 									<td>
 										<input style="vertical-align: middle;" name="tp_article_options_'.$opts[23].'" type="checkbox" value="'.$mg['id'].'" ' , isset($options[$opts[23]]) ? 'checked' : '' , '>  '.$txt['tp-showsociallinks'].'<br />
 									</td>
+								</tr><tr class="windowbg2">
+									<td colspan="2">
+										<input style="vertical-align: middle;" name="tp_article_options_'.$opts[25].'" type="checkbox" value="'.$mg['id'].'" ' , isset($options[$opts[25]]) ? 'checked' : '' , '>  '.$txt['tp-useonfrontpage'].'<br />
+									</td>
 								</tr>
 							</table>
 							<hr /><input type="checkbox" onclick="invertAll(this, this.form, \'tp_article_options_\');" />'.$txt['tp-checkall'].'
@@ -2435,7 +2439,6 @@ function template_editarticle($type = '')
 								</select>
 						</td>
 					</tr>
-
 				</table>
 
 					</td>

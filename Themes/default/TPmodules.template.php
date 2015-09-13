@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -304,7 +304,7 @@ function template_main()
 					echo '
 			<tr class="windowbg' , $mes['is_read']==0 ? '3' : '2' , '">
 				<td><a href="'.$scripturl.'?page='.$mes['page'].'#tp-comment">' . $mes['subject'] . '
-				' , $mes['is_read']==0 ? ' <img src="' . $settings['images_url'] . '/' . $context['user']['language'] . '/new.gif" alt="" />' : '' , '
+				' , $mes['is_read']==0 ? ' <span class="new_posts">' . $txt['new'] . '</span>' : '' , '
 				</a><div class="smalltext"> ' , $mes['title'] , '</div>
 				</td>
 				<td width="10%"><a href="'.$scripturl.'?action=profile;u='.$mes['authorID'].'">' . $mes['author'] . '</a></td>

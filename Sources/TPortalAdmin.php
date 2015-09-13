@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -260,12 +260,11 @@ function tp_notifyComments($memberlist, $message2, $subject)
 	$message = trim(un_htmlspecialchars(strip_tags(strtr(parse_bbc($message2, false), array('<br />' => "\n", '</div>' => "\n", '</li>' => "\n", '&#91;' => '[', '&#93;' => ']')))));
 
 	// Find the members with notification on for this board.
-	$tagquery = 'FIND_IN_SET(mem.id_member, "' . implode(',', $memberlist) .'")';
 	$members = $smcFunc['db_query']('', '
 		SELECT mem.id_member, mem.email_address, 
 		FROM {db_prefix}members AS mem
 		AND mem.id_member != {int:mem_id}
-		AND mem.is_activated = {int:active}',
+				AND mem.is_activated = {int:active}',
 		array(
 			'mem_id' => $user_info['id'], 'active' => 1,
 		)
@@ -295,8 +294,6 @@ function do_subaction($tpsub)
 		do_articles();
 	elseif(in_array($tpsub, array('blocks', 'panels')))
 		do_blocks();
-	elseif(in_array($tpsub, array('modules')))
-		do_modules();
 	elseif(in_array($tpsub, array('menubox', 'addmenu')))
 		do_menus();
 	elseif(in_array($tpsub, array('frontpage', 'overview', 'news', 'credits', 'permissions')))
@@ -1939,7 +1936,7 @@ function do_modules()
 	
 	isAllowedTo('tp_settings');
 	
-		$context['TPortal']['adm_modules'] = array();
+	$context['TPortal']['adm_modules'] = array();
 		// fetch modules
 		$request = $smcFunc['db_query']('', '
 			SELECT * FROM {db_prefix}tp_modules 
@@ -1958,6 +1955,14 @@ function do_modules()
 			'state' => $context['TPortal']['show_download'],
 			'fieldname' => 'tp_show_download',
 		);
+}
+
+function do_tags()
+{
+	global $context;
+	
+	isAllowedTo('tp_settings');
+	
 }
 
 function do_news($tpsub = 'overview')
@@ -2368,7 +2373,7 @@ function do_postchecks()
 			}
 			redirectexit('action=tpadmin;linkedit='.$where.';' . $context['session_var'] . '=' . $context['session_id']);
 		}
-		
+		// modules
 		// add a category
 		elseif($from == 'addcategory')
 		{
@@ -3347,6 +3352,8 @@ function do_postchecks()
 					'artid' => $where,
 				)
 			);
+
+			return $from;
 		}
 	}
 	else

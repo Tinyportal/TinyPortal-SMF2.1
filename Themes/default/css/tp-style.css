@@ -1,6 +1,6 @@
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -1828,4 +1828,12 @@ div.useravatar img
 .dl_container {
 	width: 100%;
 	clear: both;
+}
+
+.generic_icons.forum{
+	background: url(../images/tinyportal/forum.png);
+}
+
+.generic_icons.tpadmin{
+	background: url(../images/tinyportal/tp.png);
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -298,7 +298,7 @@ $txt['tp_articles_help'] = '';
 $txt['tp-notapproved'] = 'This article hasn\'t been approved yet.';
 $txt['tp-noton'] = 'This article isn\'t active.';
 $txt['tp-nocategory'] = 'This article isn\'t assigned yet.';
-$txt['tp_modreports'] = 'Modreports:';
+$txt['tp_modreports'] = 'Mod reports:';
 
 $txt['tp-blockoverview'] = 'Block Access';
 $txt['tp-ungroupedmembers']='Ungrouped members';

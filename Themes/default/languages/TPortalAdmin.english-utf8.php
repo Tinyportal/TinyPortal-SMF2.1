@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -431,7 +431,6 @@ $txt['tp-moduleset']='Module Manager Settings';
 $txt['tp-sitemapmodules'] = 'Active Modules';
 $txt['tp-subquery'] = 'Query used';
 $txt['tp-installed'] = 'Installed';
-
 
 // News...
 $txt['tp-latest_news'] = 'News';

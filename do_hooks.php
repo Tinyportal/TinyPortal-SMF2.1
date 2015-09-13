@@ -1,7 +1,7 @@
 <?php
 /**
  * @package TinyPortal
- * @version 1.1
+ * @version 2.0
  * @author IchBin - http://www.tinyportal.net
  * @founder Bloc
  * @license MPL 2.0
@@ -108,7 +108,7 @@ function template_install_script ()
 	<div class="tborder login"">
 		<div class="cat_bar">
 			<h3 class="catbg">
-				Welcome to the install script of the mod: ' . $context['mod_name'] . '
+				Welcome to the install script of the mod: ' . $mod_name . '
 			</h3>
 		</div>
 		<span class="upperframe"><span></span></span>
