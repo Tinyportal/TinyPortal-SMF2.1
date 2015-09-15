@@ -114,6 +114,11 @@ function TPortalAdmin()
 			$tpsub = 'articles';
 			$context['TPortal']['subaction'] = $_GET['sa'];
 		}
+
+
+
+
+
 		do_subaction($tpsub);
 	}
 	elseif(isset($_GET['blktype']) || isset($_GET['addblock']) || isset($_GET['blockon']) || isset($_GET['blockoff']) || isset($_GET['blockleft']) || isset($_GET['blockright']) || isset($_GET['blockcenter']) || isset($_GET['blocktop']) || isset($_GET['blockbottom']) || isset($_GET['blockfront']) || isset($_GET['blocklower']) || isset($_GET['blockdelete']) || isset($_GET['blockedit']) || isset($_GET['addpos']) || isset($_GET['subpos']))
@@ -294,6 +299,8 @@ function do_subaction($tpsub)
 		do_articles();
 	elseif(in_array($tpsub, array('blocks', 'panels')))
 		do_blocks();
+	elseif(in_array($tpsub, array('modules')))
+		do_modules();
 	elseif(in_array($tpsub, array('menubox', 'addmenu')))
 		do_menus();
 	elseif(in_array($tpsub, array('frontpage', 'overview', 'news', 'credits', 'permissions')))

@@ -878,7 +878,7 @@ function template_panels()
 		
 			foreach($types as $blo => $bl)
 				echo '
-										<div style="float: left; width: 160px; height: 100px; margin: 5px;">
+										<div style="float: left; width: 160px; height: 125px; margin: 5px;">
 											<div class="smalltext" style="padding: 4px 0;">
 												<input name="tp_panelstyle_'.$panl.'" type="radio" value="'.$blo.'" ' , $context['TPortal']['panelstyle_'.$panl]==$blo ? 'checked' : '' , '><span' , $context['TPortal']['panelstyle_'.$panl]==$blo ? ' style="color: red;">' : '>' , $bl['class'] , '</span>
 											</div>' . $bl['code_title_left'] . 'title'. $bl['code_title_right'].'
