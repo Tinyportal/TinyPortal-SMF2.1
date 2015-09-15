@@ -346,7 +346,7 @@ function template_singleshout($row)
 	<div style="padding-bottom: 5px;">
 		<div class="tp_shoutcontainer">
 			<div class="tp_shoutavatar">
-				<div class="avy2"><a href="' . $scripturl. '?action=profile;u=' . $row['value5'] . '">' . $row['avatar'] . '</a></div>
+				<div class="avy2"><a href="' . $scripturl. '?action=profile;u=' . $row['value5'] . '">' . $row['avatar']['image'] . '</a></div> 
 				' . (allowedTo('tp_can_admin_shout') ? '
 				<div style="float: right; margin-bottom: 3px;">
 					<a href="' . $scripturl. '?action=tpmod;shout=admin;s=' . $row['id'] . ';' . $context['session_var'] . '=' . $context['session_id'].'"><img src="' . $settings['tp_images_url'] . '/TPmodify.gif" alt="'.$txt['tp-edit'].'" /></a>

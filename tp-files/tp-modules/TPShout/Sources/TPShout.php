@@ -546,8 +546,10 @@ function tpshout_fetch($render = true, $limit = 1, $ajaxRequest = false)
 	
 	if(count($members)>0)
 		$request2 =  $smcFunc['db_query']('', '
-		SELECT mem.id_member, mem.real_name as realName,
-			mem.avatar, IFNULL(a.id_attach,0) AS ID_ATTACH, a.filename, IFNULL(a.attachment_type,0) as attachmentType
+		SELECT 
+			mem.id_member, mem.real_name as realName,
+			IFNULL(mem.real_name,0) AS posterName,  mem.email_address, mem.avatar,
+			IFNULL(a.id_attach,0) AS ID_ATTACH, a.filename, IFNULL(a.attachment_type,0) as attachmentType
 		FROM {db_prefix}members AS mem
 			LEFT JOIN {db_prefix}attachments AS a ON (a.id_member = mem.id_member and a.attachment_type!=3)
 		WHERE mem.id_member IN(' . implode(",",$members) . ')'
@@ -558,7 +560,12 @@ function tpshout_fetch($render = true, $limit = 1, $ajaxRequest = false)
 	{
 		while($row = $smcFunc['db_fetch_assoc']($request2))
 		{
-			$row['avatar'] = $row['avatar'] == '' ? ($row['ID_ATTACH'] > 0 ? '<img src="' . (empty($row['attachmentType']) ? $scripturl . '?action=dlattach;attach=' . $row['ID_ATTACH'] . ';type=avatar' : $modSettings['custom_avatar_url'] . '/' . $row['filename']) . '" alt="&nbsp;"  />' : '') : (stristr($row['avatar'], 'http://') ? '<img src="' . $row['avatar'] . '" alt="&nbsp;" />' : '<img src="' . $modSettings['avatar_url'] . '/' . $smcFunc['htmlspecialchars']($row['avatar']) . '" alt="&nbsp;" />');
+			$row['avatar'] = set_avatar_data(array(		
+					'avatar' => $row['avatar'],
+					'email' => $row['email_address'],
+					'filename' => !empty($row['filename']) ? $row['filename'] : '',
+							)
+					);
 			$memberdata[$row['id_member']] = $row;
 		}
 		$smcFunc['db_free_result']($request2);
@@ -568,12 +575,12 @@ function tpshout_fetch($render = true, $limit = 1, $ajaxRequest = false)
 		$ns = array();
 		foreach($fetched as $b => $row)
 		{
-			$row['avatar'] = !empty($memberdata[$row['value5']]['avatar']) ? $memberdata[$row['value5']]['avatar'] : '';
+			$row['avatar'] = $memberdata[$row['value5']]['avatar'];
 			$row['realName'] = !empty($memberdata[$row['value5']]['realName']) ? $memberdata[$row['value5']]['realName'] : $row['value3'];
 			$row['value1'] = parse_bbc(censorText($row['value1']), true);
 			$ns[] = template_singleshout($row);
 		}
-		$nshouts .= implode('', $ns);
+		$nshouts .= implode('', $ns); 
 		
 		$nshouts .= '</div>';
 
