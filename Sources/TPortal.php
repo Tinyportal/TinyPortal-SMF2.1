@@ -567,6 +567,7 @@ function doTPpage()
 				SELECT art.*, art.author_id as authorID, art.id_theme as ID_THEME, var.value1,
 					var.value2, var.value3, var.value4, var.value5, var.value7, var.value8,
 					art.type as rendertype, IFNULL(mem.real_name,art.author) as realName, mem.avatar,
+					IFNULL(mem.real_name,art.author) AS posterName,  mem.email_address, mem.avatar,
 					mem.posts, mem.date_registered as dateRegistered,mem.last_login as lastLogin,
 					IFNULL(a.id_attach, 0) AS ID_ATTACH, a.filename, a.attachment_type as attachmentType, var.value9
 				FROM {db_prefix}tp_articles as art
@@ -583,6 +584,7 @@ function doTPpage()
 			$request =  $smcFunc['db_query']('', '
 				SELECT art.*, art.author_id as authorID, art.id_theme as ID_THEME, var.value1, var.value2,
 					var.value3,var.value4, var.value5,var.value7,var.value8, art.type as rendertype,
+					IFNULL(mem.real_name,art.author) AS posterName,  mem.email_address, mem.avatar,
 					IFNULL(mem.real_name,art.author) as realName, mem.avatar, mem.posts, mem.date_registered as dateRegistered, mem.last_login as lastLogin,
 					IFNULL(a.id_attach, 0) AS ID_ATTACH, a.filename, a.attachment_type as attachmentType, var.value9
 				FROM {db_prefix}tp_articles as art
@@ -645,7 +647,12 @@ function doTPpage()
 				// allowed and all is well, go on with it.
 				$context['TPortal']['article'] = $article;
 
-				$context['TPortal']['article']['avatar'] = $article['avatar'] == '' ? ($article['ID_ATTACH'] > 0 ? '<img src="' . (empty($article['attachmentType']) ? $scripturl . '?action=dlattach;attach=' . $article['ID_ATTACH'] . ';type=avatar' : $modSettings['custom_avatar_url'] . '/' . $article['filename']) . '" alt="&nbsp;"  />' : '') : (stristr($article['avatar'], 'http://') ? '<img src="' . $article['avatar'] . '" alt="&nbsp;" />' : '<img src="' . $modSettings['avatar_url'] . '/' . $smcFunc['htmlspecialchars']($article['avatar'], ENT_QUOTES) . '" alt="&nbsp;" />');
+				$context['TPortal']['article']['avatar'] =  set_avatar_data(array(		
+							'avatar' => $article['avatar'],
+							'email' => $article['email_address'],
+							'filename' => !empty($article['filename']) ? $article['filename'] : '',
+										)
+							);
 
 				// update views
 				$smcFunc['db_query']('', '
@@ -712,6 +719,7 @@ function doTPpage()
 				// fetch any comments
 				$request =  $smcFunc['db_query']('', '
 					SELECT var.* , IFNULL(mem.real_name,0) as realName,mem.avatar,
+						IFNULL(mem.real_name, 0) AS posterName,  mem.email_address, mem.avatar,
 						IFNULL(a.id_attach, 0) AS ID_ATTACH, a.filename, a.attachment_type as attachmentType
 					FROM {db_prefix}tp_variables AS var
 					LEFT JOIN {db_prefix}members as mem ON (var.value3 = mem.id_member)
@@ -738,12 +746,12 @@ function doTPpage()
 							'posterID' => $row['value3'],
 							'poster' => $row['realName'],
 							'is_new' => ($row['value4']>$last) ? true : false ,
-							'avatar' => array(
-								'name' => &$row['avatar'],
-								'image' => $row['avatar'] == '' ? ($row['ID_ATTACH'] > 0 ? '<img src="' . (empty($row['attachmentType']) ? $scripturl . '?action=tpmod;sa=tpattach;attach=' . $row['ID_ATTACH'] . ';type=avatar' : $modSettings['custom_avatar_url'] . '/' . $row['filename']) . '" alt="" class="avatar" border="0" />' : '') : (stristr($row['avatar'], 'http://') ? '<img src="' . $row['avatar'] . '"' . $avatar_width . $avatar_height . ' alt="" class="avatar" border="0" />' : '<img src="' . $modSettings['avatar_url'] . '/' . $smcFunc['htmlspecialchars']($row['avatar'], ENT_QUOTES) . '" alt="" class="avatar" border="0" />'),
-								'href' => $row['avatar'] == '' ? ($row['ID_ATTACH'] > 0 ? (empty($row['attachmentType']) ? $scripturl . '?action=tpmod;sa=tpattach;attach=' . $row['ID_ATTACH'] . ';type=avatar' : $modSettings['custom_avatar_url'] . '/' . $row['filename']) : '') : (stristr($row['avatar'], 'http://') ? $row['avatar'] : $modSettings['avatar_url'] . '/' . $row['avatar']),
-								'url' => $row['avatar'] == '' ? '' : (stristr($row['avatar'], 'http://') ? $row['avatar'] : $modSettings['avatar_url'] . '/' . $row['avatar'])
-							),
+							'avatar' => set_avatar_data(array(		
+											'avatar' => $row['avatar'],
+											'email' => $row['email_address'],
+											'filename' => !empty($row['member_filename']) ? $row['member_filename'] : '',
+											)
+										)
 						);
 						$ccount++;
 						if($row['value4'] > $last)
@@ -1862,6 +1870,7 @@ function doTPfrontpage()
 		$request =  $smcFunc['db_query']('', '
 			SELECT art.*, var.value1, var.value2, var.value3, var.value4, var.value5, var.value7, var.value8, art.type as rendertype, 
 				IFNULL(mem.real_name,art.author) as realName, mem.avatar, mem.posts, mem.date_registered as dateRegistered, mem.last_login as lastLogin,
+				IFNULL(mem.real_name, art.author) AS posterName,  mem.email_address, mem.avatar,
 				IFNULL(a.id_attach, 0) AS ID_ATTACH, a.filename, a.attachment_type as attachmentType, var.value9 
 			FROM {db_prefix}tp_articles as art 
 			LEFT JOIN {db_prefix}members AS mem ON (mem.id_member = art.author_id)
@@ -1884,7 +1893,12 @@ function doTPfrontpage()
 				// allowed and all is well, go on with it.
 				$context['TPortal']['blockarticles'][$article['id']] = $article;
 
-				$context['TPortal']['blockarticles'][$article['id']]['avatar'] = $row['avatar'] == '' ? ($row['ID_ATTACH'] > 0 ? '<img src="' . (empty($row['attachmentType']) ? $scripturl . '?action=dlattach;attach=' . $row['ID_ATTACH'] . ';type=avatar' : $modSettings['custom_avatar_url'] . '/' . $row['filename']) . '" alt="&nbsp;"  />' : '') : (stristr($row['avatar'], 'http://') ? '<img src="' . $row['avatar'] . '" alt="&nbsp;" />' : '<img src="' . $modSettings['avatar_url'] . '/' . $smcFunc['htmlspecialchars']($row['avatar'], ENT_QUOTES) . '" alt="&nbsp;" />');
+				$context['TPortal']['blockarticles'][$article['id']]['avatar'] =  set_avatar_data(array(		
+							'avatar' => $request['avatar'],
+							'email' => $request['email_address'],
+							'filename' => !empty($request['filename']) ? $request['filename'] : '',
+										)
+							);
 				
 				// sort out the options
 				$context['TPortal']['blockarticles'][$article['id']]['visual_options'] = array();
