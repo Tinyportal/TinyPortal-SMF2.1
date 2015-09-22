@@ -40,40 +40,12 @@ function tpAddPermissions(&$permissionGroups, &$permissionList, &$leftPermission
 
 }
 
-// Adds TP copyright in the buffer so we don't have to edit an SMF file
-function tpAddCopy($buffer)
+// Adds TP copyright to the credits page
+function tpAddCopy()
 {
 	global $context, $scripturl;
 
-	$string = '<a target="_blank" href="http://www.tinyportal.net" title="TinyPortal">TinyPortal</a> <a href="' . $scripturl . '?action=tpmod;sa=credits" title="TP 1.1">&copy; 2005-2015</a>';
-
-	if (SMF == 'SSI' || empty($context['template_layers']) || strpos($buffer, $string) !== false)
-		return $buffer;
-
-	$find = array(
-		'Simple Machines</a>',
-		'class="copywrite"',
-	);
-	$replace = array(
-		'Simple Machines</a><br />' . $string,
-		'class="copywrite" style="line-height: 1;"',
-	);
-
-	if (!in_array($context['current_action'], array('post', 'post2')))
-	{
-		$finds[] = '[cutoff]';
-		$replaces[] = '';
-	}
-
-	$buffer = str_replace($find, $replace, $buffer);
-
-	if (strpos($buffer, $string) === false)
-	{
-		$string = '<div style="text-align: center; width: 100%; font-size: x-small; margin-bottom: 5px;">' . $string . '</div></body></html>';
-		$buffer = preg_replace('~</body>\s*</html>~', $string, $buffer);
-	}
-
-	return $buffer;
+	$context['copyrights']['mods']['tinyportal'] = '<a target="_blank" href="http://www.tinyportal.net" title="TinyPortal">TinyPortal</a> <a href="' . $scripturl . '?action=tpmod;sa=credits" title="TP 2.0">&copy; 2005-2015</a>';
 }
 
 function tpAddMenuItems(&$buttons)

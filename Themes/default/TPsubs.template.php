@@ -422,6 +422,9 @@ function TPortal_userbox()
 				<option value="302400">', $txt['one_month'], '</option>
 				<option value="-1" selected="selected">', $txt['forever'], '</option>
 			</select>
+			<input type="hidden" name="hash_passwrd" value="">
+			<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '">
+			<input type="hidden" name="', $context['login_token_var'], '" value="', $context['login_token'], '">
 			<input type="submit" value="', $txt['login'], '" />
 		</form>
 		<div style="line-height: 1.4em;">', $txt['quick_login_dec'], '</div>
