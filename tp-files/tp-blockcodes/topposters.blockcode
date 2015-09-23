@@ -20,11 +20,8 @@ IchBin
 </date>
 
 <code>
-global $smcFunc, $scripturl, $modSettings, $settings;
+global $smcFunc, $scripturl, $modSettings, $settings, $txt;
 
-// Height and width of avatar
-$width = '40px';
-$height = '100%';
 // Number of top posters displayed
 $topPoster = 8;
 
@@ -70,10 +67,10 @@ $topPoster = 8;
 	{
 		echo '
 		<tr>
-			<td><a href="'.$user['href'].'">'.$user['avatar']['image'].'</a>';
+			<td><span class="tpavatar"><a href="'.$user['href'].'">'.$user['avatar']['image'].'</a></span>';
 		echo '
 			</td>
-			<td><h5 style="margin: 4px;">'.$user['link'].'</h5><h5 style="margin: 4px;">'. $user['posts'] .'</h5></td>
+			<td><h5 style="margin: 4px;">'.$user['link'].'</h5><h5 style="margin: 4px;">'. $user['posts'] .' '.$txt['posts'].'</h5></td>
 		</tr>';
 	}
 
