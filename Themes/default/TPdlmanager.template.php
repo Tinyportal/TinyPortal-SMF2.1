@@ -93,7 +93,6 @@ function template_main()
         </div>
 		<span class="lowerframe" style="margin-bottom: 5px;"><span></span></span>
 		<div class="windowbg2">
-			<span class="topslice"><span></span></span>
 		<div style="padding: 1em;">';
 	
 		if($context['TPortal']['dl_showlatest']==1)
@@ -177,7 +176,6 @@ function template_main()
 			</div>';
 		echo '
 		</div>
-		<span class="botslice"><span></span></span>
 	</div>
 
 	<script type="text/javascript"><!-- // --><![CDATA[
@@ -316,7 +314,6 @@ function template_main()
 		{
 			echo '
 			<div class="windowbg">
-				<span class="topslice"><span></span></span>
 				<div class="content">
 				<h4 class="h4dl">
 				<a href="'.$dlitem['href'].'">'. $dlitem['name'] .'</a>';
@@ -393,7 +390,6 @@ function template_main()
 			 echo '
 					<br /><img src="'.$dlitem['bigshot'].'" style="max-width: 100%;" alt="" /></div>';
 		echo '
-			<span class="botslice"><span></span></span>
 				</div>
 			</div>
 			</div>
@@ -416,7 +412,6 @@ function template_main()
             <h4 class="titlebg">'.$txt['tp-dlupload'].'</h4>
         </div>
 		<div class="windowbg">
-			<span class="topslice"><span></span></span>
 		 <table width="100%" border="0" cellspacing="0" cellpadding="8">
 			<tr class="windowbg"><td>
 				<form accept-charset="', $context['character_set'], '" name="tp_dlupload" id="tp_dlupload" action="'.$scripturl.'?action=tpmod;dl=upload" method="post" enctype="multipart/form-data" onsubmit="submitonce(this);">
@@ -570,7 +565,6 @@ function template_main()
 			</td>
 		</tr>
 	</table>
-			<span class="botslice"><span></span></span>
 		</div>	
 	</div>
 	<script type="text/javascript">
@@ -898,7 +892,6 @@ function template_main()
 				<h3 class="catbg">'.$txt['tp-downloadsection'].' - '.$txt['tp-dlsearch'].'</h3>
 			</div>
 			<div class="windowbg">
-				<span class="topslice"><span></span></span>
 				<table border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td >
@@ -928,7 +921,6 @@ function template_main()
 						</td>
 					</tr>
 				</table>
-				<span class="botslice"><span></span></span>
 			</div>
 		</div>
 		</div>';

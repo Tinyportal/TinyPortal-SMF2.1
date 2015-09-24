@@ -361,7 +361,6 @@ function template_main()
             <h3 class="catbg">' .$txt['tp-myarticles'] . '</h3>
         </div>
 		<div class="windowbg">
-			<span class="topslice"><span></span></span>
 			<div class="content">';
 			
 			if(!empty($context['TPortal']['pageindex']))
@@ -415,7 +414,6 @@ function template_main()
 
 			echo '
 			</div>
-			<span class="botslice"><span></span></span>
 		</div>';
 
 			break;

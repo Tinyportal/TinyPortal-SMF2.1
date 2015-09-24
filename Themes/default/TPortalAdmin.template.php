@@ -95,7 +95,6 @@ function template_blockoverview()
 		<input name="tpadmin_form" type="hidden" value="blockoverview">
 		<div class="cat_bar"><h3 class="catbg">' . $txt['tp-blockoverview'] . '</h3></div>
 		<div class="windowbg2">
-			<span class="topslice"><span></span></span>
 			<div class="content" style="overflow: hidden; padding: 1em 2em 0 2em;">';
 
 		$side=array('','left','right','center','front','bottom','top','lower');
@@ -127,7 +126,6 @@ function template_blockoverview()
 
 		echo '
 			</div>
-			<span class="botslice"><span></span></span>
 		</div><br>
 		&nbsp;&nbsp;<input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 	</form>';
@@ -169,12 +167,10 @@ function template_news()
 		<h3 class="catbg">Tinyportal News</h3>
 	</div>
 	<div class="windowbg">
-		<span class="topslice"><span></span></span>
 		<div style="padding: 1em; text-align: center;">
 			TinyPortal is now being maintained at <a href="http://www.tinyportal.net">www.tinyportal.net</a>, and can also be downloaded from the
 			<a style="text-decoration: underline;" href="http://custom.simplemachines.org/mods/index.php?mod=97">SMF modsite</a>. 
 		</div>
-		<span class="botslice"><span></span></span>
 	</div>';
 }
 
@@ -1557,7 +1553,6 @@ function template_editcategory()
 		<h3 class="catbg"><span class="left"></span>{article_shortdate} {article_title} {article_category}</h3>
 	</div>
 	<div class="windowbg2">
-		<span class="topslice"><span></span></span>
 		<div class="content">
 			{article_avatar}
 			<div class="article_info">
@@ -1573,7 +1568,6 @@ function template_editcategory()
 			<div class="article_padding">{article_morelinks}</div>
 			<div class="article_padding">{article_comments}</div>
 		</div>
-		<span class="botslice"><span></span></span>
 	</div>
 </div>';
 
@@ -2979,7 +2973,7 @@ function template_blockedit()
 			
 			foreach($types as $blo => $bl)
 				echo '
-			<div style="float: left; width: 160px; height: 100px; margin: 5px;">
+			<div style="float: left; width: 160px; height: 150px; margin: 5px;">
 				<div class="smalltext" style="padding: 4px 0;"><input name="tp_block_var4" type="radio" value="'.$blo.'" ' , $context['TPortal']['blockedit']['var4']==$blo ? 'checked' : '' , '><span' , $context['TPortal']['blockedit']['var4']==$blo ? ' style="color: red;">' : '>' , $bl['class'] , '</span>
 				</div>' . $bl['code_title_left'] . 'title'. $bl['code_title_right'].'
 				' . $bl['code_top'] . 'body' . $bl['code_bottom'] . '

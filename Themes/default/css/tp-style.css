@@ -655,7 +655,15 @@ ul#tp_child_articles li
 #leftbarHeader .windowbg, #rightbarHeader .windowbg
 {
 }
+.tp_leftblock_body .windowbg, .tp_rightblock_body .windowbg
+{
+padding: 5px 10px;
+}
 
+.tp_leftblock_body .windowbg2, .tp_rightblock_body .windowbg2
+{
+padding: 5px 10px;
+}
 
 /* panels */
 #tptopbarHeader,
@@ -1270,8 +1278,13 @@ div.slider div.knob {
 .block_search_submit
 {
 	width: 65%;
-	margin: 0 auto 5px auto;
 }
+
+.block_search_submit.button_submit
+{
+	margin: 0 25px 0 12px;
+}
+
 .block_article h2.article_title, .block_article .article_info
 {
 	display: none;

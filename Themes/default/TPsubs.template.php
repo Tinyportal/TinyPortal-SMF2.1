@@ -201,7 +201,7 @@ function TPortal_recentbox()
 		{
 			echo '
 			<li' , $coun<count($what) ? '' : ' style="border: none; margin-bottom: 0;padding-bottom: 0;"'  , '>
-					<span class="tpavatar"><a href="' . $scripturl. '?action=profile;u=' . $w['poster']['id'] . '">' , empty($w['poster']['avatar']['image']) ? '<img src="' . $settings['tp_images_url'] . '/TPguest.png" alt="" />' : $w['poster']['avatar']['image'] , '</a></span><a href="'.$w['href'].'">' . $w['short_subject'].'</a>
+					<span class="tpavatar"><a href="' . $scripturl. '?action=profile;u=' . $w['poster']['id'] . '">' , $w['poster']['avatar']['image'] , '</a></span><a href="'.$w['href'].'">' . $w['short_subject'].'</a>
 				 ', $txt['by'], ' <b>', $w['poster']['link'],'</b> ';
 			if(!$w['new'])
 				echo ' <a href="'.$w['href'].'"><span class="new_posts">' . $txt['new'] . '</span></a> ';
@@ -836,7 +836,6 @@ function template_TPsearch_above()
 			<h3 class="catbg">' , $txt['tp-searcharticles'] , '</h3>
 		</div>
 		<div class="windowbg2">
-			<span class="topslice"><span></span></span>
 			<p style="margin: 0; padding: 0 1em;">
 				<a href="' . $scripturl. '?action=tpmod;sa=searcharticle">' . $txt['tp-searcharticles2'] . '</a>';
 	}			
@@ -848,7 +847,6 @@ function template_TPsearch_above()
 			<h3 class="catbg">' , $txt['tp-searcharticles'] , '</h3>
 		</div>
 		<div class="windowbg2">
-			<span class="topslice"><span></span></span>
 			<p style="margin: 0; padding: 0 1em;">
 				<a href="' . $scripturl. '?action=tpmod;sa=searcharticle">' . $txt['tp-searcharticles2'] . '</a> |
 				<a href="' . $scripturl. '?action=tpmod;dl=search">' . $txt['tp-searchdownloads'] . '</a>';
@@ -860,7 +858,6 @@ function template_TPsearch_above()
 
 	echo '
 			</p>
-			<span class="botslice"><span></span></span>
 		</div>
 	</div>';
 
@@ -1089,7 +1086,6 @@ function article_renders($type = 1, $single = false, $first = false)
 		<div class="article_padding article_text" style="clear: both;">{article_text}</div>
 		' . (!isset($context['TPortal']['article']['boardnews']) && !$single ? '{article_bookmark}' : '') . '
 		' . (isset($context['TPortal']['article']['boardnews']) ? '{article_boardnews}' : '') . '
-		' . (!$single ? '<span class="botslice"><span></span></span>' : '') . '
 	</div>
 		' . ($single ? '
 		{article_moreauthor}
@@ -1120,7 +1116,6 @@ function article_renders($type = 1, $single = false, $first = false)
 		<div class="article_padding">{article_text}</div>
 		' . (!isset($context['TPortal']['article']['boardnews']) && !$single ? '<div class="article_padding">{article_bookmark}</div>' : '') . '
 		' . (isset($context['TPortal']['article']['boardnews']) ? '<div class="article_padding">{article_boardnews}</div>' : '') . '
-		' . (!$single ? '<span class="botslice"><span></span></span>' : '') . '
 	</div>
 		' . ($single ? '
 		{article_moreauthor}
@@ -1248,8 +1243,7 @@ function article_renders($type = 1, $single = false, $first = false)
 			<h3 class="article_title ' . $headerstyle . '">{article_shortdate} <strong>{article_title}</strong> </h3>
 		</div>
 		<div class="' . ($context['TPortal']['article']['frame'] == 'theme' ? 'windowbg2' : '') . '">
-			' . ($context['TPortal']['article']['frame'] == 'theme' ? '<span class="topslice"><span></span></span>' : '') . '
-				<div class="article_info">
+					<div class="article_info">
 		' . (!$single ? '{article_avatar}' : '') .  '
 					{article_author}
 					{article_category}
@@ -1274,7 +1268,6 @@ function article_renders($type = 1, $single = false, $first = false)
 				{article_morelinks}
 				{article_comments}' : '') . ' 
 			</div>
-			' . ($context['TPortal']['article']['frame'] == 'theme' ? '<span class="botslice"><span></span></span>' : '') . '
 		</div>
 	</div>
 		';
@@ -1325,7 +1318,6 @@ function article_renders($type = 1, $single = false, $first = false)
 		$code = '
 <div class="tborder" style="margin-bottom: 5px;"> 
 	<div class="article' . (isset($context['TPortal']['article']['boardnews']) ? ' windowbg2' : ' windowbg') . '" style="margin: 0;">
-	<span class="topslice"><span></span></span>
 		<div class="article_picturecolumn smallpad">{article_picturecolumn}</div>
 		<div class="render4 smallpad">
 			<h2 class="article_title" style="padding-left: 0;">{article_title} </h2>
@@ -1353,7 +1345,6 @@ function article_renders($type = 1, $single = false, $first = false)
 			{article_morelinks}
 			{article_comments}' : '') . ' 
 		</div>
-	<span class="botslice"><span></span></span>
 	</div>
 </div>';
 	}
@@ -2068,9 +2059,7 @@ function template_tp_fatal_error()
 			<h3 class="catbg">' , $txt['tp-error'], '</h3>
 		</div>
 		<div class="windowbg">
-			<span class="topslice"><span></span></span>
 			<div class="padding">', $context['TPortal']['errormessage'] , '</div>
-			<span class="botslice"><span></span></span>
 		</div>
 	</div>';
 

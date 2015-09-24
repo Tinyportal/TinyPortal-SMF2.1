@@ -21,7 +21,7 @@ function template_tp_above()
 
 	if(!empty($context['TPortal']['upshrinkpanel']))
 		echo '
-	<div style="float: right; margin-right: 0.5em; margin-top: -1.5em;">', $context['TPortal']['upshrinkpanel'] , '</div>';
+	<div style="float: right; margin-right: 0.5em; margin-top: -0.2em;">', $context['TPortal']['upshrinkpanel'] , '</div>';
 
 	if($context['TPortal']['toppanel']==1)
 		echo '
