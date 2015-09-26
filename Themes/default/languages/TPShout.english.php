@@ -51,6 +51,5 @@ $txt['shoutbox_layout'] = 'Shoutbox layout';
 $txt['shout_submit_returnkey'] = 'Submit Shout on enter key?';
 $txt['bold'] = 'Bold';
 $txt['italic'] = 'Italicized';
-$txt['bbc_quote'] = 'Insert Quote';
 $txt['image'] = 'Insert Image';
 ?>

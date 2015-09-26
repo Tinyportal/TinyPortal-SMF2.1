@@ -207,8 +207,8 @@ function template_tpshout_admin_settings()
 							<tr class="windowbg2">
 								<td align="right">'.$txt['shoutbox_layout'].'</td>
 								<td>
-									<input name="tp_shoutbox_layout" type="radio" value="0" ' , $context['TPortal']['shoutbox_layout'] == '0' ? ' checked="checked"' : '' , ' /> <img src="tp-images/icons/shout_layout1.png" alt="Layout 1"/>
-									<input name="tp_shoutbox_layout" type="radio" value="1" ' , $context['TPortal']['shoutbox_layout'] == '1' ? ' checked="checked"' : '' , ' /> <img src="tp-images/icons/shout_layout2.png" alt="Layout 2"/>
+									<input name="tp_shoutbox_layout" type="radio" value="0" ' , $context['TPortal']['shoutbox_layout'] == '0' ? ' checked="checked"' : '' , ' /> <img src="' , $settings['tp_images_url'] , '/shout_layout1.png" alt="Layout 1"/>
+									<input name="tp_shoutbox_layout" type="radio" value="1" ' , $context['TPortal']['shoutbox_layout'] == '1' ? ' checked="checked"' : '' , ' /> <img src="' , $settings['tp_images_url'] , '/shout_layout2.png" alt="Layout 2"/>
 								</td>
 							</tr>
 						</table>

@@ -833,7 +833,7 @@ function template_panels()
 		if($panl!='front')
 			echo $txt['tp-'.$panl.'panel'].'
 									<a name="'.$panl.'"></a><br />
-									<img style="margin: 5px;" src="' .$settings['tp_images_url']. '/TPpanel_'.$panl.'' , $context['TPortal']['admin'.$panl.'panel'] ? '' : '_off' , '.gif" alt="" />';
+									<img style="margin: 5px;" src="' .$settings['tp_images_url']. '/TPpanel_'.$panl.'' , $context['TPortal']['admin'.$panl.'panel'] ? '' : '_off' , '.png" alt="" />';
 		else
 			echo $txt['tp-'.$panl.'panel'].'
 									<a name="'.$panl.'"></a><br />';
@@ -862,8 +862,8 @@ function template_panels()
 									<input name="tp_block_layout_'.$panl.'" type="radio" value="horiz4" ' , $context['TPortal']['block_layout_'.$panl]=='horiz4' ? 'checked' : '' , '> '.$txt['tp-horisontal4cols'].'<br />
 									<input name="tp_block_layout_'.$panl.'" type="radio" value="grid" ' , $context['TPortal']['block_layout_'.$panl]=='grid' ? 'checked' : '' , '> '.$txt['tp-grid'].'<br />
 									<p style="padding-left: 2em;">
-										<input type="radio" name="tp_blockgrid_'.$panl.'" value="colspan3" ' , $context['TPortal']['blockgrid_'.$panl]=='colspan3' ? 'checked' : '' , ' /><img align="middle" src="' .$settings['tp_images_url']. '/TPgrid1.gif" alt="colspan3" />
-										<input type="radio" name="tp_blockgrid_'.$panl.'" value="rowspan1" ' , $context['TPortal']['blockgrid_'.$panl]=='rowspan1' ? 'checked' : '' , ' /><img align="middle" src="' .$settings['tp_images_url']. '/TPgrid2.gif" alt="rowspan1" />
+										<input type="radio" name="tp_blockgrid_'.$panl.'" value="colspan3" ' , $context['TPortal']['blockgrid_'.$panl]=='colspan3' ? 'checked' : '' , ' /><img align="middle" src="' .$settings['tp_images_url']. '/TPgrid1.png" alt="colspan3" />
+										<input type="radio" name="tp_blockgrid_'.$panl.'" value="rowspan1" ' , $context['TPortal']['blockgrid_'.$panl]=='rowspan1' ? 'checked' : '' , ' /><img align="middle" src="' .$settings['tp_images_url']. '/TPgrid2.png" alt="rowspan1" />
 									</p>
 									<span class="middletext">'.$txt['tp-blockwidth'].':</span>
 									<input name="tp_blockwidth_'.$panl.'" size="5" maxsize="5" type="text" value="' ,$context['TPortal']['blockwidth_'.$panl], '"><br />
@@ -1250,7 +1250,7 @@ function template_frontpage()
 				echo '
 								<div style="float: left; width: 180px; height: 100px; margin: 4px;' , $context['TPortal']['frontpage_catlayout']==$box['value'] ? ' font-weight: bold;' : '' , '">
 									<input type="radio" name="tp_frontpage_catlayout" value="'.$box['value'].'"' , $context['TPortal']['frontpage_catlayout']==$box['value'] ? ' checked="checked"' : '' , '>
-									'.$box['label'].'<br /><img style="margin: 4px 4px 4px 10px;" src="' , $settings['tp_images_url'] , '/TPcatlayout'.$box['value'].'.gif" alt="tplayout'.$box['value'].'" />
+									'.$box['label'].'<br /><img style="margin: 4px 4px 4px 10px;" src="' , $settings['tp_images_url'] , '/TPcatlayout'.$box['value'].'.png" alt="tplayout'.$box['value'].'" />
 								</div>';
 
 			if(empty($context['TPortal']['frontpage_template']))
@@ -1543,7 +1543,7 @@ function template_editcategory()
 				echo '
 								<div style="float: left; width: 180px; height: 100px; margin: 4px;' , $mg['catlayout']==$box['value'] ? ' font-weight: bold;' : '' , '">
 									<input type="radio" name="tp_category_catlayout" value="'.$box['value'].'"' , $mg['catlayout']==$box['value'] ? ' checked="checked"' : '' , '>
-									'.$box['label'].'<br /><img style="margin: 4px 4px 4px 10px;" src="' , $settings['tp_images_url'] , '/TPcatlayout'.$box['value'].'.gif" alt="tplayout'.$box['value'].'" />
+									'.$box['label'].'<br /><img style="margin: 4px 4px 4px 10px;" src="' , $settings['tp_images_url'] , '/TPcatlayout'.$box['value'].'.png" alt="tplayout'.$box['value'].'" />
 								</div>';
 
 			if(empty($mg['value9']))
@@ -2939,8 +2939,8 @@ function template_blockedit()
 				}
 				echo '
 					</select><br />',$txt['tp-showmenustyle'],' <br />
-					<input name="tp_block_var1" type="radio" value="0" ' , ($context['TPortal']['blockedit']['var1']=='' || $context['TPortal']['blockedit']['var1']=='0') ? ' checked' : '' ,' ><img src="' , $boardurl , '/tp-images/icons/TPdivider2.gif" alt="" /><br />
-					<input name="tp_block_var1" type="radio" value="1" ' , ($context['TPortal']['blockedit']['var1']=='1') ? ' checked' : '' ,' ><img src="' , $boardurl , '/tp-images/icons/bullet3.gif" alt="" /><br />
+					<input name="tp_block_var1" type="radio" value="0" ' , ($context['TPortal']['blockedit']['var1']=='' || $context['TPortal']['blockedit']['var1']=='0') ? ' checked' : '' ,' ><img src="' ,  $settings['tp_images_url'] , '/TPdivider2.gif" alt="" /><br />
+					<input name="tp_block_var1" type="radio" value="1" ' , ($context['TPortal']['blockedit']['var1']=='1') ? ' checked' : '' ,' ><img src="' , $settings['tp_images_url'] , '/bullet3.gif" alt="" /><br />
 					<input name="tp_block_var1" type="radio" value="2" ' , ($context['TPortal']['blockedit']['var1']=='2') ? ' checked' : '' ,' >'.$txt['tp-none-'].'<br />
 					';
 			}
