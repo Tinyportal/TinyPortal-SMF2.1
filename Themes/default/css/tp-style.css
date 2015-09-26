@@ -200,10 +200,7 @@ h3.article_title span.article_shortdate span
 }
 .article_info span
 {
-	border-right: solid 1px #888;
-	padding: 0;
-	padding-right: 10px; 
-	margin-right: 5px;
+	padding-right: 3px; 
 }
 .article_info span:last-of-type
 {

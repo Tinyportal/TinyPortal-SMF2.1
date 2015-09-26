@@ -239,10 +239,10 @@ function TPortal_catmenu()
 			{
 				if($context['TPortal']['menuvar1'] == '' || $context['TPortal']['menuvar1'] == '0')
 					echo '
-			<img src="'.$boardurl.'/tp-images/icons/TPdivider2.gif" alt="" />&nbsp;';
+			<img src="' , $settings['tp_images_url'] , '/TPdivider2.gif" alt="" />&nbsp;';
 				elseif($context['TPortal']['menuvar1'] == '1' && $cn['sub'] == 0)
 					echo '
-			<img src="'.$boardurl.'/tp-images/icons/bullet3.gif" alt="" />';
+			<img src="' , $settings['tp_images_url'] , '/bullet3.gif" alt="" />';
 			
 			}
 			elseif(isset($cn['icon']) && $cn['icon'] != '' && $cn['type'] != 'head' && $cn['type'] != 'spac')
