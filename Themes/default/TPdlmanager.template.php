@@ -209,7 +209,7 @@ function template_main()
 					{
 						$content .= '
 					<li>
-						<img style="margin: 0;" alt="" src="' .$settings['tp_images_url']. '/TPboard.gif' . '" border="0" />
+						<img style="margin: 0;" alt="" src="' .$settings['tp_images_url']. '/TPboard.png' . '" border="0" />
 							<a href="'.$dlchild['href'].'">'.$dlchild['name'].'</a>';
 						if($dlchild['files']>0)
 							$content .= ' (' . $dlchild['files'].')';
@@ -590,7 +590,7 @@ function template_main()
 				<td colspan="2">'.$maxcount.' '.$txt['tp-dlstatsviews'].'</td>
 			</tr>
 			<tr>
-				<td class="windowbg2" ><img src="' .$settings['tp_images_url']. '/TPboard.gif" alt="" /></td><td class="windowbg" valign="top" width="50%">';
+				<td class="windowbg2" ><img src="' .$settings['tp_images_url']. '/TPboard.png" alt="" /></td><td class="windowbg" valign="top" width="50%">';
 
 		// top categories
 		echo '<table width="100%" cellpadding="2" cellspacing="0">';

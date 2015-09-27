@@ -76,7 +76,7 @@ function template_tp_articles()
 				<td align="center">',$art['comments'],'</td>
 				<td>',$art['category'],'</td>
 				<td align="center">
-					', allowedTo('tp_editownarticle') ? '<a href="'. $art['editlink'] .'"><img border="0" src="' .$settings['tp_images_url']. '/TPmodify.gif" alt="" /></a>' : '' , '
+					', allowedTo('tp_editownarticle') ? '<a href="'. $art['editlink'] .'"><img border="0" src="' .$settings['tp_images_url']. '/TPmodify.png" alt="" /></a>' : '' , '
 				</td>
 			</tr>';
 			}

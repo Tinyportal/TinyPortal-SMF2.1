@@ -777,7 +777,7 @@ function do_blocks()
 			{
 				if(Ajax.readyState == 4)
 				{
-					target.src = source == "' . $settings['tp_images_url'] . '/TPactive1.gif" ? "' . $settings['tp_images_url'] . '/TPactive2.gif" : "' . $settings['tp_images_url'] . '/TPactive1.gif";
+					target.src = source == "' . $settings['tp_images_url'] . '/TPactive1.png" ? "' . $settings['tp_images_url'] . '/TPactive2.png" : "' . $settings['tp_images_url'] . '/TPactive1.png";
 				}
 			}
 			
@@ -1799,7 +1799,7 @@ function do_articles()
 			{
 				if(Ajax.readyState == 4)
 				{
-					target.src = source == "' . $settings['tp_images_url'] . '/TPactive2.gif" ? "' . $settings['tp_images_url'] . '/TPactive1.gif" : "' . $settings['tp_images_url'] . '/TPactive2.gif";
+					target.src = source == "' . $settings['tp_images_url'] . '/TPactive2.png" ? "' . $settings['tp_images_url'] . '/TPactive1.png" : "' . $settings['tp_images_url'] . '/TPactive2.png";
 				}
 			}
 			
