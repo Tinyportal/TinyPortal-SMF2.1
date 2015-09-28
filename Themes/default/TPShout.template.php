@@ -125,7 +125,7 @@ function template_tpshout_admin()
 
 function template_tpshout_admin_settings()
 {
-	global $context, $scripturl, $txt;
+	global $context, $scripturl, $txt, $settings;
 
 	echo '
 	<form class="tborder" accept-charset="', $context['character_set'], '" name="TPadmin" action="' . $scripturl . '?action=tpmod;shout=admin"  method="post" style="margin: 0px;">
