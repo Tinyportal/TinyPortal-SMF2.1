@@ -1459,7 +1459,7 @@ function template_editcategory()
 			echo '<option value="'.$ill['file'].'"' , $ill['file']==$mg['value4'] ? ' selected="selected"' : '' , '>'.$ill['file'].'</option>';
 
 		echo '			
-							</select><br /><img style="margin-top: 8px;" id="tp-icon'.$mg['id'].'" src="' . $boardurl . '/tp-files/tp-articles/icons/', empty($mg['value4']) ? 'TPnoimage.png' : $mg['value4'] , '" alt="" />
+							</select><br /><img style="margin-top: 8px;" id="tp-icon'.$mg['id'].'" src=="' . $settings['tp_images_url'] . '/', empty($mg['value4']) ? 'TPnoimage.png' : $mg['value4'] , '" alt="" />
 								</td>
 							</tr>
 							<tr class="windowbg2">
