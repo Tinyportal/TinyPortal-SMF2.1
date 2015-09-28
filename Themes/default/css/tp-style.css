@@ -1842,3 +1842,7 @@ div.useravatar img
 .generic_icons.tpadmin{
 	background: url(../images/tinyportal/tp.png);
 }
+
+td.windowbg, td.windowbg2{
+	box-sizing: content-box;
+}
