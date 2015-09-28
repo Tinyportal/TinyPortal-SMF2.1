@@ -1416,7 +1416,7 @@ function article_boardnews($render = true)
 	echo '<div class="tp_pad">
 		<span class="article_boardnews">
 			<a href="' . $scripturl . '?topic=' . $context['TPortal']['article']['id'] . '.0">' . $context['TPortal']['article']['replies'] . ' ' . ($context['TPortal']['article']['replies'] == 1 ? $txt['ssi_comment'] : $txt['ssi_comments']) . '</a>';
-	if($context['TPortal']['article']['locked'] == 0)
+	if($context['TPortal']['article']['locked'] == 0 && !$context['user']['is_guest'])
 		echo '
 			&nbsp;|&nbsp;' . '<a href="' . $scripturl . '?action=post;topic=' . $context['TPortal']['article']['id'] . '.' . $context['TPortal']['article']['replies'] . ';num_replies=' . $context['TPortal']['article']['replies'] . '">' . $txt['ssi_write_comment']. '</a>';
 	
@@ -1520,10 +1520,10 @@ function article_options($render=true)
 		echo '';
 	else
 	{
-		if(isset($context['TPortal']['article']['boardnews']))
+		if(isset($context['TPortal']['article']['boardnews']) && !$context['user']['is_guest'])
 			echo '
 		<span class="article_rating"><a class="button" href="' . $scripturl . '?action=printpage;topic=' . $context['TPortal']['article']['id'] . '">' . $txt['print_page'] . '</a></span>';
-		else
+		elseif (!$context['user']['is_guest'])
 			echo '
 		<span class="article_rating"><a class="button" href="' . $scripturl . '?page=' . $context['TPortal']['article']['id'] . ';print">' . $txt['tp-print'] . '</a></span>';
 	}
