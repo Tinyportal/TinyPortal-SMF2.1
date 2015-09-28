@@ -51,7 +51,7 @@ function template_main()
 				<td class="windowbg" valign="top">'.$cat['items'].'</td>
 				<td class="windowbg" valign="top">'.$cat['submitted'].'</td>
 				<td class="windowbg" valign="top">
-					<a href="',$scripturl, '?action=tpmod;dl=cat',$cat['id'],'"><img title="'.$txt['tp-preview'].'" src="' .$settings['tp_images_url']. '/TPfilterpng" alt="" /></a>
+					<a href="',$scripturl, '?action=tpmod;dl=cat',$cat['id'],'"><img title="'.$txt['tp-preview'].'" src="' .$settings['tp_images_url']. '/TPfilter.png" alt="" /></a>
 					<a href="'.$cat['href2'].'"><img title="'.$txt['tp-edit'].'" border="0" src="' .$settings['tp_images_url']. '/TPconfig_sm.png" alt="'.$txt['tp-edit'].'"  /></a>
 					<a href="'.$cat['href3'].'" onclick="javascript:return confirm(\''.$txt['tp-confirmdelete'].'\')"><img title="delete" border="0" src="' .$settings['tp_images_url']. '/TPdelete2.png" alt=""  /></a>
 				</td>
@@ -690,7 +690,7 @@ function template_main()
 					<select size="1" name="newdladmin_icon" onchange="dlcheck(this.value)">';
 
 		echo '
-				<option value="blank.gif" selected>'.$txt['tp-noneicon'].'</option>';
+				<option value="blank.png" selected>'.$txt['tp-noneicon'].'</option>';
 
 		// output the icons
 		foreach($context['TPortal']['dlicons'] as $dlicon => $value)
@@ -699,7 +699,7 @@ function template_main()
 
 		echo '
 					</select>
-					<br /><br /><img name="dlicon" src="'.$boardurl.'/tp-downloads/icons/blank.gif" alt="" />
+					<br /><br /><img name="dlicon" src="'.$boardurl.'/tp-downloads/icons/blank.png" alt="" />
 				<script type="text/javascript">
 					function dlcheck(icon)
 					{
