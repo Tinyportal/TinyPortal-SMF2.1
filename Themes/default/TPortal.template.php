@@ -141,7 +141,7 @@ function template_category()
 		{
 			$buts[$cats['id']] = array(
 				'text' => 'catlist'. $cats['id'], 
-				'image' => 'blank.gif', 
+				'image' => 'blank.png', 
 				'lang' => false, 
 				'url' => $scripturl . '?cat=' . $cats['id'],
 				'active' => false,

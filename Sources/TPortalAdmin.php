@@ -1855,7 +1855,7 @@ function do_articles()
 			{
 				if(Ajax.readyState == 4)
 				{
-					target.src = source == "' . $settings['tp_images_url'] . '/TPsticky1.gif" ? "' . $settings['tp_images_url'] . '/TPsticky2.gif" : "' . $settings['tp_images_url'] . '/TPsticky1.gif";
+					target.src = source == "' . $settings['tp_images_url'] . '/TPsticky1.png" ? "' . $settings['tp_images_url'] . '/TPsticky2.png" : "' . $settings['tp_images_url'] . '/TPsticky1.png";
 				}
 			}
 			

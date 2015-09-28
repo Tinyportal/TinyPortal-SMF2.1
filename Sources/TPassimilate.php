@@ -45,7 +45,9 @@ function tpAddCopy()
 {
 	global $context, $scripturl;
 
-	$context['copyrights']['mods']['tinyportal'] = '<a target="_blank" href="http://www.tinyportal.net" title="TinyPortal">TinyPortal</a> <a href="' . $scripturl . '?action=tpmod;sa=credits" title="TP 2.0">&copy; 2005-2015</a>';
+		$context['copyrights']['mods']['tinyportal'] = '<a target="_blank" href="http://www.tinyportal.net" title="TinyPortal">TinyPortal</a> <a href="' . $scripturl . '?action=tpmod;sa=credits" title="TP 2.0">&copy; 2005-2015</a><br>
+													<a href="http://p.yusukekamiyamane.com/">Fugue Icons</a> | &copy; 2012 Yusuke Kamiyamane | These icons are licensed under a Creative Commons Attribution 3.0 License<br>
+													<a href="http://p.yusukekamiyamane.com/">Diagona Icons</a> | &copy; 2007 Yusuke Kamiyamane | These icons are licensed under a Creative Commons Attribution 3.0 License';
 }
 
 function tpAddMenuItems(&$buttons)
