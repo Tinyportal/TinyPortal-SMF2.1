@@ -72,7 +72,7 @@ function template_tp_articles()
 				<td><a href="'.$art['href'].'" target="_blank">', $art['approved']==0 ? '(' : '' , $art['off']==1 ? '<i>' : '' ,  $art['subject'], $art['off']==1 ? '</i>' : '' , $art['approved']==0 ? ')' : '' ,  '</td>
 				<td align="center" class="smalltext" nowrap="nowrap">',$art['date'],'</td>
 				<td align="center">',$art['views'],'</td>
-				<td nowrap="nowrap">' . $txt['tp-ratingaverage'] . ' ' . ($context['TPortal']['showstars'] ? (str_repeat('<img src="' .$settings['tp_images_url']. '/TPblue.gif" style="width: .7em; height: .7em; margin-right: 2px;" alt="" />', $art['rating_average'])) : $art['rating_average']) . ' (' . $art['rating_votes'] . ' ' . $txt['tp-ratingvotes'] . ') </td>
+				<td nowrap="nowrap">' . $txt['tp-ratingaverage'] . ' ' . ($context['TPortal']['showstars'] ? (str_repeat('<img src="' .$settings['tp_images_url']. '/TPblue.png" style="width: .7em; height: .7em; margin-right: 2px;" alt="" />', $art['rating_average'])) : $art['rating_average']) . ' (' . $art['rating_votes'] . ' ' . $txt['tp-ratingvotes'] . ') </td>
 				<td align="center">',$art['comments'],'</td>
 				<td>',$art['category'],'</td>
 				<td align="center">
@@ -167,9 +167,9 @@ if(isset($context['TPortal']['profile_uploads']) && sizeof($context['TPortal']['
 				<td><a href="'.$art['href'].'" target="_blank">', $art['approved']==0 ? '(' : '' , $art['name'], $art['approved'] == 0 ? ')' : '' ,  '</td>
 				<td align="center" class="smalltext" nowrap="nowrap">',$art['created'],'</td>
 				<td align="center">',$art['views'],'</td>
-				<td nowrap="nowrap">' . $txt['tp-ratingaverage'] . ' ' . ($context['TPortal']['showstars'] ? (str_repeat('<img src="' .$settings['tp_images_url']. '/TPblue.gif" style="width: .7em; height: .7em; margin-right: 2px;" alt="" />', $art['rating_average'])) : $art['rating_average']) . ' (' . $art['rating_votes'] . ' ' . $txt['tp-ratingvotes'] . ') </td>
+				<td nowrap="nowrap">' . $txt['tp-ratingaverage'] . ' ' . ($context['TPortal']['showstars'] ? (str_repeat('<img src="' .$settings['tp_images_url']. '/TPblue.png" style="width: .7em; height: .7em; margin-right: 2px;" alt="" />', $art['rating_average'])) : $art['rating_average']) . ' (' . $art['rating_votes'] . ' ' . $txt['tp-ratingvotes'] . ') </td>
 				<td align="center">',$art['downloads'],'</td>
-				<td align="center">' , $art['editlink']!='' ? '<a href="'.$art['editlink'].'"><img border="0" src="' .$settings['tp_images_url']. '/TPedit.gif" alt="" /></a>' : '' , '</td>
+				<td align="center">' , $art['editlink']!='' ? '<a href="'.$art['editlink'].'"><img border="0" src="' .$settings['tp_images_url']. '/TPedit2.png" alt="" /></a>' : '' , '</td>
 			</tr>';
 	}
 }

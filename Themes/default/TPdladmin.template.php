@@ -51,9 +51,9 @@ function template_main()
 				<td class="windowbg" valign="top">'.$cat['items'].'</td>
 				<td class="windowbg" valign="top">'.$cat['submitted'].'</td>
 				<td class="windowbg" valign="top">
-					<a href="',$scripturl, '?action=tpmod;dl=cat',$cat['id'],'"><img title="'.$txt['tp-preview'].'" src="' .$settings['tp_images_url']. '/TPfilter.gif" alt="" /></a>
+					<a href="',$scripturl, '?action=tpmod;dl=cat',$cat['id'],'"><img title="'.$txt['tp-preview'].'" src="' .$settings['tp_images_url']. '/TPfilterpng" alt="" /></a>
 					<a href="'.$cat['href2'].'"><img title="'.$txt['tp-edit'].'" border="0" src="' .$settings['tp_images_url']. '/TPconfig_sm.png" alt="'.$txt['tp-edit'].'"  /></a>
-					<a href="'.$cat['href3'].'" onclick="javascript:return confirm(\''.$txt['tp-confirmdelete'].'\')"><img title="delete" border="0" src="' .$settings['tp_images_url']. '/TPdelete2.gif" alt=""  /></a>
+					<a href="'.$cat['href3'].'" onclick="javascript:return confirm(\''.$txt['tp-confirmdelete'].'\')"><img title="delete" border="0" src="' .$settings['tp_images_url']. '/TPdelete2.png" alt=""  /></a>
 				</td>
 			</tr>';
 			}
@@ -279,9 +279,9 @@ function template_main()
 				<td class="windowbg" valign="top" align="center">'.$cat['items'].'</td>
 				<td class="windowbg" valign="top" align="center">'.$cat['submitted'].'</td>
 				<td class="windowbg" colspan="3" valign="top">
-					<a href="',$scripturl, '?action=tpmod;dl=cat',$cat['id'],'"><img title="'.$txt['tp-preview'].'" src="' .$settings['tp_images_url']. '/TPfilter.gif" alt="" /></a>
+					<a href="',$scripturl, '?action=tpmod;dl=cat',$cat['id'],'"><img title="'.$txt['tp-preview'].'" src="' .$settings['tp_images_url']. '/TPfilter.png" alt="" /></a>
 					<a href="'.$cat['href2'].'"><img title="'.$txt['tp-edit'].'" border="0" src="' .$settings['tp_images_url']. '/TPconfig_sm.png" alt="'.$txt['tp-edit'].'"  /></a>
-					<a href="'.$cat['href3'].'" onclick="javascript:return confirm(\''.$txt['tp-confirmdelete'].'\')"><img title="delete" border="0" src="' .$settings['tp_images_url']. '/TPdelete.gif" alt=""  /></a>
+					<a href="'.$cat['href3'].'" onclick="javascript:return confirm(\''.$txt['tp-confirmdelete'].'\')"><img title="delete" border="0" src="' .$settings['tp_images_url']. '/TPdelete.png" alt=""  /></a>
 				</td>
 			</tr>';
 			}
@@ -294,7 +294,7 @@ function template_main()
 				echo '
 			<tr>
 				<td colspan="2" class="windowbg2">
-					<a href="',$scripturl, '?action=tpmod;dl=item',$cat['id'],'"><img title="'.$txt['tp-preview'].'" src="' .$settings['tp_images_url']. '/TPfilter.gif" alt="" /></a>
+					<a href="',$scripturl, '?action=tpmod;dl=item',$cat['id'],'"><img title="'.$txt['tp-preview'].'" src="' .$settings['tp_images_url']. '/TPfilter.png" alt="" /></a>
 					<a href="'.$cat['href'].'">'.$cat['name'].'</a></td>
 				<td class="windowbg2">', !empty($cat['icon']) ? '<img src="'.$cat['icon'].'" alt="" />' : '' ,'</td>
 				<td class="windowbg2" align="center">'.$cat['views'].'</td>
@@ -421,7 +421,7 @@ function template_main()
 			</tr>
 					' , $cat['approved']=='0' ? '
 			<tr>
-				<td class="windowbg2" align="right"><img title="'.$txt['tp-approve'].'" border="0" src="' .$settings['tp_images_url']. '/TPthumbup.gif" alt="'.$txt['tp-dlapprove'].'"  /> </td>
+				<td class="windowbg2" align="right"><img title="'.$txt['tp-approve'].'" border="0" src="' .$settings['tp_images_url']. '/TPthumbup.png" alt="'.$txt['tp-dlapprove'].'"  /> </td>
 				<td valign="top" class="windowbg2">
 					<input style="vertical-align: middle;" name="dl_admin_approve'.$cat['id'].'" type="checkbox" value="ON"><b>'.$txt['tp-dlapprove'].'</b>
 				</td>' : '' , ' ';

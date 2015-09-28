@@ -380,9 +380,9 @@ function template_main()
 						echo '<img src="' . $settings['tp_images_url'] . '/TPactive1.png" alt="*" /> ';
 					
 				if($art['locked']==1)
-						echo '<img src="' . $settings['tp_images_url'] . '/TPlock1.gif" alt="*" /> ';
+						echo '<img src="' . $settings['tp_images_url'] . '/TPlock1.png" alt="*" /> ';
 				if($art['approved']==0)
-						echo '<img src="' . $settings['tp_images_url'] . '/TPthumbdown.gif" alt="*" /> ';
+						echo '<img src="' . $settings['tp_images_url'] . '/TPthumbdown.png" alt="*" /> ';
 
 				if((allowedTo('tp_editownarticle') && $art['locked']==0) && !allowedTo('tp_articles'))
 					echo '

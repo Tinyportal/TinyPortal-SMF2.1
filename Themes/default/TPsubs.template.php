@@ -239,7 +239,7 @@ function TPortal_catmenu()
 			{
 				if($context['TPortal']['menuvar1'] == '' || $context['TPortal']['menuvar1'] == '0')
 					echo '
-			<img src="' , $settings['tp_images_url'] , '/TPdivider2.gif" alt="" />&nbsp;';
+			<img src="' , $settings['tp_images_url'] , '/TPdivider2.png" alt="" />&nbsp;';
 				elseif($context['TPortal']['menuvar1'] == '1' && $cn['sub'] == 0)
 					echo '
 			<img src="' , $settings['tp_images_url'] , '/bullet3.gif" alt="" />';
@@ -295,11 +295,11 @@ function TPortal_userbox()
 {
 	global $context, $settings, $scripturl, $txt;
 
-	$bullet = '<img src="'.$settings['tp_images_url'].'/TPdivider.gif" alt="" style="margin:0 4px 0 0;" />';
-	$bullet2 = '<img src="'.$settings['tp_images_url'].'/TPdivider2.gif" alt="" style="margin:0 4px 0 0;" />';
-	$bullet3 = '<img src="'.$settings['tp_images_url'].'/TPdivider3.gif" alt="" style="margin:0 4px 0 0;" />';
-	$bullet4 = '<img src="'.$settings['tp_images_url'].'/TPmodule2.gif" alt="" style="margin:0 4px 0 0;" />';
-	$bullet5 = '<img src="'.$settings['tp_images_url'].'/TPmodule2.gif" alt=""  style="margin:0 4px 0 0;" />';
+	$bullet = '<img src="'.$settings['tp_images_url'].'/TPdivider.png" alt="" style="margin:0 4px 0 0;" />';
+	$bullet2 = '<img src="'.$settings['tp_images_url'].'/TPdivider2.png" alt="" style="margin:0 4px 0 0;" />';
+	$bullet3 = '<img src="'.$settings['tp_images_url'].'/TPdivider3.png" alt="" style="margin:0 4px 0 0;" />';
+	$bullet4 = '<img src="'.$settings['tp_images_url'].'/TPmodule2.png" alt="" style="margin:0 4px 0 0;" />';
+	$bullet5 = '<img src="'.$settings['tp_images_url'].'/TPmodule2.png" alt=""  style="margin:0 4px 0 0;" />';
 
 	echo'
 	<div class="tp_userblocknew">';
@@ -734,7 +734,7 @@ function TPortal_sitemap()
 	<div class="tborder">
 		<ul class="tpsitemap">';
 	if($context['TPortal']['show_download'] == '1')
-		echo '<li><a class="tpsitemapheader" href="'.$scripturl.'?action=tpmod;dl"><img src="' .$settings['tp_images_url']. '/TPmodule2.gif" border="0" alt="" /> '.$txt['tp-downloads'].'</a></li>';
+		echo '<li><a class="tpsitemapheader" href="'.$scripturl.'?action=tpmod;dl"><img src="' .$settings['tp_images_url']. '/TPmodule2.png" border="0" alt="" /> '.$txt['tp-downloads'].'</a></li>';
 
 	if(!empty($context['TPortal']['sitemap']) && !empty($context['TPortal']['menu']))
 	{
@@ -766,13 +766,13 @@ function TPortal_sitemap()
 				if($cn['sitemap'] == '1'){
 					switch($cn['type']){
 							case 'cats' :
-								echo '<li><a class="' , $catclass ,'" href="'. $scripturl. '?cat='.$cn['IDtype'].'" ' , $cn['newlink']=='1' ? 'target="_blank"' : '' , '><img src="' .$settings['tp_images_url']. '/TPdivider.gif" border="0" alt="" /> '.$cn['name'].'</a></li>';
+								echo '<li><a class="' , $catclass ,'" href="'. $scripturl. '?cat='.$cn['IDtype'].'" ' , $cn['newlink']=='1' ? 'target="_blank"' : '' , '><img src="' .$settings['tp_images_url']. '/TPdivider.png" border="0" alt="" /> '.$cn['name'].'</a></li>';
 								break;
 							case 'arti' :
-								echo '<li><a class="' , $catclass ,'" href="'. $scripturl. '?page='.$cn['IDtype'].'"' , $cn['newlink']=='1' ? 'target="_blank"' : '' , '><img src="' .$settings['tp_images_url']. '/TPdivider.gif" border="0" alt="" /> '.$cn['name'].'</a></li>';
+								echo '<li><a class="' , $catclass ,'" href="'. $scripturl. '?page='.$cn['IDtype'].'"' , $cn['newlink']=='1' ? 'target="_blank"' : '' , '><img src="' .$settings['tp_images_url']. '/TPdivider.png" border="0" alt="" /> '.$cn['name'].'</a></li>';
 								break;
 							case 'link' :
-								echo '<li><a class="' , $catclass ,'" href="'.$cn['IDtype'].'"' , $cn['newlink']=='1' ? 'target="_blank"' : '' , '><img src="' .$settings['tp_images_url']. '/TPdivider.gif" border="0" alt="" /> '.$cn['name'].'</a></li>';
+								echo '<li><a class="' , $catclass ,'" href="'.$cn['IDtype'].'"' , $cn['newlink']=='1' ? 'target="_blank"' : '' , '><img src="' .$settings['tp_images_url']. '/TPdivider.png" border="0" alt="" /> '.$cn['name'].'</a></li>';
 								break;
 					}
 				}
@@ -1376,7 +1376,7 @@ function article_iconcolumn($render = true)
 	else
 		echo '
 	<div style="overflow: hidden;">
-		<img src="' . $settings['tp_images_url'] . '/TPnoimage' . (isset($context['TPortal']['article']['boardnews']) ? '_forum' : '') . '.gif" alt="" />
+		<img src="' . $settings['tp_images_url'] . '/TPnoimage' . (isset($context['TPortal']['article']['boardnews']) ? '_forum' : '') . '.png" alt="" />
 	</div>'; 
 }
 
@@ -1392,7 +1392,7 @@ function article_picturecolumn($render = true)
 	<div style="width: 128px; height: 128px; background: top right url(' . $context['TPortal']['article']['illustration'] . ') no-repeat;"></div>'; 
 	else
 		echo '
-	<div style="width: 128px; height: 128px; background: top right url(' . $settings['tp_images_url'] . '/TPno_illustration.gif) no-repeat;"></div>'; 
+	<div style="width: 128px; height: 128px; background: top right url(' . $settings['tp_images_url'] . '/TPno_illustration.png) no-repeat;"></div>'; 
 }
 
 function article_shortdate($render = true)
@@ -1751,7 +1751,7 @@ function render_rating($total, $votes, $id, $can_rate = false)
 	elseif($total == 0 && $votes == 0)
 		echo ' '. $txt['tp-ratingaverage'] . ' 0 (0 ' . $txt['tp-ratingvotes'] . ')';
 	else
-		echo ' '.$txt['tp-ratingaverage'] . ' ' . ($context['TPortal']['showstars'] ? (str_repeat('<img src=" '. $settings['tp_images_url'].'/TPblue.gif" style="width: .7em; height: .7em; margin-right: 2px;" alt="" />' , ceil($total/$votes))) : ceil($total/$votes)) . ' (' . $votes . ' ' . $txt['tp-ratingvotes'] . ')';
+		echo ' '.$txt['tp-ratingaverage'] . ' ' . ($context['TPortal']['showstars'] ? (str_repeat('<img src=" '. $settings['tp_images_url'].'/TPblue.png" style="width: .7em; height: .7em; margin-right: 2px;" alt="" />' , ceil($total/$votes))) : ceil($total/$votes)) . ' (' . $votes . ' ' . $txt['tp-ratingvotes'] . ')';
 
 	// can we rate it?
 	if($context['TPortal']['single_article'])
