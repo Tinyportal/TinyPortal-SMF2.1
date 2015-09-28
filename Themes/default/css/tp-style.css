@@ -574,11 +574,6 @@ ul#tp_tabmenu li a:hover
 {
 	color: #669;
 }
-.tabimage
-{
-	background: url(../images/tinyportal/TPtabindicator.gif) no-repeat;
-	font-weight: bold;
-}
 .notab
 {
 	font-weight: normal;
@@ -594,7 +589,7 @@ ul#tp_tabmenu li a:hover
 #tp_tabs_frame h4.forumpost
 {
 	padding-left: 24px;
-	background: url(../default/images/topic/normal_post.gif) 0 50% no-repeat;
+	background: url(../images/tinyportal/normal_post.png) 0 50% no-repeat;
 }
 #tp_tabs_frame h3
 {
@@ -623,7 +618,7 @@ ul#tp_child_articles
 }
 ul#tp_child_articles li
 {
-	background: url(../images/tinyportal/TPboard.gif) no-repeat 0 50%;
+	background: url(../images/tinyportal/TPboard.png) no-repeat 0 50%;
 	margin-left: 0;
 	padding: 5px 0 5px 20px;
 }
@@ -736,15 +731,15 @@ ul.tp_recentblock li
 }
 .tp_statsblock h5.mlist
 {
-	background: url(../images/icons/members.gif) no-repeat 0 5px;
+	background: url(../images/icons/members.png) no-repeat 0 5px;
 }
 .tp_statsblock h5.stats
 {
-	background: url(../images/stats_info.gif) no-repeat 0 5px;
+	background: url(../images/tinyportal/TPinfo2.png) no-repeat 0 5px;
 }
 .tp_statsblock h5.online
 {
-	background: url(../images/icons/online.gif) no-repeat 0 5px;
+	background: url(../images/tinyportal/online.png) no-repeat 0 5px;
 }
 /* for the menu block */
 ul.tp_catmenu, ul.tp_catmenu li

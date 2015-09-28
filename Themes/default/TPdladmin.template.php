@@ -345,7 +345,7 @@ function template_main()
 					<select size="1" name="dladmin_icon'.$cat['id'].'" onchange="dlcheck(this.value)">';
 
 				echo '
-						<option value="blank.gif">'.$txt['tp-noneicon'].'</option>';
+						<option value="blank.png">'.$txt['tp-noneicon'].'</option>';
 
 				// output the icons
 				$selicon = substr($cat['icon'], strrpos($cat['icon'], '/')+1);
@@ -594,8 +594,8 @@ function template_main()
 				</td>
 				<td valign="top" class="windowbg2">
 					<select size="1" name="dladmin_icon'.$cat['id'].'" onchange="dlcheck(this.value)">
-						<option value="blank.gif" selected>'.$txt['tp-chooseicon'].'</option>
-						<option value="blank.gif">'.$txt['tp-noneicon'].'</option>';
+						<option value="blank.png" selected>'.$txt['tp-chooseicon'].'</option>
+						<option value="blank.png">'.$txt['tp-noneicon'].'</option>';
 
 				// output the icons
 				$selicon = substr($cat['icon'], strrpos($cat['icon'], '/')+1);

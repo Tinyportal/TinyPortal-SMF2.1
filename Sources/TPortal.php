@@ -2648,7 +2648,7 @@ function TPortal_panel($side)
 							state = 0;
 						}
 
-						document.getElementById( blockimage ).src = "'.$settings['tp_images_url'].'" + (state ? "/TPcollapse.png" : "/TPexpand.gif");
+						document.getElementById( blockimage ).src = "'.$settings['tp_images_url'].'" + (state ? "/TPcollapse.png" : "/TPexpand.png");
 						var tempImage = new Image();
 						tempImage.src = "'.$scripturl.'?action=tpmod;upshrink=" + targetId + ";state=" + state + ";" + (new Date().getTime());
 

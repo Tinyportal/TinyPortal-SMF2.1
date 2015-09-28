@@ -221,7 +221,7 @@ function template_main()
 			echo '
 			<div class="dlcategory"' , !empty($content) ? ' style="margin-bottom: 0;"' : '' ,'>
 				<div style="overflow: visible;">
-				<img style="float: left; margin: 0 10px 5px 0;" src="' , !empty($dlcat['icon']) ? (substr($dlcat['icon'],0,4)=='http' ? $dlcat['icon'] :  $boardurl. '/' . $dlcat['icon']) : $settings['images_url'].'/board.gif' , '" alt="" />
+				<img style="float: left; margin: 0 10px 5px 0;" src="' , !empty($dlcat['icon']) ? (substr($dlcat['icon'],0,4)=='http' ? $dlcat['icon'] :  $boardurl. '/' . $dlcat['icon']) : $settings['tp_images_url'].'/TPboard.png' , '" alt="" />
 					<div class="details">' ,	$dlcat['files']>0 ? $dlcat['files'].' '.$txt['tp-dlfiles'] : '0 '.$txt['tp-dlfiles'] , '</div>
 					<h4><a href="'. $dlcat['href'] .'">'.$dlcat['name'].'</a></h4>
 					<div class="post middletext">'. $dlcat['description'] . '</div>
@@ -537,7 +537,7 @@ function template_main()
 							<td align="right" valign="top" class="windowbg">'.$txt['tp-dluploadicon'].'</td>
 							<td class="windowbg">
 								<select size="1" name="tp_dluploadicon" onchange="dlcheck(this.value)">
-									<option value="blank.gif" selected>'.$txt['tp-noneicon'].'</option>';
+									<option value="blank.png" selected>'.$txt['tp-noneicon'].'</option>';
 		// output the icons
 		foreach($context['TPortal']['dlicons'] as $dlicon => $value)
 			echo '
@@ -761,7 +761,7 @@ function template_main()
 					<td class="windowbg2" valign="top" align="right">'.$txt['tp-dluploadicon'].'</td>
 					<td valign="top" class="windowbg2">
 						<select size="1" name="dladmin_icon'.$cat['id'].'" onchange="dlcheck(this.value)">
-							<option value="blank.gif">'.$txt['tp-noneicon'].'</option>';
+							<option value="blank.png">'.$txt['tp-noneicon'].'</option>';
 
 			// output the icons
 			$selicon = substr($cat['icon'], strrpos($cat['icon'], '/')+1);

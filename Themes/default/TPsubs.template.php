@@ -242,7 +242,7 @@ function TPortal_catmenu()
 			<img src="' , $settings['tp_images_url'] , '/TPdivider2.png" alt="" />&nbsp;';
 				elseif($context['TPortal']['menuvar1'] == '1' && $cn['sub'] == 0)
 					echo '
-			<img src="' , $settings['tp_images_url'] , '/bullet3.gif" alt="" />';
+			<img src="' , $settings['tp_images_url'] , '/bullet3.png" alt="" />';
 			
 			}
 			elseif(isset($cn['icon']) && $cn['icon'] != '' && $cn['type'] != 'head' && $cn['type'] != 'spac')
@@ -480,7 +480,7 @@ function TPortal_themebox()
 			<input class="button_submit" type="button" value="'.$txt['tp-changetheme'].'" onclick="jumpit()" /><br><br>
  			<input type="hidden" value="'.$smcFunc['htmlspecialchars']($scripturl . '?'.$tp_where.'theme='.$settings['theme_id']).'" name="jumpurl3" />
  			<div style="text-align: center; width: 95%; overflow: hidden;">
-				<img src="'.$settings['images_url'].'/thumbnail.gif" alt="" id="chosen" name="chosen" style="width: 100%;" />
+				<img src="'.$settings['images_url'].'/thumbnail.png" alt="" id="chosen" name="chosen" style="width: 100%;" />
 			</div>
 		</form>
 		<script type="text/javascript"><!-- // --><![CDATA[
@@ -488,7 +488,7 @@ function TPortal_themebox()
 			var themepath = new Array();';
          for($a=0 ; $a<(sizeof($temaid)); $a++){
 			 echo '
-			    themepath['.$temaid[$a].'] = "'.$temapaths[$a].'/thumbnail.gif";
+			    themepath['.$temaid[$a].'] = "'.$temapaths[$a].'/thumbnail.png";
 				';
 		 }
 
@@ -532,8 +532,8 @@ function TPortal_statsbox()
 {
 	global $context, $settings, $scripturl, $txt, $modSettings;
 
-	$bullet = '<img src="'.$settings['tp_images_url'].'/TPdivider.gif" alt=""  style="margin:0 4px 0 0;" />';
-	$bullet2 = '<img src="'.$settings['tp_images_url'].'/TPdivider2.gif" alt="" style="margin:0 4px 0 0;" />';
+	$bullet = '<img src="'.$settings['tp_images_url'].'/TPdivider.png" alt=""  style="margin:0 4px 0 0;" />';
+	$bullet2 = '<img src="'.$settings['tp_images_url'].'/TPdivider2.png" alt="" style="margin:0 4px 0 0;" />';
 	
 	echo'
 	<div class="tp_statsblock">';
@@ -1645,7 +1645,7 @@ function article_comments($render = true)
 						<span class="comment_author">'.$comment['avatar']['image'].'
 						<strong>' . $counter++ .') ' . $comment['subject'] . '</strong>
 						<div class="middletext" style="padding-top: 0.5em;"> '.$txt['tp-by'].' '.$txt['guest_title'].' '. $txt['on'] . ' ' . $comment['date'] . '</div>
-						' . (($comment['is_new'] && $context['user']['is_logged']) ? '<img src="' . $settings['images_url'] . '/' . $context['user']['language'] . '/new.gif" alt="" />' : '') . '
+						' . (($comment['is_new'] && $context['user']['is_logged']) ? '<span class="new_posts">' . $txt['new'] . '</span>' : '') . '
 						<div class="textcomment"><div class="body">' . $comment['text'] . '</div></div><br />';
 				else
 					echo '
@@ -1653,7 +1653,7 @@ function article_comments($render = true)
 					<a id="comment'.$comment['id'].'"></a>
 					<span class="comment_author"><a href="' . $scripturl. '?action=profile;u=' . $comment['posterID'] . '">' . $comment['avatar']['image'] . '</a></span>
 					<strong>' . $counter++ .') ' . $comment['subject'] . '</strong>
-					' . (($comment['is_new'] && $context['user']['is_logged']) ? '<img src="' . $settings['images_url'] . '/' . $context['user']['language'] . '/new.gif" alt="" />' : '') . '
+					' . (($comment['is_new'] && $context['user']['is_logged']) ? '<span class="new_posts">' . $txt['new'] . '</span>' : '') . '
 					<div class="middletext" style="padding-top: 0.5em;"> '.$txt['tp-by'].' <a href="'.$scripturl.'?action=profile;u='.$comment['posterID'].'">'.$comment['poster'].'</a>
 					' . $txt['on'] . ' ' . $comment['date'] . '</div>
 

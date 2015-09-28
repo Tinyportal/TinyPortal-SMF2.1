@@ -124,7 +124,7 @@ function TPmodules()
 		}
 		// Don't output anything...
 		$tid = time();
-		redirectexit($settings['images_url'] . '/blank.gif?ti='.$tid);
+		redirectexit($settings['images_url'] . '/blank.png?ti='.$tid);
 	}
 	// a comment is sent
 	elseif($tpsub == 'comment' && isset($_POST['tp_article_type']) && $_POST['tp_article_type'] == 'article_comment' )
