@@ -2309,7 +2309,7 @@ function template_editarticle($type = '')
 					</tr>
 					<tr class="windowbg2">
 						<td class="left" valign="top" align="right">'.$txt['tp-status'].':
-							<br /><img style="margin: 1ex;" border="0" src="' .$settings['tp_images_url']. '/TP' , $mg['off']=='1' ? 'red' : 'green' , '.gif" alt=""  />
+							<br /><img style="margin: 1ex;" border="0" src="' .$settings['tp_images_url']. '/TP' , $mg['off']=='1' ? 'red' : 'green' , '.png" alt=""  />
 						</td>
 						<td valign="top">
 							<input name="tp_article_off" type="radio" value="1" ' , $mg['off']=='1' ? 'checked' : '' , '> '.$txt['tp-articleoff'].'<br />
@@ -2318,7 +2318,7 @@ function template_editarticle($type = '')
 					</tr>
 					<tr class="windowbg2">
 						<td class="left" valign="top" align="right">
-							<img id="tp-illu" src="' , $boardurl , '/tp-files/tp-articles/illustrations/' , !empty($mg['illustration']) ? $mg['illustration'] : 'TPno_illustration.png' , '" alt="" />
+							<img id="tp-illu" src="' , $settings['tp_images_url'] , '/' , !empty($mg['illustration']) ? $mg['illustration'] : 'TPno_illustration.png' , '" alt="" />
 						</td>
 						<td valign="top">'.$txt['tp-illustration'].':<br /><br />
 							<select size="10" style="width: 200px;" name="tp_article_illustration" onchange="changeIllu(document.getElementById(\'tp-illu\'), this.value);">
