@@ -1846,3 +1846,7 @@ div.useravatar img
 td.windowbg, td.windowbg2{
 	box-sizing: content-box;
 }
+
+#topic_container .board_icon, #topic_container .info, #topic_container .windowbg2, #topic_container .windowbg, #topic_container .board_stats, #topic_container .lastpost {
+	height: inherit;
+}
