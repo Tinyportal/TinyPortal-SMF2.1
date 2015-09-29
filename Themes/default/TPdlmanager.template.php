@@ -362,7 +362,7 @@ function template_main()
 			echo '
 					<hr />
 					<div class="post">
-						<p class="floatright" style="padding: 0 0 0.1em 1em;"><a href="'.$dlitem['href'].'">'.$txt['tp-download'].'</a></p>
+						<p class="floatright" style="padding: 0 0 0.1em 1em;"><a class="button button_strip_frontdl" href="'.$dlitem['href'].'">'.$txt['tp-download'].'</a></p>
 						' . $dlitem['description'] . '
 					</div>';
 
