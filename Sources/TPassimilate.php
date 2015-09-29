@@ -40,6 +40,32 @@ function tpAddPermissions(&$permissionGroups, &$permissionList, &$leftPermission
 
 }
 
+function tpAddIllegalPermissions()
+{
+	global $context;
+	
+	if (empty($context['non_guest_permissions']))
+		$context['non_guest_permissions'] = array();
+	
+	$tp_illegal_perms = array(
+		'tp_settings',
+		'tp_blocks',
+		'tp_articles',
+		'tp_alwaysapproved',
+		'tp_submithtml',
+		'tp_submitbbc',
+		'tp_editownarticle',
+		'tp_artcomment',
+		'tp_can_admin_shout',
+		'tp_can_shout',
+		'tp_dlmanager',
+		'tp_dlupload',
+		'tp_dlcreatetopic',
+	);
+	$context['non_guest_permissions'] = array_merge($context['non_guest_permissions'], $tp_illegal_perms);
+}
+ 
+
 // Adds TP copyright to the credits page
 function tpAddCopy()
 {
