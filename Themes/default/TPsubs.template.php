@@ -1684,7 +1684,7 @@ function article_comments($render = true)
 						<textarea style="width: 99%; height: 8em;" name="tp_article_bodytext"></textarea>
 ';
 
-				if (!empty($context['TPortal']['articles_comment_captcha']) )
+				if ($context['require_verification'])
 				{
 					loadtemplate('GenericControls');
 
