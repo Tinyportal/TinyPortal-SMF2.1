@@ -3126,41 +3126,45 @@ function TPortalDLAdmin()
 		'description' => $txt['tp-dlheader3'],
 		'tabs' => array(),
 	);
-	if (allowedTo('tp_dlmanager'))
-	{
+
 		$context['TPortal']['subtabs'] = array(
 			'admin' => array(
 				'text' => 'tp-dltabs4',
 				'url' => $scripturl . '?action=tpmod;dl=admin',
+				'show' => allowedTo('tp_dlmanager'),
 				'active' => substr($context['TPortal']['dlsub'], 0, 5) == 'admin' && $context['TPortal']['dlsub'] != 'adminsettings' && $context['TPortal']['dlsub'] != 'adminaddcat' && $context['TPortal']['dlsub'] != 'adminftp' && $context['TPortal']['dlsub'] != 'adminsubmission',
 			),
 			'settings' => array(
 				'text' => 'tp-dltabs1',
 				'url' => $scripturl . '?action=tpmod;dl=adminsettings',
+				'show' => allowedTo('tp_dlmanager'),
 				'active' => $context['TPortal']['dlsub'] == 'adminsettings',
 			),
 			'addcategory' => array(
 				'text' => 'tp-dltabs2',
 				'url' => $scripturl . '?action=tpmod;dl=adminaddcat',
+				'show' => allowedTo('tp_dlmanager'),
 				'active' => $context['TPortal']['dlsub'] == 'adminaddcat',
 			),
 			'upload' => array(
 				'text' => 'tp-dltabs3',
 				'url' => $scripturl . '?action=tpmod;dl=upload',
+				'show' => allowedTo('tp_dlmanager'),
 				'active' => $context['TPortal']['dlsub'] == 'upload',
 			),
 			'submissions' => array(
 				'text' => 'tp-dlsubmissions' ,
 				'url' => $scripturl . '?action=tpmod;dl=adminsubmission',
+				'show' => allowedTo('tp_dlmanager'),
 				'active' => $context['TPortal']['dlsub'] == 'adminsubmission',
 			),
 			'ftp' => array(
 				'text' => 'tp-dlftp',
 				'url' => $scripturl . '?action=tpmod;dl=adminftp',
+				'show' => allowedTo('tp_dlmanager'),
 				'active' => $context['TPortal']['dlsub'] == 'adminftp',
 			),
 		);
-	}
 	$context['template_layers'][] = 'tpadm';
 	$context['template_layers'][] = 'subtab';
 	TPadminIndex('');

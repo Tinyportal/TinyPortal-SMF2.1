@@ -140,7 +140,7 @@ function template_overview()
 	echo '
 	<div id="tp_overview" class="windowbg2">';
 		
-	if(is_array($context['admin_tabs']) && count($context['admin_tabs'])>0)
+			if(is_array($context['admin_tabs']) && count($context['admin_tabs'])>0)
 	{
 		echo '
 			<ul>';
@@ -148,12 +148,13 @@ function template_overview()
 		{
 			$tbas=array();
 			foreach($tab as $t => $tb)
-				echo '<li><a href="' . $tb['href'] . '"><img style="margin-bottom: 8px;" src="' . $settings['tp_images_url'] . '/TPov_' . strtolower($t) . '.png" alt="TPov_' . strtolower($t) . '" /><br /><b>'.$tb['title'].'</b></a></li>';
-
+				if (!empty($tb['show']))
+					echo '<li><a href="' . $tb['href'] . '"><img style="margin-bottom: 8px;" src="' . $settings['tp_images_url'] . '/TPov_' . strtolower($t) . '.png" alt="TPov_' . strtolower($t) . '" /><br /><b>'.$tb['title'].'</b></a></li>';
 		}
 		echo '	
 			</ul>';
 	}
+ 
 	echo '
 	</div>';
 }
@@ -330,11 +331,8 @@ function template_modules()
 								',$modul['adminlink'],'
 							</td>
 							<td>
-								<img src="' .$settings['tp_images_url']. '/' , $modul['state']==1 ? 'TPgreen' : 'TPred' , '.png" alt="" />
-							</td>
-							<td>
-								<input name="' , $modul['fieldname'] , '" type="radio" value="1" ' , $modul['state']==1 ? 'checked><b>'.$txt['tp-on'].'</b>' : '>'.$txt['tp-on'] , '
-								<input name="' , $modul['fieldname'] , '" type="radio" value="0" ' , $modul['state']==0 ? 'checked><b>'.$txt['tp-off'].'</b>' : '>'.$txt['tp-off'] , '
+								<input style="margin-top:-4px;" name="' , $modul['fieldname'] , '" type="radio" value="1" ' , $modul['state']==1 ? 'checked><b>'.$txt['tp-on'].'</b>' : '>'.$txt['tp-on'] , '
+								<input style="margin-top:-4px;" name="' , $modul['fieldname'] , '" type="radio" value="0" ' , $modul['state']==0 ? 'checked><b>'.$txt['tp-off'].'</b>' : '>'.$txt['tp-off'] , '
 							</td>
 						</tr>';
 
@@ -343,19 +341,14 @@ function template_modules()
 			echo '
 						<tr class="windowbg2">
 							<td valign="top">
-								<a href="', $scripturl, '?action=tpmod;', $mod['subquery'], '"><strong>',$mod['title'],'</strong></a>
-								(<a href="', $scripturl, '?action=tpmod;', $mod['subquery'], '=admin">Admin</a>)<br />
+								<a href="', $scripturl, '?action=tpmod;', $mod['subquery'], '">',$mod['title'],'</a>
 							</td>
 							<td valign="top">
-								', $txt['tp-author'] , ': <a href="mailto:', $mod['email'], '">', $mod['author'], '</a>
-								<div class="post">', !empty($mod['information']) ? parse_bbc($mod['information']) : '' , '</div>
-							</td>
-							<td valign="top">
-								<img src="' .$settings['tp_images_url']. '/' , $mod['active']==1 ? 'TPgreen' : 'TPred' , '.png" alt="" />
+								<a href="', $scripturl, '?action=tpmod;', $mod['subquery'], '=admin">',$txt['tp-mod-shoutadmin'],'</a><br />
 							</td>
 							<td valign="top" width="100">
-								<input name="tpmodule_state' , $mod['id'] , '" type="radio" value="1" ' , $mod['active']==1 ? 'checked="checked" /><b>'.$txt['tp-on'].'</b>' : '>'.$txt['tp-on'] , '
-								<input name="tpmodule_state' , $mod['id'] , '" type="radio" value="0" ' , $mod['active']==0 ? 'checked="checked" /><b>'.$txt['tp-off'].'</b>' : '>'.$txt['tp-off'] , '
+								<input style="margin-top:-4px;" name="tpmodule_state' , $mod['id'] , '" type="radio" value="1" ' , $mod['active']==1 ? 'checked="checked" /><b>'.$txt['tp-on'].'</b>' : '>'.$txt['tp-on'] , '
+								<input style="margin-top:-4px;" name="tpmodule_state' , $mod['id'] , '" type="radio" value="0" ' , $mod['active']==0 ? 'checked="checked" /><b>'.$txt['tp-off'].'</b>' : '>'.$txt['tp-off'] , '
 							</td>
 						</tr>';
 		echo '
