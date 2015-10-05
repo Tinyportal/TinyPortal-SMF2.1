@@ -31,63 +31,6 @@ function TPcheckAdminAreas()
 	return false;
 }
 
-function TPsetupAdminAreas()
-{
-	global $context, $scripturl, $smcFunc;
-
-	$context['admin_tabs']['custom_modules'] = array();
-	if (allowedTo('tp_dlmanager') && !empty($context['TPortal']['show_download']))
-	{
-		$context['admin_tabs']['custom_modules']['tpdownloads'] = array(
-			'title' => 'TPdownloads',
-			'description' => '',
-			'href' => $scripturl . '?action=tpmod;dl=admin',
-			'is_selected' => isset($_GET['dl']),
-		);
-		$admin_set = true;
-	}
-	// any from modules?
-	$request = $smcFunc['db_query']('', '
-		SELECT modulename, subquery, permissions, languages 
-		FROM {db_prefix}tp_modules 
-		WHERE active = {int:active}',
-		array(
-			'active' => 1
-		)
-	);
-	
-	if($smcFunc['db_num_rows']($request) > 0)
-	{
-		while($row = $smcFunc['db_fetch_assoc']($request))
-		{
-			$perms = explode(',', $row['permissions']);
-			$setperm = array();
-			$admin_set = false;
-			for($a = 0; $a < sizeof($perms); $a++)
-			{
-				$pr = explode('|', $perms[$a]);
-				$setperm[$pr[0]] = $pr[1];
-				// admin permission?
-				if (isset($pr[1]) && $pr[1] == 1)
-				{
-					if (allowedTo($pr[0]))
-					{
-						if(!$admin_set)
-							$context['admin_tabs']['custom_modules'][$pr[0]] = array(
-								'title' => $row['modulename'],
-								'description' => '',
-								'href' => $scripturl . '?action=tpmod;'.$row['subquery'].'=admin',
-								'is_selected' => isset($_GET[$row['subquery']]) ? true : false,
-							);
-						$admin_set=true;
-					}
-				}
-			}
-		}
-		$smcFunc['db_free_result']($request);
-	}
-}
-
 function TP_addPerms()
 {
 	global $smcFunc;
@@ -222,11 +165,10 @@ function tp_getbuttons()
 
 	$buts = array();
 	
-	if(!empty($context['TPortal']['show_download']))
 		$buts['downloads'] = array(
 			'title' => $txt['tp-downloads'],
 			'href' => $scripturl . '?action=tpmod;dl',
-			'show' => true,
+			'show' => !empty($context['TPortal']['show_download']),
 			'active_button' => false,
 			'sub_buttons' => array(),			
 		);
@@ -235,57 +177,52 @@ function tp_getbuttons()
 		$buts['tpeditwonarticle'] = array(
 			'title' => $txt['tp-myarticles'],
 			'href' => $scripturl . '?action=tpmod;sa=myarticles',
-			'show' => true,
+			'show' => !empty($context['TPortal']['show_download']),
 			'active_button' => false,
 			'sub_buttons' => array(),			
 		);
 	
-	if(allowedTo('tp_submithtml'))
 		$buts['tpeditwonarticle']['sub_buttons']['submithtml'] = array(
 			'title' => $txt['tp-submitarticle'],
 			'href' => $scripturl . '?action=tp' . (allowedTo('tp_articles') ? 'admin' : 'mod') . ';sa=addarticle_html',
-			'show' => true,
+			'show' => allowedTo('tp_submithtml'),
 			'active_button' => false,
 			'sub_buttons' => array(),			
 		);
 
-	if(allowedTo('tp_submitbbc'))
 		$buts['tpeditwonarticle']['sub_buttons']['submitbbc'] = array(
 			'title' => $txt['tp-submitarticlebbc'],
 			'href' => $scripturl . '?action=tp' . (allowedTo('tp_articles') ? 'admin' : 'mod') . ';sa=addarticle_bbc',
-			'show' => true,
+			'show' => allowedTo('tp_submitbbc'),
 			'active_button' => false,
 			'sub_buttons' => array(),			
 		);
 
 	// the admin fucntions
-	if($context['user']['is_logged'])
 		$buts['divde1'] = array(
 			'title' => '<hr />',
 			'href' => '#top',
-			'show' => true,
+			'show' => $context['user']['is_logged'],
 			'active_button' => false,
 			'sub_buttons' => array(),
 		);
 		
-	if(allowedTo('tp_blocks'))
-	{
 		$buts['tpblocks'] = array(
 			'title' => $txt['permissionname_tp_blocks'],
 			'href' => $scripturl . '?action=tpadmin;sa=blocks',
-			'show' => true,
+			'show' => allowedTo('tp_blocks'),
 			'active_button' => false,
 			'sub_buttons' => array(
 				'tppanels' => array(
 					'title' => $txt['tp-panels'],
 					'href' => $scripturl . '?action=tpadmin;sa=panels',
-					'show' => true,
+					'show' => allowedTo('tp_blocks'),
 					'active_button' => false,
 				),
 				'tpmenumanager' => array(
 					'title' => $txt['tp-menumanager'],
 					'href' => $scripturl . '?action=tpadmin;sa=menubox',
-					'show' => true,
+					'show' => allowedTo('tp_blocks'),
 					'active_button' => false,
 				),
 				'tpblockaccess' => array(
@@ -296,80 +233,72 @@ function tp_getbuttons()
 				),
 			),			
 		);
-	}
-	if(allowedTo('tp_settings'))
-	{
+		
 		$buts['tpsettings'] = array(
 			'title' => $txt['tp-settings'],
 			'href' => $scripturl . '?action=tpadmin;sa=settings',
-			'show' => true,
+			'show' => allowedTo('tp_settings'),
 			'active_button' => false,
 			'sub_buttons' => array(
 				'tpfrontpage' => array(
 					'title' => $txt['tp-frontpage'],
 					'href' => $scripturl . '?action=tpadmin;sa=frontpage',
-					'show' => true,
+					'show' => allowedTo('tp_settings'),
 					'active_button' => false,
 				),
 				'tpmodules' => array(
 					'title' => $txt['tp-modules'],
 					'href' => $scripturl . '?action=tpadmin;sa=modules',
-					'show' => true,
+					'show' => allowedTo('tp_settings'),
 					'active_button' => false,
 				),
 			),			
 		);
-	}
-	if(allowedTo('tp_articles'))
-	{
+		
 		$buts['tparticles'] = array(
 			'title' => $txt['permissionname_tp_articles'],
 			'href' => $scripturl . '?action=tpadmin;sa=articles',
-			'show' => true,
+			'show' => allowedTo('tp_articles'),
 			'active_button' => false,
 			'sub_buttons' => array(
 				'tpcategories' => array(
 					'title' => $txt['tp-categories'],
 					'href' => $scripturl . '?action=tpadmin;sa=categories',
-					'show' => true,
+					'show' => allowedTo('tp_articles'),
 					'active_button' => false,
 				),
 				'tpstrays' => array(
 					'title' => $txt['tp-strays'],
 					'href' => $scripturl . '?action=tpadmin;sa=strays',
-					'show' => true,
+					'show' => allowedTo('tp_articles'),
 					'active_button' => false,
 				),
 				'tpsubmissions' => array(
 					'title' => $txt['tp-submissions'],
 					'href' => $scripturl . '?action=tpadmin;sa=submission',
-					'show' => true,
+					'show' => allowedTo('tp_articles'),
 					'active_button' => false,
 				),
 			),			
 		);
-	}
-	if(allowedTo('tp_dlmanager'))
-	{
+
 		$buts['tpdlmanager'] = array(
 			'title' => $txt['permissionname_tp_dlmanager'],
 			'href' => $scripturl . '?action=tpmod;dl=admin',
-			'show' => true,
+			'show' => allowedTo('tp_dlmanager'),
 			'active_button' => false,
 			'sub_buttons' => array(
 			),			
 		);
-	}
-	if(allowedTo('tp_shoutbox'))
-	{
+
 		$buts['tpshoutbox'] = array(
 			'title' => $txt['shoutboxprofile'],
 			'href' => $scripturl . '?action=tpmod;shout=admin',
-			'show' => true,
+			'show' => allowedTo('tp_can_admin_shout'),
+			//'show' => allowedTo('tp_shoutbox'),
 			'active_button' => false,
 			'sub_buttons' => array(),			
 		);
-	}
 	return $buts;
 }
 
@@ -1990,144 +1919,151 @@ function TPadminIndex($tpsub = '', $module_admin = false)
 		// make sure tpadmin is still active
 		$_GET['action'] = 'tpadmin';
 	}
-	$context['admin_tabs'] = array();
-	$context['admin_header']['tp_news'] = $txt['tp-adminnews1'];
-	$context['admin_header']['tp_settings'] = $txt['tp-adminheader1'];
-	$context['admin_header']['tp_articles'] = $txt['tp-articles'];
-	$context['admin_header']['tp_blocks'] = $txt['tp-adminpanels'];
-	$context['admin_header']['tp_modules'] = $txt['tp-modules'];
-	$context['admin_header']['tp_menubox'] = $txt['tp-menumanager'];
-	$context['admin_header']['custom_modules'] = $txt['custom_modules'];
 
-	if (allowedTo('tp_settings'))
-	{
-		$context['admin_tabs']['tp_news'] = array(
+	$context['admin_tabs'] = array();
+		$context['admin_tabs']['tp-adminnews1'] = array(
 			'news' => array(
 				'title' => $txt['tp-adminnews1'],
 				'description' => $txt['tp-adminnews2'],
 				'href' => $scripturl . '?action=tpadmin;sa=news',
+				'show' => allowedTo('tp_settings'),
 				'is_selected' => $tpsub == 'news',
 			),
 		);
-	}
-	if (allowedTo('tp_settings'))
-	{
-		$context['admin_tabs']['tp_settings'] = array(
+
+		$context['admin_tabs']['tp-adminheader1'] = array(
 			'settings' => array(
 				'title' => $txt['tp-settings'],
 				'description' => $txt['tp-settingdesc1'],
 				'href' => $scripturl . '?action=tpadmin;sa=settings',
+				'show' => allowedTo('tp_settings'),
 				'is_selected' => $tpsub == 'settings',
 			),
 			'frontpage' => array(
 				'title' => $txt['tp-frontpage'],
 				'description' => $txt['tp-frontpagedesc1'],
 				'href' => $scripturl . '?action=tpadmin;sa=frontpage',
+				'show' => allowedTo('tp_settings'),
 				'is_selected' => $tpsub == 'frontpage',
 			),
 		);
-	}
-	if (allowedTo('tp_articles'))
-	{
-		$context['admin_tabs']['tp_articles'] = array(
+
+		$context['admin_tabs']['tp-articles'] = array(
 			'articles' => array(
 				'title' => $txt['tp-articles'],
 				'description' => $txt['tp-articledesc1'],
 				'href' => $scripturl . '?action=tpadmin;sa=articles',
+				'show' => allowedTo('tp_articles'),
 				'is_selected' => (substr($tpsub,0,11)=='editarticle' || in_array($tpsub, array('articles','addarticle','addarticle_php', 'addarticle_bbc', 'addarticle_import','strays'))),
 			),
 			'categories' => array(
 				'title' => $txt['tp-tabs5'],
 				'description' => $txt['tp-articledesc2'],
 				'href' => $scripturl . '?action=tpadmin;sa=categories',
+				'show' => allowedTo('tp_articles'),
 				'is_selected' => in_array($tpsub, array('categories', 'addcategory','clist')) ,
 			),
 			'artsettings' => array(
 				'title' => $txt['tp-settings'],
 				'description' => $txt['tp-articledesc3'],
 				'href' => $scripturl . '?action=tpadmin;sa=artsettings',
+				'show' => allowedTo('tp_articles'),
 				'is_selected' => $tpsub == 'artsettings',
 			),
 			'submission' => array(
 				'title' => (isset($context['TPortal']['submissions']) && $context['TPortal']['submissions'])>0 ? $txt['tp-tabs4'].' ['.$context['TPortal']['submissions'].']' : $txt['tp-tabs4'] ,
 				'description' => $txt['tp-articledesc4'],
 				'href' => $scripturl . '?action=tpadmin;sa=submission',
+				'show' => allowedTo('tp_articles'),
 				'is_selected' => $tpsub == 'submission',
 			),	
 			'icons' => array(
 				'title' => $txt['tp-adminicons'],
 				'description' => $txt['tp-articledesc5'],
 				'href' => $scripturl . '?action=tpadmin;sa=articons',
+				'show' => allowedTo('tp_articles'),
 				'is_selected' => $tpsub == 'articons',
 			),	
 		);
-	}
-	if (allowedTo('tp_blocks'))
-	{
-		$context['admin_tabs']['tp_blocks'] = array(
+
+
+		$context['admin_tabs']['tp-adminpanels'] = array(
 			'panelsettings' => array(
 				'title' => $txt['tp-allpanels'],
 				'description' => $txt['tp-paneldesc1'],
 				'href' => $scripturl . '?action=tpadmin;sa=panels',
+				'show' => allowedTo('tp_blocks'),
 				'is_selected' => $tpsub == 'panels',
 			),
 			'blocks' => array(
 				'title' => $txt['tp-allblocks'],
 				'description' => $txt['tp-blocksdesc1'],
 				'href' => $scripturl . '?action=tpadmin;sa=blocks',
-				'is_selected' => $tpsub == 'blocks' && !isset($_GET['latest']) && !isset($_GET['overview']), 
+				'show' => allowedTo('tp_blocks'),
+				'is_selected' => $tpsub == 'blocks' && !isset($_GET['latest']) && !isset($_GET['overview']),
 			),
 			'blockoverview' => array(
 				'title' => $txt['tp-blockoverview'],
 				'description' => '',
 				'href' => $scripturl . '?action=tpadmin;sa=blocks;overview',
-				'is_selected' => $tpsub == 'blocks' && isset($_GET['overview']), 
+				'show' => allowedTo('tp_blocks'),
+				'is_selected' => $tpsub == 'blocks' && isset($_GET['overview']),
 			),
 		);
-	}
-	if (allowedTo('tp_settings'))
-	{
-		$context['admin_tabs']['tp_modules'] = array(
+
+		$context['admin_tabs']['tp-modules'] = array(
 			'modules' => array(
 				'title' => $txt['tp-modules'],
 				'description' => $txt['tp-moduledesc1'],
 				'href' => $scripturl . '?action=tpadmin;sa=modules',
+				'show' => allowedTo('tp_settings'),
 				'is_selected' => $tpsub == 'modules' && !isset($_GET['import']),
 			),
 		);
-	}
-	// collect modules and their permissions	
-	$result =  $smcFunc['db_query']('', '
-		SELECT * FROM {db_prefix}tp_modules 
-		WHERE 1',
-		array()
-	);
-	if($smcFunc['db_num_rows']($result) > 0)
-	{
-		while($row = $smcFunc['db_fetch_assoc']($result))
-		{
-			$context['TPortal']['admmodules'][] = $row;
-		}
-		$smcFunc['db_free_result']($result);
-	}
-	if (allowedTo('tp_blocks'))
-	{
-		$context['admin_tabs']['tp_menubox'] = array(
+		
+		$context['admin_tabs']['tp-menumanager'] = array(
 			'menubox' => array(
 				'title' => $txt['tp-menumanager'],
 				'description' => '',
 				'href' => $scripturl . '?action=tpadmin;sa=menubox',
+				'show' => allowedTo('tp_blocks'),
 				'is_selected' => in_array($tpsub, array('menubox','linkmanager')),
 			),
 			'addmenu' => array(
 				'title' => isset($_GET['mid']) ? $txt['tp-addmenuitem'] : $txt['tp-addmenu'],
 				'description' => '',
 				'href' => (isset($_GET['mid']) && is_numeric($_GET['mid'])) ? $scripturl . '?action=tpadmin;sa=addmenu;mid='.$_GET['mid'] : $scripturl . '?action=tpadmin;sa=addmenu;fullmenu',
+				'show' => allowedTo('tp_blocks'),
 				'is_selected' => in_array($tpsub, array('addmenu')),
 			),
 		);
-	}
-	TPsetupAdminAreas();
+		
+		$context['admin_tabs']['custom_modules'] = array(
+			'tpdownloads' => array(
+				'title' => $txt['tp-admin9'],
+				'description' => '',
+				'href' => $scripturl . '?action=tpmod;dl=admin',
+				'show' => allowedTo('tp_dlmanager') && !empty($context['TPortal']['show_download']),
+				'is_selected' => isset($_GET['dl']),
+				),
+			'tpshout' => array(
+				'title' => $txt['tp_shout'],
+				'description' => '',
+				'href' => $scripturl . 'action=tpmod;shout=admin',
+				'show' => allowedTo('tp_can_admin_shout'),
+				'is_selected' => isset($_GET['shout']),
+				),
+			);
+		
+
+	 //IMPORTANT!!! The $txt variable *MUST* have the same name as the "admin_tabs" key.
+	 //Eg: $context['admin_tabs']['tp_articles'] --> $context['admin_header']['tp_articles'], which means that the header text MUST be $txt['tp_articles']
+	$context['admin_header'] = array();
+	foreach ($context['admin_tabs'] as $tab => $content)
+		foreach ($content as $item => $data)
+			if (empty($context['admin_header'][$tab]) && !empty($data['show']))
+				$context['admin_header'][$tab] = $txt[$tab];
+			
 	validateSession();
 }
 

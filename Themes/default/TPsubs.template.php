@@ -2014,19 +2014,21 @@ function template_tpadm_above()
 			<ul style="padding-bottom: 10px;">';
 		foreach($context['admin_tabs'] as $ad => $tab)
 		{
+			if(!empty($context['admin_header'][$ad]))
 			echo '
 				<li><div class="largetext">' , isset($context['admin_header'][$ad]) ? $context['admin_header'][$ad] : '' , '</div>
 					';
-			$tbas = array();
+			$tabs = array();
 			foreach($tab as $tb)
-				$tbas[]='<a href="' . $tb['href'] . '">' .($tb['is_selected'] ? '<b>'.$tb['title'].'</b>' : $tb['title']) . '</a>';
+				if (!empty($tb['show']))
+					$tabs[]='<a href="' . $tb['href'] . '">' .($tb['is_selected'] ? '<strong>'.$tb['title'].'</strong>' : $tb['title']) . '</a>';
 			
 			// if new style...
 			if($context['TPortal']['oldsidebar'] == 0)
-				echo '<div class="normaltext">' , implode(', ', $tbas) , '</div>
+				echo '<div class="normaltext">' , implode(', ', $tabs) , '</div>
 				</li>';
 			else
-				echo '<div class="middletext" style="margin: 0; line-height: 1.3em;">' , implode('<br />', $tbas) , '</div>
+				echo '<div class="middletext" style="margin: 0; line-height: 1.3em;">' , implode('<br />', $tabs) , '</div>
 				</li>';
 
 		}

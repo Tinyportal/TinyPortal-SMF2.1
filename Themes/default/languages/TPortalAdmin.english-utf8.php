@@ -572,7 +572,7 @@ $txt['tp-rssblock-useutf8'] = 'What encoding to use in this feed:';
 $txt['tp-utf8'] = 'UTF-8';
 $txt['tp-iso'] = 'ISO-8859-1 (default)';
 $txt['tp_shout'] = 'Shoutbox';
-
+$txt['tp-mod-shoutadmin'] = 'Shout Admin';
 $txt['tp-rssblock-showavatar'] = 'Show avatars?';
 $txt['tp-rssblock-maxwidth'] = 'Max width of rss feed';
 
