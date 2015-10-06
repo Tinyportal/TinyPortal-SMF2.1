@@ -1843,6 +1843,22 @@ div.useravatar img
 	background: url(../images/tinyportal/tp.png);
 }
 
+.generic_icons.tpsummary{
+	background: url(../images/tinyportal/tp.png);
+}
+
+.generic_icons.tparticles{
+	background: url(../images/tinyportal/article.png);
+}
+
+.generic_icons.tpdownload{
+	background: url(../images/tinyportal/download.png);
+}
+
+.generic_icons.tpshoutbox{
+	background: url(../images/tinyportal/shout.png);
+}
+
 td.windowbg, td.windowbg2{
 	box-sizing: content-box;
 }
