@@ -555,8 +555,8 @@ function template_main()
 								<input name="tp-uploadcat" type="hidden" value="'.$context['TPortal']['dlitem'].'">
 								<input name="tp-uploaduser" type="hidden" value="'.$context['user']['id'].'">
 							</td>
-						<tr class="windowbg">
-							<td colspan="2" align="center">
+						<tr>
+							<td colspan="2" align="right">
 								<input type="submit" name="tp-uploadsubmit" id="tp-uploadsubmit" value="'.$txt['tp-dosubmit'].'">
 							</td>
 						</tr>

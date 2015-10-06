@@ -2004,7 +2004,6 @@ function template_tpadm_above()
 		<div class="cat_bar">
 			<h3 class="catbg">' . $txt['tp-tpmenu'] .'</h3>
 		</div>
-		<span class="upperframe"><span></span></span>
 		<div class="roundframe">';
 
 	
@@ -2038,7 +2037,6 @@ function template_tpadm_above()
 
 	echo '
 		</div>
-		<span class="lowerframe"><span></span></span>
 	</div>
 	<div id="tpadmin_content" style="margin-top: 0;">';
 }

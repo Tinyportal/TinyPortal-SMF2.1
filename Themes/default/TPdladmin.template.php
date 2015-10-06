@@ -60,7 +60,7 @@ function template_main()
 		}
 		echo '
 			<tr>
-				<td colspan="6" align="center" class="windowbg"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
+				<td colspan="6" align="right"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
 			</tr>';
 	}
 	elseif($context['TPortal']['dlsub']=='adminsettings')
@@ -246,7 +246,7 @@ function template_main()
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center" class="windowbg">
+				<td colspan="2" align="right">
 					<input type="hidden" name="dlsettings" value="1" />
 					<input name="dlsend" type="submit" value="'.$txt['tp-submit'].'">
 				</td>
@@ -308,7 +308,7 @@ function template_main()
 		}
 		echo '
 			<tr>
-				<td colspan="8" align="center" class="windowbg"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
+				<td colspan="8" align="right"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
 			</tr>';
 	}
 	elseif(substr($context['TPortal']['dlsub'],0,9)=='adminitem')
@@ -491,7 +491,7 @@ function template_main()
 					<div style="overflow: auto;">' , $cat['sshot']!='' ? '<img src="'.$cat['sshot'].'" alt="" />' : '&nbsp;' , '</div></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="windowbg"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
+				<td colspan="2"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
 			</tr>
 			';
 	}
@@ -666,7 +666,7 @@ function template_main()
 		}
 		echo '
 			<tr>
-				<td colspan="5" class="windowbg"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
+				<td colspan="5"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
 			</tr>';
 	}
 	elseif($context['TPortal']['dlsub']=='adminaddcat')
@@ -746,7 +746,7 @@ function template_main()
 
 		echo '
 			<tr>
-				<td colspan="6" class="windowbg"><input name="newdlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
+				<td colspan="6"><input name="newdlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
 			</tr>';
 	}
 	echo '

@@ -2049,7 +2049,7 @@ function TPadminIndex($tpsub = '', $module_admin = false)
 			'tpshout' => array(
 				'title' => $txt['tp_shout'],
 				'description' => '',
-				'href' => $scripturl . 'action=tpmod;shout=admin',
+				'href' => $scripturl . '?action=tpmod;shout=admin',
 				'show' => allowedTo('tp_can_admin_shout'),
 				'is_selected' => isset($_GET['shout']),
 				),

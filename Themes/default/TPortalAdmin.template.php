@@ -23,8 +23,7 @@ function template_main()
 	<div id="tpadmin" class="tborder">
         <div class="title_bar">
             <h3 class="titlebg">'.$txt['tp-tpadmin'].'</h3>
-        </div>
-		<div style="padding-top: 5px;">';
+        </div>';
 
 	$go = isset($context['TPortal']['subaction']) ? 'template_' . $context['TPortal']['subaction'] : 'template_news';
 	
@@ -80,7 +79,6 @@ function template_main()
 	call_user_func($go,$param);	
 	
 	echo '
-		</div>
 	</div>';
 }
 
@@ -93,6 +91,7 @@ function template_blockoverview()
 	<form accept-charset="', $context['character_set'], '" name="tpadmin_news" action="' . $scripturl . '?action=tpadmin" method="post" style="margin: 0px;">
 		<input type="hidden" name="sc" value="', $context['session_id'], '" />
 		<input name="tpadmin_form" type="hidden" value="blockoverview">
+		<br>
 		<div class="cat_bar"><h3 class="catbg">' . $txt['tp-blockoverview'] . '</h3></div>
 		<div class="windowbg2">
 			<div class="content" style="overflow: hidden; padding: 1em 2em 0 2em;">';
@@ -189,6 +188,12 @@ function template_submission()
 			<tbody>';
 	if(isset($context['TPortal']['arts_submissions']))
 	{
+		
+		if(!empty($context['TPortal']['pageindex']))
+			echo '
+					<tr class="middletext">
+					<td colspan="8">'.$context['TPortal']['pageindex'].'</td>
+					</tr>';
 		echo '
 				<tr class="windowbg2">
 					<td class="windowbg" colspan="3" style="padding: 0;">
@@ -202,12 +207,6 @@ function template_submission()
 									<td width="20%">
 									</td>
 									<td width="15%" colspan="3"> ' , $context['TPortal']['sort']=='type' ? '<img src="' . $settings['tp_images_url'] . '/TPsort_down.png" alt="Sort on type" /> ' : '' , '<a title="Sort on type" href="' . $scripturl . '?action=tpadmin;sa=submission;sort=type">' , $txt['tp-type'] , '</a></td>
-								</tr>';
-			
-		if(!empty($context['TPortal']['pageindex']))
-			echo '
-								<tr class="windowbg2 middletext">
-									<td colspan="8">'.$context['TPortal']['pageindex'].'</td>
 								</tr>';
 			
 		foreach($context['TPortal']['arts_submissions'] as $a => $alink)
@@ -249,13 +248,15 @@ function template_submission()
 									</td>
 								</tr>';
 			}
-			if( !empty($context['TPortal']['pageindex']))
-				echo '
-								<tr class="windowbg2 middletext">
-									<td colspan="8">'.$context['TPortal']['pageindex'].'</td>
-								</tr>';
+			
 			echo '			
-							</tbody>
+							</tbody>';
+							
+							if( !empty($context['TPortal']['pageindex']))
+			echo '
+								<tr>
+									<td colspan="8">'.$context['TPortal']['pageindex'].'</td>
+								</tr>
 						</table>';
 	
 		if(isset($context['TPortal']['allcats']))
@@ -276,8 +277,8 @@ function template_submission()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3" colspan="3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td colspan="3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>';
@@ -286,8 +287,8 @@ function template_submission()
 		echo '
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3" colspan="3">
+				<tr>
+					<td colspan="3">
 					</td>
 				</tr>
 			</tfoot>';
@@ -357,8 +358,8 @@ function template_modules()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -380,7 +381,7 @@ function template_menubox()
 		<input name="tpadmin_form" type="hidden" value="menuitems">
 		<input name="tp_menuid" type="hidden" value="'.$mid.'">
 		<table class="admintable">
-			<caption class="catbg">'.$txt['tp-menumanager'].' - '.$context['TPortal']['menus'][$mid]['name'] . '  <a href="' . $scripturl . '?action=tpadmin;sa=addmenu;mid=' , (isset($_GET['mid']) && is_numeric($_GET['mid'])) ? $_GET['mid'] : 0 , '">['.$txt['tp-addmenuitem'].']</a></caption>
+			<caption class="catbg">'.$txt['tp-menumanager'].' - '.$context['TPortal']['menus'][$mid]['name'] . '  <a class="button button_strip_frontdl" href="' . $scripturl . '?action=tpadmin;sa=addmenu;mid=' , (isset($_GET['mid']) && is_numeric($_GET['mid'])) ? $_GET['mid'] : 0 , '">'.$txt['tp-addmenuitem'].'</a></caption>
 			<tbody>
 				<tr class="windowbg2">
 					<td class="tborder" style="padding: 0; border: none;">
@@ -482,7 +483,7 @@ function template_menubox()
 		<input type="hidden" name="sc" value="', $context['session_id'], '" />
 		<input name="tpadmin_form" type="hidden" value="menus">
 		<table class="admintable">
-			<caption class="catbg">'.$txt['tp-menumanager'].' <a href="' . $scripturl . '?action=tpadmin;sa=addmenu;fullmenu">['.$txt['tp-addmenu'].']</a></caption>
+			<caption class="catbg">'.$txt['tp-menumanager'].' <a class="button button_strip_frontdl" href="' . $scripturl . '?action=tpadmin;sa=addmenu;fullmenu">'.$txt['tp-addmenu'].'</a></caption>
 			<tbody>
 				<tr class="windowbg2">
 					<td class="tborder" style="padding: 0; border: none;">
@@ -523,8 +524,8 @@ function template_menubox()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'"></td>
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'"></td>
 				</tr>
 			</tfoot>
 		</table>
@@ -609,8 +610,8 @@ function template_addmenu()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -649,8 +650,8 @@ function template_addmenu()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'"></td>
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'"></td>
 				</tr>
 			</tfoot>
 		</table>
@@ -739,8 +740,8 @@ function template_linkmanager()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -887,8 +888,8 @@ function template_panels()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -988,8 +989,8 @@ function template_settings()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -1084,8 +1085,8 @@ function template_artsettings()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -1336,8 +1337,8 @@ function template_frontpage()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -1389,8 +1390,8 @@ function template_categories()
 	echo '			
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3" colspan="3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td colspan="3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -1610,8 +1611,8 @@ function template_editcategory()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -1668,8 +1669,8 @@ function template_addcategory()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -1806,8 +1807,8 @@ function template_articles()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3" colspan="3">
+				<tr>
+					<td colspan="3">
 						<input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 						<input name="tpadmin_form_category" type="hidden" value="' . $catty . '">
 					</td>
@@ -1818,8 +1819,8 @@ function template_articles()
 		echo '
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3" colspan="3">
+				<tr>
+					<td colspan="3">
 					</td>
 				</tr>
 			</tfoot>';
@@ -1940,8 +1941,8 @@ function template_strays()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3" colspan="3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td colspan="3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>';
@@ -1950,8 +1951,8 @@ function template_strays()
 		echo '
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3" colspan="3">
+				<tr>
+					<td colspan="3">
 					</td>
 				</tr>
 			</tfoot>';
@@ -1978,8 +1979,8 @@ function template_editarticle($type = '')
 		<table class="admintable">
 			<caption class="catbg"><img style="margin-right: 4px;" border="0" src="' .$settings['tp_images_url']. '/TP' , $mg['off']=='1' ? 'red' : 'green' , '.png" alt=""  />' , $mg['id']=='' ? $txt['tp-addarticle']. '' .$txt['tp-incategory'] . ' &#171;' . (html_entity_decode($context['TPortal']['categoryNAME'])) . '&#187;' : $txt['tp-editarticle']. ' &#171;' . html_entity_decode($mg['subject']) . '&#187;' , ' </caption>
 			<tbody>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 				<tr class="windowbg2">
@@ -2421,8 +2422,8 @@ function template_editarticle($type = '')
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -2499,8 +2500,8 @@ function template_articons()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -2521,9 +2522,9 @@ function template_addblock()
 		<input type="hidden" name="sc" value="', $context['session_id'], '" />
 		<input name="tpadmin_form" type="hidden" value="addblock">
 		<table class="admintable">
-			<caption class="catbg">' . $txt['tp-addblock'] . '</caption>
+			<caption>' . $txt['tp-addblock'] . '</caption>
 			<tbody>
-				<tr class="windowbg2">
+				<tr>
 					<td class="tborder" style="padding: 0; border: none;">
 						<table class="formtable">
 							<tr class="windowbg"><td colspan="2" ><h3>' , $txt['tp-choosepanel'] , '</h3><div>
@@ -2593,8 +2594,8 @@ function template_addblock()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -3191,8 +3192,8 @@ function template_blockedit()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -3217,7 +3218,7 @@ function template_blocks()
 		<table class="admintable">
 			<tbody>
 				<tr class="windowbg2">
-					<td class="tborder" style="padding: 0; border: none;">
+					<td style="padding: 0; border: none;">
 
 				<table class="multiplerow">';
 
@@ -3227,11 +3228,11 @@ function template_blocks()
 		for($i=0 ; $i<7 ; $i++)
 		{
 			echo '
-					<tr class="catbg">
+					<tr>
 						<td colspan="9">
 						<b>'.$txt['tp-'.$side[$i].'sideblocks'].'</b>
-							<a href="'.$scripturl.'?action=tpadmin;addblock=' . $side[$i] . ';' . $context['session_var'] . '=' . $context['session_id'].'">
-								&nbsp;&nbsp;<span class="smalltext" style="float: right;">[' , $txt['tp-addblock'] , ']</span>
+							<a style="float: right;" class="button button_strip_frontdl" href="'.$scripturl.'?action=tpadmin;addblock=' . $side[$i] . ';' . $context['session_var'] . '=' . $context['session_id'].'">
+								&nbsp;&nbsp;' , $txt['tp-addblock'] , '
 							</a>						
 						</td>
 					</tr>
@@ -3520,8 +3521,8 @@ function template_blocks()
 				</tr>
 			</tbody>
 			<tfoot>
-				<tr class="windowbg2">
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+				<tr>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
