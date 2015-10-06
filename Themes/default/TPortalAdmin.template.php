@@ -25,7 +25,7 @@ function template_main()
             <h3 class="titlebg">'.$txt['tp-tpadmin'].'</h3>
         </div>';
 
-	$go = isset($context['TPortal']['subaction']) ? 'template_' . $context['TPortal']['subaction'] : 'template_news';
+	$go = isset($context['TPortal']['subaction']) ? 'template_' . $context['TPortal']['subaction'] : '';
 	
 	// some extraction..
 	if(substr($go,0,20) == 'template_editarticle')
@@ -145,7 +145,7 @@ function template_overview()
 			<ul>';
 		foreach($context['admin_tabs'] as $ad => $tab)
 		{
-			$tbas=array();
+			$tabs=array();
 			foreach($tab as $t => $tb)
 				if (!empty($tb['show']))
 					echo '<li><a href="' . $tb['href'] . '"><img style="margin-bottom: 8px;" src="' . $settings['tp_images_url'] . '/TPov_' . strtolower($t) . '.png" alt="TPov_' . strtolower($t) . '" /><br /><b>'.$tb['title'].'</b></a></li>';
@@ -155,22 +155,6 @@ function template_overview()
 	}
  
 	echo '
-	</div>';
-}
-// latest news
-function template_news()
-{
-	global $context, $settings, $options, $txt, $scripturl, $modSettings, $boarddir, $boardurl, $language;
-
-	echo '
-	<div class="cat_bar">
-		<h3 class="catbg">Tinyportal News</h3>
-	</div>
-	<div class="windowbg">
-		<div style="padding: 1em; text-align: center;">
-			TinyPortal is now being maintained at <a href="http://www.tinyportal.net">www.tinyportal.net</a>, and can also be downloaded from the
-			<a style="text-decoration: underline;" href="http://custom.simplemachines.org/mods/index.php?mod=97">SMF modsite</a>. 
-		</div>
 	</div>';
 }
 
