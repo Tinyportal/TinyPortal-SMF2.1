@@ -1921,16 +1921,7 @@ function TPadminIndex($tpsub = '', $module_admin = false)
 	}
 
 	$context['admin_tabs'] = array();
-		$context['admin_tabs']['tp-adminnews1'] = array(
-			'news' => array(
-				'title' => $txt['tp-adminnews1'],
-				'description' => $txt['tp-adminnews2'],
-				'href' => $scripturl . '?action=tpadmin;sa=news',
-				'show' => allowedTo('tp_settings'),
-				'is_selected' => $tpsub == 'news',
-			),
-		);
-
+		
 		$context['admin_tabs']['tp-adminheader1'] = array(
 			'settings' => array(
 				'title' => $txt['tp-settings'],
