@@ -115,7 +115,7 @@ function template_tpshout_admin()
 			</tbody>
 			<tfoot>
 				<tr>
-					<td class="windowbg"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'">
 					</td>
 				</tr>
 			</tfoot>
@@ -217,7 +217,7 @@ function template_tpshout_admin_settings()
 			</tbody>
 			<tfoot>
 				<tr>
-					<td class="windowbg3"><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'"></td>
+					<td><input type="submit" value="'.$txt['tp-send'].'" name="'.$txt['tp-send'].'"></td>
 				</tr>
 			</tfoot>
 		</table>
