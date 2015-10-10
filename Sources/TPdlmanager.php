@@ -1677,7 +1677,7 @@ function TPdownloadme()
 			WHERE id = {int:item} LIMIT 1',
 			array('item' => $item));
 		ob_end_clean();
-		if (!empty($modSettings['enableCompressedOutput']) && @version_compare(PHP_VERSION, '4.2.0') >= 0 && @filesize($filename) <= 4194304)
+		if (!empty($modSettings['enableCompressedOutput']) && @filesize($filename) <= 4194304)
 			@ob_start('ob_gzhandler');
 		else
 		{
