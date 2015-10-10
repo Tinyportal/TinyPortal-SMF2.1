@@ -1045,6 +1045,55 @@ function template_artsettings()
 								</td>
 							</tr>
 							<tr class="windowbg2">
+								<td class="left" valign="top">'.$txt['tp-hidearticle-facebook'].'</td>
+								<td class="right">
+									<input name="tp_hide_article_facebook" type="radio" value="1" ' , $context['TPortal']['hide_article_facebook']=='1' ? 'checked' : '' , '> '.$txt['tp-yes'].'
+									<input name="tp_hide_article_facebook" type="radio" value="0" ' , $context['TPortal']['hide_article_facebook']=='0' ? 'checked' : '' , '> '.$txt['tp-no'].'
+								</td>
+							</tr>
+							<tr class="windowbg2">
+								<td class="left" valign="top">'.$txt['tp-hidearticle-twitter'].'</td>
+								<td class="right">
+									<input name="tp_hide_article_twitter" type="radio" value="1" ' , $context['TPortal']['hide_article_twitter']=='1' ? 'checked' : '' , '> '.$txt['tp-yes'].'
+									<input name="tp_hide_article_twitter" type="radio" value="0" ' , $context['TPortal']['hide_article_twitter']=='0' ? 'checked' : '' , '> '.$txt['tp-no'].'
+								</td>
+							</tr>
+							<tr class="windowbg2">
+								<td class="left" valign="top">'.$txt['tp-hidearticle-google'].'</td>
+								<td class="right">
+									<input name="tp_hide_article_google" type="radio" value="1" ' , $context['TPortal']['hide_article_google']=='1' ? 'checked' : '' , '> '.$txt['tp-yes'].'
+									<input name="tp_hide_article_google" type="radio" value="0" ' , $context['TPortal']['hide_article_google']=='0' ? 'checked' : '' , '> '.$txt['tp-no'].'
+								</td>
+							</tr>
+							<tr class="windowbg2">
+								<td class="left" valign="top">'.$txt['tp-hidearticle-reddit'].'</td>
+								<td class="right">
+									<input name="tp_hide_article_reddit" type="radio" value="1" ' , $context['TPortal']['hide_article_reddit']=='1' ? 'checked' : '' , '> '.$txt['tp-yes'].'
+									<input name="tp_hide_article_reddit" type="radio" value="0" ' , $context['TPortal']['hide_article_reddit']=='0' ? 'checked' : '' , '> '.$txt['tp-no'].'
+								</td>
+							</tr>
+							<tr class="windowbg2">
+								<td class="left" valign="top">'.$txt['tp-hidearticle-digg'].'</td>
+								<td class="right">
+									<input name="tp_hide_article_digg" type="radio" value="1" ' , $context['TPortal']['hide_article_digg']=='1' ? 'checked' : '' , '> '.$txt['tp-yes'].'
+									<input name="tp_hide_article_digg" type="radio" value="0" ' , $context['TPortal']['hide_article_digg']=='0' ? 'checked' : '' , '> '.$txt['tp-no'].'
+								</td>
+							</tr>
+							<tr class="windowbg2">
+								<td class="left" valign="top">'.$txt['tp-hidearticle-delicious'].'</td>
+								<td class="right">
+									<input name="tp_hide_article_delicious" type="radio" value="1" ' , $context['TPortal']['hide_article_delicious']=='1' ? 'checked' : '' , '> '.$txt['tp-yes'].'
+									<input name="tp_hide_article_delicious" type="radio" value="0" ' , $context['TPortal']['hide_article_delicious']=='0' ? 'checked' : '' , '> '.$txt['tp-no'].'
+								</td>
+							</tr>
+							<tr class="windowbg2">
+								<td class="left" valign="top">'.$txt['tp-hidearticle-stumbleupon'].'</td>
+								<td class="right">
+									<input name="tp_hide_article_stumbleupon" type="radio" value="1" ' , $context['TPortal']['hide_article_stumbleupon']=='1' ? 'checked' : '' , '> '.$txt['tp-yes'].'
+									<input name="tp_hide_article_stumbleupon" type="radio" value="0" ' , $context['TPortal']['hide_article_stumbleupon']=='0' ? 'checked' : '' , '> '.$txt['tp-no'].'
+								</td>
+							</tr>
+							<tr class="windowbg2">
 								<td class="left" valign="top">'.$txt['tp-hidearticle-link'].'</td>
 								<td class="right">
 									<input name="tp_hide_editarticle_link" type="radio" value="1" ' , $context['TPortal']['hide_editarticle_link']=='1' ? 'checked' : '' , '> '.$txt['tp-yes'].'
