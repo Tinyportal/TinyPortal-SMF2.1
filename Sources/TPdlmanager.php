@@ -473,7 +473,7 @@ function TPortalDLManager()
 		}
 	}
 	// add to the linktree
-	TPadd_linktree($scripturl.'?action=tpmod;dl=0', $txt['tp-downloads']);
+	TPadd_linktree($scripturl.'?action=tpmod;dl', $txt['tp-downloads']);
 
 	// set the title
 	$context['page_title'] = $txt['tp-downloads'];
@@ -1638,7 +1638,7 @@ function TPdownloadme()
 		$show = false;
 
 	// can we actually download?
-	if($show == 1 || allowedTo('tp_dlmanager'))
+	if($show == 1 || allowedTo('tp_dlmanager') && (!empty($filename))) 
 	{
 		$now = time();
 		$year = (int) date("Y",$now);
