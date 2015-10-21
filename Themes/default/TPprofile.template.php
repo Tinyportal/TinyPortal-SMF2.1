@@ -44,14 +44,14 @@ function template_tp_articles()
 			<tr class="windowbg2">
 				<td colspan="7" style="padding: 1em;">';
 
-		echo $txt['tp-prof_allarticles']. ' <b>'.$context['TPortal']['all_articles'].'</b><br />';
+		echo $txt['tp-prof_allarticles']. ' <b>'.$context['TPortal']['all_articles'].'</b><br>';
 		if($context['TPortal']['approved_articles']>0)
-			echo $txt['tp-prof_waitapproval1'].' <b>'.$context['TPortal']['approved_articles'].'</b> '.$txt['tp-prof_waitapproval2'].'<br />';
+			echo $txt['tp-prof_waitapproval1'].' <b>'.$context['TPortal']['approved_articles'].'</b> '.$txt['tp-prof_waitapproval2'].'<br>';
 
 		if($context['TPortal']['off_articles']==0)
-			echo $txt['tp-prof_offarticles2'].'<br />';
+			echo $txt['tp-prof_offarticles2'].'<br>';
 		else
-			echo $txt['tp-prof_offarticles'].' <b>'.$context['TPortal']['off_articles'].'</b><br />';
+			echo $txt['tp-prof_offarticles'].' <b>'.$context['TPortal']['off_articles'].'</b><br>';
 
 		echo '
 				</td>
@@ -109,8 +109,8 @@ function template_tp_articles()
 					<tr>
 						<td valign="top" align="right">'.$txt['tp-wysiwygchoice'].':</td>
 						<td>
-							<input name="tpwysiwyg" type="radio" value="0" ' , ($context['TPortal']['selected_member_choice'] =='0' || $context['TPortal']['selected_member_choice'] == '1') ? 'checked' : '' , '> '.$txt['tp-no'].'<br />
-							<input name="tpwysiwyg" type="radio" value="2" ' , $context['TPortal']['selected_member_choice'] =='2' ? 'checked' : '' , '> '.$txt['tp-fckeditor'].'<br />
+							<input name="tpwysiwyg" type="radio" value="0" ' , ($context['TPortal']['selected_member_choice'] =='0' || $context['TPortal']['selected_member_choice'] == '1') ? 'checked' : '' , '> '.$txt['tp-no'].'<br>
+							<input name="tpwysiwyg" type="radio" value="2" ' , $context['TPortal']['selected_member_choice'] =='2' ? 'checked' : '' , '> '.$txt['tp-fckeditor'].'<br>
 						</td>
 					</tr>
 					<tr>
@@ -145,9 +145,9 @@ function template_tp_download()
 			<tr class="windowbg2">
 				<td colspan="6" style="padding: 2ex;">';
 
-	echo $txt['tp-prof_alldownloads'].' <b>'.$context['TPortal']['all_downloads'].'</b><br />';
+	echo $txt['tp-prof_alldownloads'].' <b>'.$context['TPortal']['all_downloads'].'</b><br>';
 	if($context['TPortal']['approved_downloads']>0)
-		echo $txt['tp-prof_approvarticles'].' <b>'.$context['TPortal']['approved_downloads'].'</b> '.$txt['tp-prof_approvdownloads'].'<br />';
+		echo $txt['tp-prof_approvarticles'].' <b>'.$context['TPortal']['approved_downloads'].'</b> '.$txt['tp-prof_approvdownloads'].'<br>';
 
 	echo '
 				</td>

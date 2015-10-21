@@ -23,8 +23,8 @@ function TPortal_searchbox()
 	echo '
 	<form accept-charset="', $context['character_set'], '" action="', $scripturl, '?action=search2" method="post" style="padding: 0; text-align: center; margin: 0; ">
 		<input type="text" name="search" value="" class="block_search" />
-		<input type="submit" name="submit" value="', $txt['search'], '" class="block_search_submit button_submit" /><br />
-		<br /><span class="smalltext"><a href="', $scripturl, '?action=search;advanced">', $txt['search_advanced'], '</a></span>
+		<input type="submit" name="submit" value="', $txt['search'], '" class="block_search_submit button_submit" /><br>
+		<br><span class="smalltext"><a href="', $scripturl, '?action=search;advanced">', $txt['search_advanced'], '</a></span>
 		<input type="hidden" name="advanced" value="0" />
 	</form>';
 }
@@ -182,7 +182,7 @@ function TPortal_recentbox()
 			if(!$w['new'])
 				echo ' <a href="'.$w['href'].'"><span class="new_posts">' . $txt['new'] . '</span></a> ';
 
-			echo '<br /><span class="smalltext">['.$w['time'].']</span>
+			echo '<br><span class="smalltext">['.$w['time'].']</span>
 			</li>';
 			$coun++;
 		}
@@ -206,7 +206,7 @@ function TPortal_recentbox()
 			if(!$w['new'])
 				echo ' <a href="'.$w['href'].'"><span class="new_posts">' . $txt['new'] . '</span></a> ';
 
-			echo '<br /><span class="smalltext">['.$w['time'].']</span>
+			echo '<br><span class="smalltext">['.$w['time'].']</span>
 			</li>';
 			$coun++;
 		}
@@ -412,9 +412,9 @@ function TPortal_userbox()
 	// Otherwise they're a guest - so politely ask them to register or login.
 	else{
 		echo '
-		<div style="line-height: 1.4em;">', $bullet , sprintf($txt[$context['can_register'] ? 'welcome_guest_register' : 'welcome_guest'], $txt['guest_title'], $context['forum_name_html_safe'], $scripturl . '?action=login', 'return reqOverlayDiv(this.href, ' . JavaScriptEscape($txt['login']) . ');', $scripturl . '?action=signup'), '<br />', $bullet2, $context['current_time'], '</div>
+		<div style="line-height: 1.4em;">', $bullet , sprintf($txt[$context['can_register'] ? 'welcome_guest_register' : 'welcome_guest'], $txt['guest_title'], $context['forum_name_html_safe'], $scripturl . '?action=login', 'return reqOverlayDiv(this.href, ' . JavaScriptEscape($txt['login']) . ');', $scripturl . '?action=signup'), '<br>', $bullet2, $context['current_time'], '</div>
 		<form style="margin-top: 5px;" action="', $scripturl, '?action=login2" method="post" >
-			<input type="text" name="user" size="10" /> <input type="password" name="passwrd" size="10" /><br />
+			<input type="text" name="user" size="10" /> <input type="password" name="passwrd" size="10" /><br>
 			<select name="cookielength">
 				<option value="60">', $txt['one_hour'], '</option>
 				<option value="1440">', $txt['one_day'], '</option>
@@ -428,7 +428,7 @@ function TPortal_userbox()
 			<input type="submit" value="', $txt['login'], '" />
 		</form>
 		<div style="line-height: 1.4em;">', $txt['quick_login_dec'], '</div>
-		<br />';
+		<br>';
 	}
 	echo '
 	</div>';
@@ -475,8 +475,8 @@ function TPortal_themebox()
 				<option value="'.$temaid[$a].'" ', $settings['theme_id'] == $temaid[$a] ? 'selected="selected"' : '' ,'>'.substr($temanavn[$a],0,20).'</option>';
          }
          echo '
-			</select><br />' , $context['user']['is_logged'] ?
-			'<input type="checkbox" value=";permanent" onclick="realtheme()" /> '. $txt['tp-permanent']. '<br />' : '' , '<br>
+			</select><br>' , $context['user']['is_logged'] ?
+			'<input type="checkbox" value=";permanent" onclick="realtheme()" /> '. $txt['tp-permanent']. '<br>' : '' , '<br>
 			<input class="button_submit" type="button" value="'.$txt['tp-changetheme'].'" onclick="jumpit()" /><br><br>
  			<input type="hidden" value="'.$smcFunc['htmlspecialchars']($scripturl . '?'.$tp_where.'theme='.$settings['theme_id']).'" name="jumpurl3" />
  			<div style="text-align: center; width: 95%; overflow: hidden;">
@@ -566,15 +566,15 @@ function TPortal_statsbox()
 		<div class="tp_stats_users" style="line-height: 1.3em;">';
 		
 		$online = ssi_whosOnline('array');
-		echo  $bullet. $txt['tp-users'].': '.$online['num_users']. '<br />
-			'. $bullet. $txt['tp-guests'].': '.$online['guests'].'<br />
-			'. $bullet. $txt['tp-total'].': '.$online['total_users'].'<br />
+		echo  $bullet. $txt['tp-users'].': '.$online['num_users']. '<br>
+			'. $bullet. $txt['tp-guests'].': '.$online['guests'].'<br>
+			'. $bullet. $txt['tp-total'].': '.$online['total_users'].'<br>
 			<div style="max-height: 23em; overflow: auto;">';
 
 		foreach($online['users'] as $user)
 		{
 			echo  $bullet2 , $user['hidden'] ? '<i>' . $user['link'] . '</i>' : $user['link'];
-			echo '<br />';
+			echo '<br>';
 		}
 		echo '
 			</div></div>';
@@ -629,7 +629,7 @@ function TPortal_module()
 					echo '
 					<img src="'.$item['icon'].'" align="right" style="margin-left: 4px; " alt="" />
 						<a href="'.$item['href'].'"><b>'.$item['name'].'</b></a>
-						<p class="smalltext">'.$txt['tp-uploadedby'].' <b>'.$item['author'].'</b> <br />( '.$item['date'].')<br />
+						<p class="smalltext">'.$txt['tp-uploadedby'].' <b>'.$item['author'].'</b> <br>( '.$item['date'].')<br>
 						'.$txt['tp-downloads'].'/'.$txt['tp-itemviews'].': <b>'.$item['downloads'].' / '.$item['views'].'</b></p>';
 				}
 			}
@@ -644,7 +644,7 @@ function TPortal_module()
 					echo '
 					<img src="'.$item['icon'].'" align="right" style="margin-left: 4px; " alt="" />
 						<a href="'.$item['href'].'"><b>'.$item['name'].'</b></a>
-						<p class="smalltext">'.$txt['tp-uploadedby'].' <b>'.$item['author'].'</b> <br />( '.$item['date'].')<br />
+						<p class="smalltext">'.$txt['tp-uploadedby'].' <b>'.$item['author'].'</b> <br>( '.$item['date'].')<br>
 						'.$txt['tp-downloads'].'/'.$txt['tp-itemviews'].': <b>'.$item['downloads'].' / '.$item['views'].'</b></p>';
 				}
 			}
@@ -659,7 +659,7 @@ function TPortal_module()
 					echo '
 					<img src="'.$item['icon'].'" align="right" style="margin-left: 4px; " alt="" />
 						<a href="'.$item['href'].'"><b>'.$item['name'].'</b></a>
-						<p class="smalltext">'.$txt['tp-uploadedby'].' <b>'.$item['author'].'</b> <br />( '.$item['date'].')<br />
+						<p class="smalltext">'.$txt['tp-uploadedby'].' <b>'.$item['author'].'</b> <br>( '.$item['date'].')<br>
 						'.$txt['tp-downloads'].'/'.$txt['tp-itemviews'].': <b>'.$item['downloads'].' / '.$item['views'].'</b></p>';
 				}
 			}
@@ -672,7 +672,7 @@ function TPortal_module()
 				foreach($it as $item)
 				{
 					echo '<span class="smalltext"><a title="'.$item['date'].'" href="'.$scripturl.'?page='.$item['id'].'">'.$item['subject'].'</a>
-						</span><br />';
+						</span><br>';
 				}
 			}
 			break;
@@ -684,7 +684,7 @@ function TPortal_module()
 				foreach($it as $item)
 				{
 					echo '<span class="smalltext"><a title="'.$item['views'].' '.$txt['tp-views'].'" href="'.$scripturl.'?page='.$item['id'].'">'.$item['subject'].'</a>
-						</span><br />';
+						</span><br>';
 				}
 			}
 			break;
@@ -696,7 +696,7 @@ function TPortal_module()
 				foreach($it as $item)
 				{
 					echo '<span class="smalltext"><a title="'.$item['comments'].'" href="'.$scripturl.'?page='.$item['id'].'">'.$item['subject'].'</a>
-						('.$item['comments'].')<br /></span>';
+						('.$item['comments'].')<br></span>';
 				}
 			}
 				break;
@@ -793,7 +793,7 @@ function TPortal_categorybox()
 		echo '<div class="middletext" ', (sizeof($context['TPortal']['blockarticle_titles'][$context['TPortal']['blocklisting']])>$context['TPortal']['blocklisting_height'] && $context['TPortal']['blocklisting_height']!='0') ? ' style="overflow: auto; width: 100%; height: '.$context['TPortal']['blocklisting_height'].'em;"' : '' ,'>';
 		foreach($context['TPortal']['blockarticle_titles'][$context['TPortal']['blocklisting']] as $listing){
 			if($listing['category'] == $context['TPortal']['blocklisting'])
-				echo '<b><a href="'.$scripturl.'?page='.$listing['shortname'].'">'.$listing['subject'].'</a></b> ' , $context['TPortal']['blocklisting_author']=='1' ? $txt['by'].' '.$listing['poster'] : '' , '<br />';
+				echo '<b><a href="'.$scripturl.'?page='.$listing['shortname'].'">'.$listing['subject'].'</a></b> ' , $context['TPortal']['blocklisting_author']=='1' ? $txt['by'].' '.$listing['poster'] : '' , '<br>';
 		}
 		echo '</div>';
 	}
@@ -805,8 +805,8 @@ function template_nolayer_above()
 	global $context;
 
 	echo '
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-	<html xmlns="http://www.w3.org/1999/xhtml">
+	<!DOCTYPE html>
+	<html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 		<meta name="keywords" content="Tinyportal, themes, Bloc" />
@@ -818,7 +818,7 @@ function template_nolayer_above()
 
 function template_nolayer_below()
 {
-	echo '<small id="nolayer_copyright">',theme_copyright(),'<br />',tportal_version(),'</small>
+	echo '<small id="nolayer_copyright">',theme_copyright(),'<br>',tportal_version(),'</small>
 	</div></body></html>';
 }
 
@@ -1122,7 +1122,7 @@ function article_renders($type = 1, $single = false, $first = false)
 		{article_bookmark}
 		{article_morelinks}
 		{article_comments}' : '') . ' 
-</div><br />
+</div><br>
 		';
 		else
 			$code = '
@@ -1227,7 +1227,7 @@ function article_renders($type = 1, $single = false, $first = false)
 			{article_morelinks}
 			{article_comments}' : '') . ' 
 		</div>
-	</div><br />';
+	</div><br>';
 	}
 	elseif($type == 5)
 	{		
@@ -1280,7 +1280,7 @@ function article_renders($type = 1, $single = false, $first = false)
 			<div><strong style="font-size: 105%;">{article_title}</strong></div>
 			<div class="catlayout6_text">
 				{article_text}
-			</div><br />
+			</div><br>
 		</div>';
 		else
 			$code = '
@@ -1569,7 +1569,7 @@ function article_moreauthor($render = true)
 				<a href="' . $scripturl . '?action=profile;u=' . $context['TPortal']['article']['authorID'] . '">' . $context['TPortal']['article']['realName'] . '</a>' . $txt['tp-poster1'] . $context['forum_name'] . $txt['tp-poster2'] . timeformat($context['TPortal']['article']['dateRegistered']) . $txt['tp-poster3'] . 
 				$context['TPortal']['article']['posts'] . $txt['tp-poster4'] . timeformat($context['TPortal']['article']['lastLogin']) . '.
 			</div>			
-		</div><br />';
+		</div><br>';
 		else
 			
 			echo '
@@ -1670,7 +1670,7 @@ function article_comments($render = true)
 						<strong>' . $counter++ .') ' . $comment['subject'] . '</strong>
 						<div class="middletext" style="padding-top: 0.5em;"> '.$txt['tp-by'].' '.$txt['guest_title'].' '. $txt['on'] . ' ' . $comment['date'] . '</div>
 						' . (($comment['is_new'] && $context['user']['is_logged']) ? '<span class="new_posts">' . $txt['new'] . '</span>' : '') . '
-						<div class="textcomment"><div class="body">' . $comment['text'] . '</div></div><br />';
+						<div class="textcomment"><div class="body">' . $comment['text'] . '</div></div><br>';
 				else
 					echo '
 					<div class="' . ($context['TPortal']['article']['authorID']!=$comment['posterID'] ? 'mycomment' : 'othercomment') . '">
@@ -1681,12 +1681,12 @@ function article_comments($render = true)
 					<div class="middletext" style="padding-top: 0.5em;"> '.$txt['tp-by'].' <a href="'.$scripturl.'?action=profile;u='.$comment['posterID'].'">'.$comment['poster'].'</a>
 					' . $txt['on'] . ' ' . $comment['date'] . '</div>
 
-					<div class="textcomment"><div class="body">' . $comment['text'] . '</div></div><br />';
+					<div class="textcomment"><div class="body">' . $comment['text'] . '</div></div><br>';
 
 					// can we edit the comment or are the owner of it?
 				if(allowedTo('tp_articles') || $comment['posterID'] == $context['user']['id'] && !$context['user']['is_guest']) 
 					echo '
-						<div class="buttonlist align_right"><ul><li><a class="button"  href="' . $scripturl . '?action=tpmod;sa=killcomment' . $comment['id'] . '" onclick="javascript:return confirm(\'' . $txt['tp-confirmdelete'] . '\')"><span>' . $txt['tp-delete'] . '</span></a></li></ul></div><br />';
+						<div class="buttonlist align_right"><ul><li><a class="button"  href="' . $scripturl . '?action=tpmod;sa=killcomment' . $comment['id'] . '" onclick="javascript:return confirm(\'' . $txt['tp-confirmdelete'] . '\')"><span>' . $txt['tp-delete'] . '</span></a></li></ul></div><br>';
 
 				echo '
 				</div>';
@@ -1724,7 +1724,7 @@ function article_comments($render = true)
 
 
 				echo '
-						<br />&nbsp;<input id="tp_article_comment_submit" type="submit" value="' . $txt['tp-submit'] . '">
+						<br>&nbsp;<input id="tp_article_comment_submit" type="submit" value="' . $txt['tp-submit'] . '">
 						<input name="tp_article_type" type="hidden" value="article_comment">
 						<input name="tp_article_id" type="hidden" value="' . $context['TPortal']['article']['id'] . '">
 						<input type="hidden" name="sc" value="' . $context['session_id'] . '" />
@@ -2002,7 +2002,7 @@ function template_subtab_above()
 		echo '
 		<div class="tborder" style="margin-bottom: 0.5em;">
 			<div class="cat_bar">
-				<h3 class="catbg">' . $txt['tp-menus'] .'</h3>
+				<h3 class="catbg">'.$txt['tp-tpadmin'].'</h3>
 			</div>
 			<div style="padding: 2px; overflow: hidden;">';
 		
@@ -2051,7 +2051,7 @@ function template_tpadm_above()
 				echo '<div class="normaltext">' , implode(', ', $tabs) , '</div>
 				</li>';
 			else
-				echo '<div class="middletext" style="margin: 0; line-height: 1.3em;">' , implode('<br />', $tabs) , '</div>
+				echo '<div class="middletext" style="margin: 0; line-height: 1.3em;">' , implode('<br>', $tabs) , '</div>
 				</li>';
 
 		}
@@ -2171,7 +2171,7 @@ function tp_template_button_strip($button_strip, $direction = 'top', $strip_opti
 	{
 		if (!isset($value['test']) || !empty($context[$value['test']]))
 			$buttons[] = '
-				<li><a' . (isset($value['id']) ? ' id="button_strip_' . $value['id'] . '"' : '') . ' class="button_strip_' . $key . '' . ($value['active'] ? ' active' : '') . '" href="' . $value['url'] . '"' . (isset($value['custom']) ? ' ' . $value['custom'] : '') . '><span>' . $txt[$value['text']] . '</span></a></li>';
+					<a' . (isset($value['id']) ? ' id="button_strip_' . $value['id'] . '"' : '') . ' class="button button_strip_' . $key . '' . ($value['active'] ? ' active' : '') . '" href="' . $value['url'] . '"' . (isset($value['custom']) ? ' ' . $value['custom'] : '') . '><span>' . $txt[$value['text']] . '</span></a>';
 	}
 
 	// No buttons? No button strip either.

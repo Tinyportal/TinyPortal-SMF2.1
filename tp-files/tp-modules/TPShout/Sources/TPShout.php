@@ -357,7 +357,7 @@ function tpshout_admin()
 		$smcFunc['db_free_result']($shouts);
 		$allshouts = $weh[0];
 		$context['TPortal']['admin_shoutbox_items_number'] = $allshouts;
-		$context['TPortal']['shoutbox_pageindex'] = 'Member '.$memID.' filtered (<a href="'.$scripturl.'?action=tpmod;shout=admin">' . $txt['remove'] . '</a>) <br />'.TPageIndex($scripturl.'?action=tpmod;shout=admin;u='.$memID, $tpstart, $allshouts, 10, true);
+		$context['TPortal']['shoutbox_pageindex'] = 'Member '.$memID.' filtered (<a href="'.$scripturl.'?action=tpmod;shout=admin">' . $txt['remove'] . '</a>) <br>'.TPageIndex($scripturl.'?action=tpmod;shout=admin;u='.$memID, $tpstart, $allshouts, 10, true);
 		$request = $smcFunc['db_query']('', '
 			SELECT * FROM {db_prefix}tp_shoutbox 
 			WHERE type = {string:type} 
@@ -380,7 +380,7 @@ function tpshout_admin()
 		$smcFunc['db_free_result']($shouts);
 		$allshouts = $weh[0];
 		$context['TPortal']['admin_shoutbox_items_number'] = $allshouts;
-		$context['TPortal']['shoutbox_pageindex'] = 'IP '.$ip.' filtered (<a href="'.$scripturl.'?action=tpmod;shout=admin">' . $txt['remove'] . '</a>) <br />'.TPageIndex($scripturl.'?action=tpmod;shout=admin;ip='.urlencode($ip) , $tpstart, $allshouts, 10,true);
+		$context['TPortal']['shoutbox_pageindex'] = 'IP '.$ip.' filtered (<a href="'.$scripturl.'?action=tpmod;shout=admin">' . $txt['remove'] . '</a>) <br>'.TPageIndex($scripturl.'?action=tpmod;shout=admin;ip='.urlencode($ip) , $tpstart, $allshouts, 10,true);
 		$request =  $smcFunc['db_query']('', '
 			SELECT * FROM {db_prefix}tp_shoutbox 
 			WHERE type = {string:type}
@@ -656,7 +656,7 @@ function shout_bcc_code($collapse = true)
 
 	// Print a drop down list for all the colors we allow!
 	if (!isset($context['shout_disabled_tags']['color']))
-		echo ' <br /><select onchange="surroundText(\'[color=\' + this.options[this.selectedIndex].value.toLowerCase() + \']\', \'[/color]\', document.forms.', $context['tp_shoutbox_form'], '.', $context['tp_shout_post_box_name'], '); this.selectedIndex = 0; document.forms.', $context['tp_shoutbox_form'], '.', $context['tp_shout_post_box_name'], '.focus(document.forms.', $context['tp_shoutbox_form'], '.', $context['tp_shout_post_box_name'], '.caretPos);" style="margin: 5px auto 10px auto;">
+		echo ' <br><select onchange="surroundText(\'[color=\' + this.options[this.selectedIndex].value.toLowerCase() + \']\', \'[/color]\', document.forms.', $context['tp_shoutbox_form'], '.', $context['tp_shout_post_box_name'], '); this.selectedIndex = 0; document.forms.', $context['tp_shoutbox_form'], '.', $context['tp_shout_post_box_name'], '.focus(document.forms.', $context['tp_shoutbox_form'], '.', $context['tp_shout_post_box_name'], '.caretPos);" style="margin: 5px auto 10px auto;">
 						<option value="" selected="selected">'. $txt['change_color']. '</option>
 						<option value="Black">Black</option>
 						<option value="Red">Red</option>
@@ -673,7 +673,7 @@ function shout_bcc_code($collapse = true)
 						<option value="Maroon">Maroon</option>
 						<option value="LimeGreen">LimeGreen</option>
 					</select>';
-	echo '<br />';
+	echo '<br>';
 
 	$found_button2 = false;
 	// Print the bottom row of buttons!
@@ -821,7 +821,7 @@ function print_shout_smileys($collapse = true)
 			}
 			// If this isn't the last row, show a break.
 			if (empty($smiley_row['last']))
-				echo '<br />';
+				echo '<br>';
 		}
 	}
 

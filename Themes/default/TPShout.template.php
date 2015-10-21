@@ -89,8 +89,8 @@ function template_tpshout_admin()
 		echo '
 			<tr>
 		        <td class="' ,  !empty($admin_shouts['sticky']) ? 'windowbg2' : '' , '" width="30%" valign="top">
-					'.$admin_shouts['poster'].' ['.$admin_shouts['ip'].']<br />'.$admin_shouts['time'].'<br />
-					'. $admin_shouts['sort_member'].' <br /> '.$admin_shouts['sort_ip'].'<br />'.$admin_shouts['single'].'
+					'.$admin_shouts['poster'].' ['.$admin_shouts['ip'].']<br>'.$admin_shouts['time'].'<br>
+					'. $admin_shouts['sort_member'].' <br> '.$admin_shouts['sort_ip'].'<br>'.$admin_shouts['single'].'
 				</td>
 				<td class="' ,  !empty($admin_shouts['sticky']) ? 'windowbg2' : '' , '"  valign="top" colspan="2">
 					<textarea style="vertical-align: middle; width: 99%;" rows="5" cols="40" wrap="auto" name="tp_shoutbox_item'.$admin_shouts['id'].'">' .html_entity_decode($admin_shouts['body']).'</textarea>
@@ -165,7 +165,7 @@ function template_tpshout_admin_settings()
 							<tr class="windowbg2">
 								<td align="right">'.$txt['tp-shoutboxusescroll'].'</td>
 								<td>
-									<input name="tp_shoutbox_usescroll" type="radio" value="0" ' , $context['TPortal']['shoutbox_usescroll'] == '0' ? ' checked="checked"' : '' , ' /> '.$txt['tp-no'].'<br />
+									<input name="tp_shoutbox_usescroll" type="radio" value="0" ' , $context['TPortal']['shoutbox_usescroll'] == '0' ? ' checked="checked"' : '' , ' /> '.$txt['tp-no'].'<br>
 									<input name="tp_shoutbox_usescroll" type="radio" value="1" ' , $context['TPortal']['shoutbox_usescroll'] > 0 ? ' checked="checked"' : '' , ' /> '.$txt['tp-yes'].'
 								</td>
 							</tr>
@@ -259,7 +259,7 @@ function template_tpshout_shoutblock()
 	{
 		echo '
 		<form  accept-charset="'. $context['character_set']. '" class="smalltext" style="padding: 0; text-align: center; margin: 0; width: 95%;" name="'. $context['tp_shoutbox_form']. '"  id="'. $context['tp_shoutbox_form']. '" action="'.$scripturl.'?action=tpmod;shout=save" method="post" ><hr>
-		<textarea class="editor" name="'. $context['tp_shout_post_box_name']. '" id="'. $context['tp_shout_post_box_name']. '" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onchange="storeCaret(this);" style="width: 100%;margin-top: 1em; height: 80px;"  tabindex="', $context['tabindex']++, '"></textarea><br />';
+		<textarea class="editor" name="'. $context['tp_shout_post_box_name']. '" id="'. $context['tp_shout_post_box_name']. '" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onchange="storeCaret(this);" style="width: 100%;margin-top: 1em; height: 80px;"  tabindex="', $context['tabindex']++, '"></textarea><br>';
 	
 		if(!empty($context['TPortal']['show_shoutbox_smile']))
 		{
@@ -304,7 +304,7 @@ function template_tpshout_profile()
 			<tr class="windowbg2">
 				<td colspan="6" style="padding: 2ex;">';
 
-	echo $txt['tp-prof_allshouts'].' <b>', !$context['TPortal']['profile_shouts_hide'] ? $context['TPortal']['all_shouts'] : '0' ,'</b><br />';
+	echo $txt['tp-prof_allshouts'].' <b>', !$context['TPortal']['profile_shouts_hide'] ? $context['TPortal']['all_shouts'] : '0' ,'</b><br>';
 	echo '
 				</td>
 			</tr>

@@ -157,7 +157,7 @@ function TPortalDLManager()
 			{
 				$status = 'maxsize';
 				unlink($_FILES['tp-dluploadfile']['tmp_name']);
-				$error = $txt['tp-dlmaxerror'].' '.($context['TPortal']['dl_max_upload_size']).' Kb<br /><br />'.$txt['tp-dlmaxerror2'].': '. ceil($dlfilesize/1000) .' Kb';
+				$error = $txt['tp-dlmaxerror'].' '.($context['TPortal']['dl_max_upload_size']).' Kb<br><br>'.$txt['tp-dlmaxerror2'].': '. ceil($dlfilesize/1000) .' Kb';
 				fatal_error($error);
 			}
 		}
@@ -180,7 +180,7 @@ function TPortalDLManager()
 			{
 				$status = 'wrongtype';
 				unlink($_FILES['tp-dluploadfile']['tmp_name']);
-				$error = $txt['tp-dlexterror'].':<b> <br />'.$context['TPortal']['dl_allowed_types'].'</b><br /><br />'.$txt['tp-dlexterror2'].': <b>'.$name.'</b>';
+				$error = $txt['tp-dlexterror'].':<b> <br>'.$context['TPortal']['dl_allowed_types'].'</b><br><br>'.$txt['tp-dlexterror2'].': <b>'.$name.'</b>';
 				fatal_error($error);
 			}
 		}
@@ -2134,7 +2134,7 @@ function TPortalDLAdmin()
 			if($dlfilesize > (1000 * $context['TPortal']['dl_max_upload_size']))
 			{
 				unlink($_FILES['tp_dluploadfile_edit']['tmp_name']);
-				$error = $txt['tp-dlmaxerror'].' '.($context['TPortal']['dl_max_upload_size']).' Kb<br /><br />'.$txt['tp-dlmaxerror2'].': '. ceil($dlfilesize/1000) .' Kb';
+				$error = $txt['tp-dlmaxerror'].' '.($context['TPortal']['dl_max_upload_size']).' Kb<br><br>'.$txt['tp-dlmaxerror2'].': '. ceil($dlfilesize/1000) .' Kb';
 				fatal_error($error);
 			}
 
@@ -2151,7 +2151,7 @@ function TPortalDLAdmin()
 			if(!$match)
 			{
 				unlink($_FILES['tp_dluploadfile_edit']['tmp_name']);
-				$error = $txt['tp-dlexterror'].':<b> <br />'.$context['TPortal']['dl_allowed_types'].'</b><br /><br />'.$txt['tp-dlexterror2'].': <b>'.$sname.'</b>';
+				$error = $txt['tp-dlexterror'].':<b> <br>'.$context['TPortal']['dl_allowed_types'].'</b><br><br>'.$txt['tp-dlexterror2'].': <b>'.$sname.'</b>';
 				fatal_error($error);
 			}
 			$success2 = move_uploaded_file($_FILES['tp_dluploadfile_edit']['tmp_name'],$boarddir.'/tp-downloads/'.$sname);
@@ -2271,7 +2271,7 @@ function TPortalDLAdmin()
 							{
 								$succ2 = unlink($boarddir.'/'.$row['screenshot']);
 								if(!$succ2)
-									$err .= '<br />' . $txt['tp-dlssnotdel'] . ' ('.$row['screenshot'].')';
+									$err .= '<br>' . $txt['tp-dlssnotdel'] . ' ('.$row['screenshot'].')';
 							}
 	
 						}

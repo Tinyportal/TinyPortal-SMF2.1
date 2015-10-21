@@ -262,7 +262,7 @@ function tp_notifyComments($memberlist, $message2, $subject)
 	censorText($message2);
 
 	$subject = un_htmlspecialchars($subject);
-	$message = trim(un_htmlspecialchars(strip_tags(strtr(parse_bbc($message2, false), array('<br />' => "\n", '</div>' => "\n", '</li>' => "\n", '&#91;' => '[', '&#93;' => ']')))));
+	$message = trim(un_htmlspecialchars(strip_tags(strtr(parse_bbc($message2, false), array('<br>' => "\n", '</div>' => "\n", '</li>' => "\n", '&#91;' => '[', '&#93;' => ']')))));
 
 	// Find the members with notification on for this board.
 	$members = $smcFunc['db_query']('', '
