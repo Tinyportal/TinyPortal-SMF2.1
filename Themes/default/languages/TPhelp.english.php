@@ -36,9 +36,9 @@ $txt['tphelp_introduction_main']= '
 
 <p class="tphelp">TinyPortal enables you to setup HTML/Javascript, PHP, or BBC articles and blocks. Expanded permissions give you all the admin/user options you could ask for. Adding content to your site has never been easier, and it will have your site carrying that professional appeal.</p>
 
-<p class="tphelp">Best of all, it\'s FREE!</p><br />
+<p class="tphelp">Best of all, it\'s FREE!</p><br>
 
-<div class="information" style="margin-top: 1em; padding: 2ex;"><b class="tphelp">TinyPortal Features Include</b>:</div><br />
+<div class="information" style="margin-top: 1em; padding: 2ex;"><b class="tphelp">TinyPortal Features Include</b>:</div><br>
 
 <p class="tphelp">- <b class="tphelp">Articles</b>: are HTML, PHP, BBC, imported or external pages with optional author information and visual options to show alone, with panels & blocks, and/or with other articles. All articles can be categorized, or have comments and ratings.</p>
 <p class="tphelp">- <b class="tphelp">Frontpage</b>: is the first page or index page of your TP & SMF site. TP gives you ability to dress up your frontpage any way you see fit using forum posts, articles, panels & blocks, and even modules. If you\'re not interested in all that, you can choose for your frontpage to go directly to your forum index. </p>
@@ -153,19 +153,19 @@ $txt['tphelp_plugins_main']= '
 $txt['tp-credit1'] = '
 <h4>Founder</h4> 
 Bjorn "Bloc" Kristiansen
-<br /><br />
+<br><br>
 <h4>Developers and Contributors</h4>
 Brad "IchBin" Grow, emanuele, Bloc, lurkalot, Illori
-<br /><br />
+<br><br>
 <h4>TP Team</h4>
 Agridoc, Crip, Freddy, Ken, Lesmond, Renegd98, WillyP, and ZarPrime.
-<br /><br />
+<br><br>
 <h4>TP Friends</h4>
 Aku, Anunlike, BorgBOB, deniz, Dragooon, eeek, eld^kar, feline, Fussilet, G6, gerrymo, Ianedres, JPDeni, Max, Maya, Moocat, nokonium, PhilH, Rasyr, Ray, RebelRose, redone, StormLrd, Thurnok, Tuxie, Xarcell, and Zetan.
-<br /><br />
+<br><br>
 <h4>Beta Testers</h4>
 For those who relentlessy find bugs, give feedback, and drive the developer crazy.
-<br /><br />
+<br><br>
 <h4>Language Translators</h4>
 Thank you for efforts in making TinyPortal available around the globe.';
 

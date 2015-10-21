@@ -1480,7 +1480,7 @@ function doTPfrontpage()
 				{
 					$row['body'] = $smcFunc['substr']($row['body'], 0, $length);
 
-					// The first space or line break. (<br />, etc.)
+					// The first space or line break. (<br>, etc.)
 					$cutoff = max(strrpos($row['body'], ' '), strrpos($row['body'], '<'));
 
 					if ($cutoff !== false)
@@ -1683,7 +1683,7 @@ function doTPfrontpage()
 				{
 					$row['body'] = $smcFunc['substr']($row['body'], 0, $length);
 
-					// The first space or line break. (<br />, etc.)
+					// The first space or line break. (<br>, etc.)
 					$cutoff = max(strrpos($row['body'], ' '), strrpos($row['body'], '<'));
 
 					if ($cutoff !== false)

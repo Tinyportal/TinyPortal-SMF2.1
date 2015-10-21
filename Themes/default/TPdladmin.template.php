@@ -99,8 +99,8 @@ function template_main()
 					'.$txt['tp-dlwysiwyg'].' :
 				</td>
 				<td>
-					<input name="tp_dl_wysiwyg" type="radio" value="" ', $context['TPortal']['dl_wysiwyg']=='' ? 'checked' : '' ,'>'.$txt['tp-no'].'<br />
-					<input name="tp_dl_wysiwyg" type="radio" value="html" ', $context['TPortal']['dl_wysiwyg']=='html' ? 'checked' : '' ,'>'.$txt['tp-yes'].', HTML<br />
+					<input name="tp_dl_wysiwyg" type="radio" value="" ', $context['TPortal']['dl_wysiwyg']=='' ? 'checked' : '' ,'>'.$txt['tp-no'].'<br>
+					<input name="tp_dl_wysiwyg" type="radio" value="html" ', $context['TPortal']['dl_wysiwyg']=='html' ? 'checked' : '' ,'>'.$txt['tp-yes'].', HTML<br>
 					<input name="tp_dl_wysiwyg" type="radio" value="bbc" ', $context['TPortal']['dl_wysiwyg']=='bbc' ? 'checked' : '' ,'>'.$txt['tp-yes'].', BBC
 				</td>
 			</tr><tr class="windowbg2">
@@ -159,9 +159,9 @@ function template_main()
 					'.$txt['tp-dlscreenshotsizes'].' :
 				</td>
 				<td>
-					<input name="tp_dl_screenshotsize0" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][0].'"> x <input name="tp_dl_screenshotsize1" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][1].'"> px<br />
-					<input name="tp_dl_screenshotsize2" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][2].'"> x <input name="tp_dl_screenshotsize3" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][3].'"> px<br />
-					<input name="tp_dl_screenshotsize4" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][4].'"> x <input name="tp_dl_screenshotsize5" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][5].'"> px<br />
+					<input name="tp_dl_screenshotsize0" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][0].'"> x <input name="tp_dl_screenshotsize1" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][1].'"> px<br>
+					<input name="tp_dl_screenshotsize2" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][2].'"> x <input name="tp_dl_screenshotsize3" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][3].'"> px<br>
+					<input name="tp_dl_screenshotsize4" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][4].'"> x <input name="tp_dl_screenshotsize5" type="text" size="3" maxsize="3" value="'.$context['TPortal']['dl_screenshotsize'][5].'"> px<br>
 				</td>
 			</tr><tr class="windowbg2">
 				<td align="right" width="35%">
@@ -214,9 +214,9 @@ function template_main()
 					'.$txt['tp-dluseformat'].'
 				</td>
 				<td>
-					<input name="tp_dl_fileprefix" type="radio" value="K" ', $context['TPortal']['dl_fileprefix']=='K' ? 'checked' : '' ,'>Kb<br />
-					<input name="tp_dl_fileprefix" type="radio" value="M" ', $context['TPortal']['dl_fileprefix']=='M' ? 'checked' : '' ,'>Mb<br />
-					<input name="tp_dl_fileprefix" type="radio" value="G" ', $context['TPortal']['dl_fileprefix']=='G' ? 'checked' : '' ,'>Gb<br />
+					<input name="tp_dl_fileprefix" type="radio" value="K" ', $context['TPortal']['dl_fileprefix']=='K' ? 'checked' : '' ,'>Kb<br>
+					<input name="tp_dl_fileprefix" type="radio" value="M" ', $context['TPortal']['dl_fileprefix']=='M' ? 'checked' : '' ,'>Mb<br>
+					<input name="tp_dl_fileprefix" type="radio" value="G" ', $context['TPortal']['dl_fileprefix']=='G' ? 'checked' : '' ,'>Gb<br>
 				</td>
             	</tr><tr>
 			</tr><tr class="windowbg2">
@@ -224,13 +224,13 @@ function template_main()
 					'.$txt['tp-dlvisualoptions'].'
 				</td>
 				<td>
-					<input name="tp_dl_visual_options1" type="checkbox" value="left" ', isset($context['TPortal']['dl_left']) ? 'checked' : '' ,'>'.$txt['tp-leftbar'].'<br />
-					<input name="tp_dl_visual_options2" type="checkbox" value="right" ', isset($context['TPortal']['dl_right']) ? 'checked' : '' ,'>'.$txt['tp-rightbar'].'<br />
-					<input name="tp_dl_visual_options3" type="checkbox" value="center" ', isset($context['TPortal']['dl_center']) ? 'checked' : '' ,'>'.$txt['tp-centerbar'].'<br />
-					<input name="tp_dl_visual_options4" type="checkbox" value="top" ', isset($context['TPortal']['dl_top']) ? 'checked' : '' ,'>'.$txt['tp-topbar'].'<br />
-					<input name="tp_dl_visual_options5" type="checkbox" value="bottom" ', isset($context['TPortal']['dl_bottom']) ? 'checked' : '' ,'>'.$txt['tp-bottombar'].'<br />
-					<input name="tp_dl_visual_options6" type="checkbox" value="lower" ', isset($context['TPortal']['dl_lower']) ? 'checked' : '' ,'>'.$txt['tp-lowerbar'].'<br />
-					<input name="tp_dl_visual_options7" type="checkbox" value="showtop" ', isset($context['TPortal']['dl_showtop']) ? 'checked' : '' ,'>'.$txt['tp-showtop'].'<br />
+					<input name="tp_dl_visual_options1" type="checkbox" value="left" ', isset($context['TPortal']['dl_left']) ? 'checked' : '' ,'>'.$txt['tp-leftbar'].'<br>
+					<input name="tp_dl_visual_options2" type="checkbox" value="right" ', isset($context['TPortal']['dl_right']) ? 'checked' : '' ,'>'.$txt['tp-rightbar'].'<br>
+					<input name="tp_dl_visual_options3" type="checkbox" value="center" ', isset($context['TPortal']['dl_center']) ? 'checked' : '' ,'>'.$txt['tp-centerbar'].'<br>
+					<input name="tp_dl_visual_options4" type="checkbox" value="top" ', isset($context['TPortal']['dl_top']) ? 'checked' : '' ,'>'.$txt['tp-topbar'].'<br>
+					<input name="tp_dl_visual_options5" type="checkbox" value="bottom" ', isset($context['TPortal']['dl_bottom']) ? 'checked' : '' ,'>'.$txt['tp-bottombar'].'<br>
+					<input name="tp_dl_visual_options6" type="checkbox" value="lower" ', isset($context['TPortal']['dl_lower']) ? 'checked' : '' ,'>'.$txt['tp-lowerbar'].'<br>
+					<input name="tp_dl_visual_options7" type="checkbox" value="showtop" ', isset($context['TPortal']['dl_showtop']) ? 'checked' : '' ,'>'.$txt['tp-showtop'].'<br>
 					<input name="tp_dl_visual_options8" type="hidden" value="not">
 				</td>
             	</tr>
@@ -327,7 +327,7 @@ function template_main()
 				</td>
 			<tr>
 				<td valign="top" class="windowbg2" colspan="2">
-					<br />';
+					<br>';
 
 				if($context['TPortal']['dl_wysiwyg'] == 'html')
 					TPwysiwyg('dladmin_text'.$cat['id'], $cat['description'], true,'qup_dladmin_text', isset($context['TPortal']['usersettings']['wysiwyg']) ? $context['TPortal']['usersettings']['wysiwyg'] : 0);
@@ -355,7 +355,7 @@ function template_main()
 
 				echo '
 					</select>
-					<br /><br /><img name="dlicon" src="'.$cat['icon'].'" alt="" />
+					<br><br><img name="dlicon" src="'.$cat['icon'].'" alt="" />
 					<script type="text/javascript">
 					function dlcheck(icon)
 						{
@@ -396,7 +396,7 @@ function template_main()
 		else
 			echo '<input name="dladmin_file'.$cat['id'].'" type="text" style="margin-bottom: 0.5em" value="'.$cat['file'].'">';
 
-		echo '<br /><a href="'.$scripturl.'?action=tpmod;dl=get'.$cat['id'].'">['.$txt['tp-download'].']</a>
+		echo '<br><a href="'.$scripturl.'?action=tpmod;dl=get'.$cat['id'].'">['.$txt['tp-download'].']</a>
 				</td>
 			</tr>
 			<tr>
@@ -437,9 +437,9 @@ function template_main()
 			foreach($cat['subitem'] as $sub)
 			{
 				echo '<div><b><a href="' , $sub['href'], '">' , $sub['name'] , '</a></b> (',$sub['file'],')
-						', $sub['filesize'] ,' &nbsp;&nbsp;<br /><input style="vertical-align: middle;" name="dladmin_delete'.$sub['id'].'" type="checkbox" value="ON" onclick="javascript:return confirm(\''.$txt['tp-confirm'].'\')"> '.$txt['tp-dldelete'].'
+						', $sub['filesize'] ,' &nbsp;&nbsp;<br><input style="vertical-align: middle;" name="dladmin_delete'.$sub['id'].'" type="checkbox" value="ON" onclick="javascript:return confirm(\''.$txt['tp-confirm'].'\')"> '.$txt['tp-dldelete'].'
 						&nbsp;&nbsp;<input style="vertical-align: middle;" name="dladmin_subitem'.$sub['id'].'" type="checkbox" value="0"> '.$txt['tp-dlattachloose'].'
-						<br /><br /></div>';
+						<br><br></div>';
 			}
 		echo '
 				</td>';
@@ -487,7 +487,7 @@ function template_main()
 			<tr>
 				<td class="windowbg2" valign="top" align="right">'.$txt['tp-uploadnewpicexisting'].':</td>
 				<td class="windowbg2">
-					<input name="tp_dluploadpic_link" size="60" type="text" value="'.$cat['screenshot'].'"><br /><br />
+					<input name="tp_dluploadpic_link" size="60" type="text" value="'.$cat['screenshot'].'"><br><br>
 					<div style="overflow: auto;">' , $cat['sshot']!='' ? '<img src="'.$cat['sshot'].'" alt="" />' : '&nbsp;' , '</div></td>
 			</tr>
 			<tr>
@@ -531,7 +531,7 @@ function template_main()
 
 		// alert if new files were added recently
 		if(!empty($_GET['ftpcat']))
-			echo '<div style="margin-bottom: 1ex; text-align: center; border: dotted 2px red; padding: 2ex;"><b><a href="'.$scripturl.'?action=tpmod;dl=admincat'.$_GET['ftpcat'].'">'.$txt['tp-adminftp_newfiles'].'</a></b><br /></div>';
+			echo '<div style="margin-bottom: 1ex; text-align: center; border: dotted 2px red; padding: 2ex;"><b><a href="'.$scripturl.'?action=tpmod;dl=admincat'.$_GET['ftpcat'].'">'.$txt['tp-adminftp_newfiles'].'</a></b><br></div>';
 
 		if(count($context['TPortal']['tp-downloads'])>0){
 			$ccount=0;
@@ -576,11 +576,11 @@ function template_main()
 		<table width="100%" cellspacing="1" cellpadding="7" class="tborder">
 			<tr>
 				<td valign="top" class="windowbg2">
-					' , $txt['tp-dluploadtitle'] , '<br />
+					' , $txt['tp-dluploadtitle'] , '<br>
 					<input style="width: 30ex;" name="dladmin_name'.$cat['id'].'" type="text" value="'.$cat['name'].'">
-					<br />' , $txt['tp-shortname'] , '<br />
+					<br>' , $txt['tp-shortname'] , '<br>
 					<input style="width: 30ex;" name="dladmin_link'.$cat['id'].'" type="text" value="'.$cat['shortname'].'">
-					<br />';
+					<br>';
 
 				if($context['TPortal']['dl_wysiwyg'] == 'html')
 					TPwysiwyg('dladmin_text'.$cat['id'], html_entity_decode($cat['description'],ENT_QUOTES), true,'qup_dladmin_text', isset($context['TPortal']['usersettings']['wysiwyg']) ? $context['TPortal']['usersettings']['wysiwyg'] : 0);
@@ -605,14 +605,14 @@ function template_main()
 
 				echo '
 					</select>
-					<br /><br /><img name="dlicon" src="'.$cat['icon'].'" alt="" />
+					<br><br><img name="dlicon" src="'.$cat['icon'].'" alt="" />
 					<script type="text/javascript">
 						function dlcheck(icon)
 						{
 							document.dlicon.src= "'.$boardurl.'/tp-downloads/icons/" + icon
 						}
 					</script>
-				<br /><b>'.$txt['tp-dlparent'].':</b><br />';
+				<br><b>'.$txt['tp-dlparent'].':</b><br>';
 				// which parent category?
 				echo '
 					<select size="1" name="dladmin_parent'.$cat['id'].'" style="margin-top: 4px;">
@@ -653,11 +653,11 @@ function template_main()
 					<input name="dladmin_group'.$mg['id'].'" type="checkbox" value="'.$cat['id'].'"';
              		if(in_array($mg['id'],$tg))
              			echo ' checked';
-             		echo '> '.$mg['name'].' <br />';
+             		echo '> '.$mg['name'].' <br>';
          		}
     		}
    			// if none is chosen, have a control value
-			echo '<br /></div><input type="checkbox" onclick="invertAll(this, this.form, \'dladmin_group\');" />'.$txt['tp-checkall'].'
+			echo '<br></div><input type="checkbox" onclick="invertAll(this, this.form, \'dladmin_group\');" />'.$txt['tp-checkall'].'
 					<input name="dladmin_group-2" type="hidden" value="'.$cat['id'].'">';
 
 			echo '
@@ -675,7 +675,7 @@ function template_main()
 		<table width="100%" cellspacing="1" cellpadding="7" class="tborder">
 			<tr>
 				<td valign="top" class="windowbg2"><b>'.$txt['tp-title'].':</b> <input style="width: 70%;" name="newdladmin_name" type="text" value="">
-					<br /><br /><b>'.$txt['tp-body'].':</b><br />';
+					<br><br><b>'.$txt['tp-body'].':</b><br>';
 
 				if($context['TPortal']['dl_wysiwyg'] == 'html')
 					TPwysiwyg('newdladmin_text', '', true,'qup_dladmin_text', isset($context['TPortal']['usersettings']['wysiwyg']) ? $context['TPortal']['usersettings']['wysiwyg'] : 0);
@@ -699,14 +699,14 @@ function template_main()
 
 		echo '
 					</select>
-					<br /><br /><img name="dlicon" src="'.$boardurl.'/tp-downloads/icons/blank.png" alt="" />
+					<br><br><img name="dlicon" src="'.$boardurl.'/tp-downloads/icons/blank.png" alt="" />
 				<script type="text/javascript">
 					function dlcheck(icon)
 					{
 						document.dlicon.src= "'.$boardurl.'/tp-downloads/icons/" + icon
 					}
 				</script>
-				<br /><br /><b>'.$txt['tp-dlparent'].':</b><br />';
+				<br><br><b>'.$txt['tp-dlparent'].':</b><br>';
 		// which parent category?
 		echo '
 					<select size="1" name="newdladmin_parent" style="margin-top: 4px;">
@@ -719,7 +719,7 @@ function template_main()
 		}
 		echo '
 					</select>
-		<hr /><b>'.$txt['tp-dlaccess'].':</b><br />';
+		<hr /><b>'.$txt['tp-dlaccess'].':</b><br>';
 
     		// access groups
     		// loop through and set membergroups
@@ -736,11 +736,11 @@ function template_main()
 					<input name="newdladmin_group'.$mg['id'].'" type="checkbox" value="1"';
              		if(in_array($mg['id'],$tg))
              			echo ' checked';
-             		echo '> '.$mg['name'].' <br />';
+             		echo '> '.$mg['name'].' <br>';
          		}
     		}
    			// if none is chosen, have a control value
-			echo '<br /><input type="checkbox" onclick="invertAll(this, this.form, \'newdladmin_group\');" />'.$txt['tp-checkall'].'
+			echo '<br><input type="checkbox" onclick="invertAll(this, this.form, \'newdladmin_group\');" />'.$txt['tp-checkall'].'
 					<input name="dladmin_group-2" type="hidden" value="1"></td>
 			</tr>';
 

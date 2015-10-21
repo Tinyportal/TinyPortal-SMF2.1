@@ -34,7 +34,7 @@ elseif(!defined('SMF'))
 if (!array_key_exists('db_create_table', $smcFunc))
     db_extend('packages');
 
-// old empty blocks needs "actio=all"
+// old empty blocks needs "action=all"
 $convertblocks = false;
 // Grab the tables so we can check if they exist
 $existing_tables = $smcFunc['db_list_tables'](false, '%tp%');
@@ -45,10 +45,10 @@ $smf_prefix = trim(strstr($db_prefix, '.'), '.');
 
 if ($manual)
 	$render .= '
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-	<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<!DOCTYPE html>
+	<html><head>
 		<title>TinyPortal - v2.0 for SMF2.1.x</title>
-		 <link rel="stylesheet" type="text/css" href="Themes/default/style.css" />
+		 <link rel="stylesheet" type="text/css" href="Themes/default/index.css" />
 	</head><body>';
 
 
@@ -688,7 +688,7 @@ else
 		'logo' => 'tpshoutbox.png',
 		'tpversion' => '2.0',
 		'smfversion' => '2.0.x',
-		'description' => '[b]TP Simple Shoutbox[/b] is the original shoutbox from v0.9 series of TinyPortal, now converted to a TP module. It allows shout in BBC format, scrolling of shouts, insert of BBC codes and smilies and an admin interface to delete or modify shouts.<br />	',
+		'description' => '[b]TP Simple Shoutbox[/b] is the original shoutbox from v0.9 series of TinyPortal, now converted to a TP module. It allows shout in BBC format, scrolling of shouts, insert of BBC codes and smilies and an admin interface to delete or modify shouts.<br>	',
 		'author' => 'IchBin',
 		'email' => 'ichbin@ichbin.us',
 		'website' => 'http://www.tinyportal.net',
