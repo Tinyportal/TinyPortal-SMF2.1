@@ -224,17 +224,17 @@ function TPortalAdmin()
 		);
 	elseif(in_array($tpsub,array('blocks','panels')))
 		$context['TPortal']['subtabs'] = array(
-			'blocks' => array(
-				'lang' => true, 
-				'text' => 'tp-blocks',
-				'url' => $scripturl . '?action=tpadmin;sa=blocks',
-				'active' => $tpsub == 'blocks' && !isset($_GET['overview']),
-			),
 			'panels' => array(
 				'lang' => true, 
 				'text' => 'tp-panels',
 				'url' => $scripturl . '?action=tpadmin;sa=panels',
 				'active' => $tpsub == 'panels',
+			),
+			'blocks' => array(
+				'lang' => true, 
+				'text' => 'tp-blocks',
+				'url' => $scripturl . '?action=tpadmin;sa=blocks',
+				'active' => $tpsub == 'blocks' && !isset($_GET['overview']),
 			),
 			'blockoverview' => array(
 				'lang' => true, 

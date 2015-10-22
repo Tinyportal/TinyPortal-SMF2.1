@@ -549,7 +549,7 @@ function template_main()
 							</td>
 						</tr>
 						<tr>
-							<td align="right" class="windowbg">'.$txt['tp-dluploadpic'].'</td>
+							<td align="left" class="windowbg">'.$txt['tp-dluploadpic'].'</td>
 							<td height="80" class="windowbg">
 								<input name="tp_dluploadpic" id="tp_dluploadpic" type="file" size="60">
 								<input name="tp-uploadcat" type="hidden" value="'.$context['TPortal']['dlitem'].'">

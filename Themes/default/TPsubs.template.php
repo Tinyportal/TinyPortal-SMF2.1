@@ -477,7 +477,7 @@ function TPortal_themebox()
          echo '
 			</select><br>' , $context['user']['is_logged'] ?
 			'<input type="checkbox" value=";permanent" onclick="realtheme()" /> '. $txt['tp-permanent']. '<br>' : '' , '<br>
-			<input class="button_submit" type="button" value="'.$txt['tp-changetheme'].'" onclick="jumpit()" /><br><br>
+			<input class="block_search_submit button_submit" type="button" value="'.$txt['tp-changetheme'].'" onclick="jumpit()" /><br><br>
  			<input type="hidden" value="'.$smcFunc['htmlspecialchars']($scripturl . '?'.$tp_where.'theme='.$settings['theme_id']).'" name="jumpurl3" />
  			<div style="text-align: center; width: 95%; overflow: hidden;">
 				<img src="'.$settings['images_url'].'/thumbnail.png" alt="" id="chosen" name="chosen" style="width: 100%;" />
