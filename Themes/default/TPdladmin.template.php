@@ -60,7 +60,7 @@ function template_main()
 		}
 		echo '
 			<tr>
-				<td colspan="6" align="right"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
+				<td colspan="6" align="left"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
 			</tr>';
 	}
 	elseif($context['TPortal']['dlsub']=='adminsettings')
@@ -246,7 +246,7 @@ function template_main()
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="right">
+				<td colspan="2" align="left">
 					<input type="hidden" name="dlsettings" value="1" />
 					<input name="dlsend" type="submit" value="'.$txt['tp-submit'].'">
 				</td>
@@ -308,7 +308,7 @@ function template_main()
 		}
 		echo '
 			<tr>
-				<td colspan="8" align="right"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
+				<td colspan="8" align="left"><input name="dlsend" type="submit" value="'.$txt['tp-submit'].'"></td>
 			</tr>';
 	}
 	elseif(substr($context['TPortal']['dlsub'],0,9)=='adminitem')
