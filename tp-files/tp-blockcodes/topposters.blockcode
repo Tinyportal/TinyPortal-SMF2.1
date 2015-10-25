@@ -31,7 +31,7 @@ $topPoster = 8;
 		IFNULL(mem.real_name,0) AS posterName,  mem.email_address, mem.avatar
 			FROM ({db_prefix}members as mem)
 			LEFT JOIN {db_prefix}attachments AS a ON (a.id_member = mem.id_member)
-			WHERE show_online = 1
+			WHERE show_online = 1 AND mem.is_activated = 1
 			ORDER BY posts DESC
 			LIMIT {int:limit}',
 			array('limit' => $topPoster)
