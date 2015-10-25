@@ -29,8 +29,6 @@ $hooks = array(
 $mod_name = 'TinyPortal';
 
 // ---------------------------------------------------------------------------------------------------------------------
-define('SMF_INTEGRATION_SETTINGS', serialize(array(
-	'integrate_menu_buttons' => 'install_menu_button',)));
 
 if (file_exists(dirname(__FILE__) . '/SSI.php') && !defined('SMF'))
 	require_once(dirname(__FILE__) . '/SSI.php');
@@ -82,61 +80,5 @@ function setup_hooks ()
 		$integration_function($hook, $function);
 
 	$context['installation_done'] = true;
-}
-
-function install_menu_button (&$buttons)
-{
-	global $boardurl, $context;
-
-	$context['sub_template'] = 'install_script';
-	$context['current_action'] = 'install';
-
-	$buttons['install'] = array(
-		'title' => 'Installation script',
-		'show' => allowedTo('admin_forum'),
-		'href' => $boardurl . '/do_hooks.php',
-		'active_button' => true,
-		'sub_buttons' => array(
-		),
-	);
-}
-
-function template_install_script ()
-{
-	global $boardurl, $context, $mod_name;
-
-	echo '
-	<div class="tborder login"">
-		<div class="cat_bar">
-			<h3 class="catbg">
-				Welcome to the install script of the mod: ' . $mod_name . '
-			</h3>
-		</div>
-		<span class="upperframe"><span></span></span>
-		<div class="roundframe centertext">';
-	if (!isset($context['installation_done']))
-		echo '
-			<strong>Please select the action you want to perform:</strong>
-			<div class="buttonlist">
-				<ul>
-					<li>
-						<a class="active" href="' . $boardurl . '/do_hooks.php?action=install">
-							<span>Install</span>
-						</a>
-					</li>
-					<li>
-						<a class="active" href="' . $boardurl . '/do_hooks.php?action=uninstall">
-							<span>Uninstall</span>
-						</a>
-					</li>
-				</ul>
-			</div>';
-	else
-		echo '<strong>Database adaptation successful!</strong>';
-
-	echo '
-		</div>
-		<span class="lowerframe"><span></span></span>
-	</div>';
 }
 ?>
