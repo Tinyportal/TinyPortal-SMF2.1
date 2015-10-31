@@ -55,10 +55,10 @@ if(!empty($context['TPortal']['shoutbox_refresh']))
 
 if(file_exists($settings['theme_dir'].'/css/TPShout.css'))
 	$context['html_headers'] .= '
-	<link rel="stylesheet" type="text/css" href="'. $settings['theme_url']. '/css/TPShout.css?fin20" />';
+	<link rel="stylesheet" type="text/css" href="'. $settings['theme_url']. '/css/TPShout.css?beta2.1" />';
 else
 	$context['html_headers'] .= '
-	<link rel="stylesheet" type="text/css" href="'. $settings['default_theme_url']. '/css/TPShout.css?fin20" />';
+	<link rel="stylesheet" type="text/css" href="'. $settings['default_theme_url']. '/css/TPShout.css?beta2.1" />';
 
 if($context['TPortal']['shoutbox_usescroll'] > 0)
 	$context['html_headers'] .= '
@@ -452,15 +452,15 @@ function tpshout_admin()
 	if (allowedTo('tp_can_admin_shout'))
 	{
 		$context['TPortal']['subtabs'] = array(
-			'shoutbox_settings' => array(
-				'text' => 'tp-settings',
-				'url' => $scripturl . '?action=tpmod;shout=admin;settings',
-				'active' => (isset($_GET['action']) && ($_GET['action']=='tpmod' || $_GET['action']=='tpadmin' ) && isset($_GET['shout']) && $_GET['shout']=='admin' && isset($_GET['settings'])) ? true : false,
-			),
 			'shoutbox' => array(
 				'text' => 'tp-tabs10',
 				'url' => $scripturl . '?action=tpmod;shout=admin',
 				'active' => (isset($_GET['action']) && ($_GET['action']=='tpmod' || $_GET['action']=='tpadmin' ) && isset($_GET['shout']) && $_GET['shout']=='admin' && !isset($_GET['settings'])) ? true : false,
+			),
+			'shoutbox_settings' => array(
+				'text' => 'tp-settings',
+				'url' => $scripturl . '?action=tpmod;shout=admin;settings',
+				'active' => (isset($_GET['action']) && ($_GET['action']=='tpmod' || $_GET['action']=='tpadmin' ) && isset($_GET['shout']) && $_GET['shout']=='admin' && isset($_GET['settings'])) ? true : false,
 			),
 		);
 		$context['admin_header']['tp_shout'] = $txt['tp_shout'];

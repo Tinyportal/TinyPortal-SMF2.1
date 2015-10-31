@@ -1964,14 +1964,6 @@ function do_modules()
 		);
 }
 
-function do_tags()
-{
-	global $context;
-	
-	isAllowedTo('tp_settings');
-	
-}
-
 function do_news($tpsub = 'overview')
 {
 	global $context, $txt, $scripturl;
