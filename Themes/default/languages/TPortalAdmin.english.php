@@ -412,9 +412,7 @@ $txt['tp-usetoppanel']='Use top panel?';
 $txt['tp-usebottompanel']='Use bottom panel?';
 
 // TP Settings
-$txt['tp-fixedwidth'] = 'Set fixed width:';
 $txt['tp-generalsettings'] = 'General Settings';
-$txt['tp-fixedwidth2'] = '( in pixels - Use 0 for 100% width )';
 $txt['tp-hidecollapse'] = 'Allow the panels to be collapsed?';
 $txt['tp-stars'] = 'Max rating:<br><br>Display stars instead of numbers?';
 $txt['tp-themesavail']='Themes available in the themebox:';
@@ -548,7 +546,7 @@ $txt['tp-helpsettings'] = 'Here you can tweak various general settings for the p
 $txt['tp-helppanels'] = 'Blocks are located in panels, and each panel has its own set of settings.';
 $txt['tp-helpartsettings'] = 'Settings specially for articles.';
 $txt['tp-helpfrontpage'] = 'The frontpage settings can be tweaked here.';
-$txt['tp-helparticles'] = 'These are your article categories and the amount of articles each holds. Also listed is the immediate subcategory(click further in to reveal more).';
+$txt['tp-helparticles'] = 'These are your article categories and the amount of articles each holds. Also listed is the immediate subcategory (click further in to reveal more).';
 
 $txt['tp-assignnewauthor'] = 'Author ID(change to re-assign to another)';
 $txt['tp-uncategorised'] = 'Uncategorized';
