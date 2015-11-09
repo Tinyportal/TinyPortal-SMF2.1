@@ -23,10 +23,6 @@ function TPortal_init()
 {
 	global $context, $txt, $user_info, $settings, $boarddir, $sourcedir, $modSettings;
 	
-	// has init been run before? if so return!
-	if(isset($context['TPortal']['fixed_width']))
-		return;
-
 	if(loadLanguage('TPortal') == false)
 		loadLanguage('TPortal', 'english');		
 

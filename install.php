@@ -485,7 +485,6 @@ $settings_array = array(
     'frontpanel' => '1',
     'lowerpanel' => '1',
     'hide_lowerbar_forum' => '0',
-    'articles_comment_captcha' => '1',
     'print_articles' => '1',
     'article_layout' => '1',
     'article_layout_width' => '100%',

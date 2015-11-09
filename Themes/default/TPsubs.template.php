@@ -1800,8 +1800,8 @@ function render_rating($total, $votes, $id, $can_rate = false)
 		}
 		else
 		{
-			echo ' '.  (!$context['user']['is_guest']) ? '
-				<em class="tp_article_rate smalltext">'. $txt['tp-dlhaverated'].'</em>' : '';
+			if (!$context['user']['is_guest'])
+			echo ' 	<em class="tp_article_rate smalltext">'. $txt['tp-dlhaverated'].'</em>';
 		}
 	}	
 }
