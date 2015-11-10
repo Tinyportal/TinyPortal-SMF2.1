@@ -286,7 +286,7 @@ function tp_notifyComments($memberlist, $message2, $subject)
 				$txt['notify_boards_once'] . "\n\n" .
 				(!empty($rowmember['notifySendBody']) ? $body_text : '') .
 				$txt['notify_boardsUnsubscribe'] . ': ' . $scripturl . '?action=notifyboard;board=' . $board . ".0\n\n" .
-				$txt[130], null, 't' . $topic);
+				$txt['regards_team'], null, 't' . $topic);
 	}
 	$smcFunc['db_free_result']($members);
 }
