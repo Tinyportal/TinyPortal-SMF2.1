@@ -2089,7 +2089,6 @@ function tp_collectArticleIcons()
 
 	$count = 1;
 	$context['TPortal']['articons'] = array();
-	$context['TPortal']['articons']['icons'] = array();
 	$context['TPortal']['articons']['illustrations'] = array();
 	
 	$count = 1;
