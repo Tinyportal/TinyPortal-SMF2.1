@@ -2480,38 +2480,12 @@ function template_articons()
 		<input type="hidden" name="sc" value="', $context['session_id'], '" />
 		<input name="tpadmin_form" type="hidden" value="articons">
 		<table class="admintable">
-			<caption class="catbg">' . $txt['tp-adminicons3'] . '</caption>
+			<caption class="catbg">' . $txt['tp-adminicons7'] . '</caption>
 			<tbody>
 				<tr class="windowbg2">
 					<td class="tborder" style="padding: 0; border: none;">
 						<table class="formtable">
 							<tr class="windowbg2">
-								<td valign="top" class="left">'.$txt['tp-adminicons4'].'</td>
-								<td valign="top" class="right"><input type="file" name="tp_article_newicon" />	</td>
-							</tr>';
-		$alt = true;		
-		if(count($context['TPortal']['articons']['icons'])>0)
-		{
-			foreach($context['TPortal']['articons']['icons'] as $icon)
-			{
-				echo '	<tr' , $alt ? ' class="windowbg2"' : '' , '><td></td><td>
-								<div class="tp_container">
-									<div class="tp_col8">' . $icon['image'] . '</div>
-									<div class="tp_col8"><input type="checkbox" name="articon'.$icon['id'].'" id="articon'.$icon['id'].'" style="vertical-align: top;" value="'.$icon['file'].'"  />
-								<label style="vertical-align: top;"  for="articon'.$icon['id'].'">'.$txt['tp-remove'].'?</label>
-									</div>
-								</div>
-							</td></tr>';
-				$alt = !$alt;
-			}
-		}
-		
-		echo '
-							<tr class="titlebg">
-								<td colspan="2">
-									'.$txt['tp-adminicons7'].'
-								</td>
-							</tr>							<tr class="windowbg2">
 								<td valign="top" class="left">'.$txt['tp-adminicons6'].'</td>
 								<td class="right"><input type="file" name="tp_article_newillustration" /></td>
 							</tr>';
@@ -2520,14 +2494,13 @@ function template_articons()
 		{
 			foreach($context['TPortal']['articons']['illustrations'] as $icon)
 			{
-				echo '	<tr' , $alt ? ' class="windowbg2"' : '' , '	><td></td><td>
+				echo '	<tr class="windowbg2"><td></td><td>
 							<div class="tp_conainer">
 								<div class="tp_col8">' . $icon['image'] . '</div>
 								<div class="tp_col8"><input type="checkbox" name="artillustration'.$icon['id'].'" id="artillustration'.$icon['id'].'" style="vertical-align: top;" value="'.$icon['file'].'"  /><label style="vertical-align: top;"  for="artiillustration'.$icon['id'].'">'.$txt['tp-remove'].'?</label>
 								</div>
 							</div>
 							</td></tr>';
-				$alt = !$alt;
 			}
 		}
 		
