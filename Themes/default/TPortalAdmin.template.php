@@ -1475,17 +1475,7 @@ function template_editcategory()
 								<td class="left" valign="top">'.$txt['tp-icon']. ':</td>
 								<td class="right">';
 		tp_collectArticleIcons();
-		echo '
-							<select size="1" name="tp_category_value4" onchange="changeIcon(document.getElementById(\'tp-icon'.$mg['id'].'\'), this.value);">
-								<option value="">'.$txt['tp-noicon'].'</option>';
-			
-		foreach($context['TPortal']['articons']['icons'] as $ill)
-			echo '<option value="'.$ill['file'].'"' , $ill['file']==$mg['value4'] ? ' selected="selected"' : '' , '>'.$ill['file'].'</option>';
-
 		echo '			
-							</select><br><img style="margin-top: 8px;" id="tp-icon'.$mg['id'].'" src=="' . $settings['tp_images_url'] . '/', empty($mg['value4']) ? 'TPnoimage.png' : $mg['value4'] , '" alt="" />
-								</td>
-							</tr>
 							<tr class="windowbg2">
 								<td class="left" valign="top"></td>
 								<td class="right">
