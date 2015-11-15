@@ -215,6 +215,42 @@ function TPortalAdmin()
 				'url' => $scripturl . '?action=tpadmin;sa=addcategory',
 				'active' => $tpsub == 'addcategory',
 			),
+			'articles' => array(
+				'lang' => true, 
+				'text' => 'tp-articles',
+				'url' => $scripturl . '?action=tpadmin;sa=articles',
+				'active' => ($context['TPortal']['subaction'] == 'articles' || $context['TPortal']['subaction'] == 'editarticle') && $context['TPortal']['subaction'] != 'strays',
+			),
+			'articles_nocat' => array(
+				'lang' => true, 
+				'text' => 'tp-uncategorised' ,
+				'url' => $scripturl . '?action=tpadmin;sa=articles;sa=strays',
+				'active' => $context['TPortal']['subaction'] == 'strays',
+			),
+			'addarticle' => array(
+				'lang' => true, 
+				'text' => 'tp-tabs2',
+				'url' => $scripturl . '?action=tpadmin;sa=addarticle_html' . (isset($_GET['cu']) ? ';cu='.$_GET['cu'] : ''),
+				'active' => $context['TPortal']['subaction'] == 'addarticle_html',
+			),
+			'addarticle_php' => array(
+				'lang' => true, 
+				'text' => 'tp-tabs3',
+				'url' => $scripturl . '?action=tpadmin;sa=addarticle_php' . (isset($_GET['cu']) ? ';cu='.$_GET['cu'] : ''),
+				'active' => $context['TPortal']['subaction'] == 'addarticle_php',
+			),
+			'addarticle_bbc' => array(
+				'lang' => true, 
+				'text' => 'tp-addbbc',
+				'url' => $scripturl . '?action=tpadmin;sa=addarticle_bbc' . (isset($_GET['cu']) ? ';cu='.$_GET['cu'] : ''),
+				'active' => $context['TPortal']['subaction'] == 'addarticle_bbc',
+			),
+			'article_import' => array(
+				'lang' => true, 
+				'text' => 'tp-addimport',
+				'url' => $scripturl . '?action=tpadmin;sa=addarticle_import' . (isset($_GET['cu']) ? ';cu='.$_GET['cu'] : ''),
+				'active' => $context['TPortal']['subaction'] == 'addarticle_import',
+			),
 			'clist' => array(
 				'lang' => true, 
 				'text' => 'tp-tabs11',

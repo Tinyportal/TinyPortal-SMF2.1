@@ -1471,11 +1471,6 @@ function template_editcategory()
 									</select>
 								</td>
 							</tr>
-							<tr class="windowbg">
-								<td class="left" valign="top">'.$txt['tp-icon']. ':</td>
-								<td class="right">';
-		tp_collectArticleIcons();
-		echo '			
 							<tr class="windowbg2">
 								<td class="left" valign="top"></td>
 								<td class="right">
