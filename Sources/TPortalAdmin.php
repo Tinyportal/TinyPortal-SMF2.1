@@ -2023,7 +2023,7 @@ function do_postchecks()
 	// If we have any setting changes add them to this array
 	$updateArray = array();
 	
-	// which screen do we come frm?
+	// which screen do we come from?
 	if(!empty($_POST['tpadmin_form']))
 	{
 		// get it
