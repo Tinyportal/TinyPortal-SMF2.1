@@ -113,16 +113,6 @@ function tpAddMenuItems(&$buttons)
 				'sub_buttons' => tp_getbuttons(),
 			);		
 		}
-		if($but == 'help')
-		{
-			$new_buttons['help']['sub_buttons'] = array(
-				'tphelp' => array(
-					'title' => $txt['tp-tphelp'],
-					'href' => $scripturl . '?action=tpmod;sa=help',
-					'show' => true,
-				),
-			);
-		}
 	}
 	$buttons = $new_buttons;	
 }
