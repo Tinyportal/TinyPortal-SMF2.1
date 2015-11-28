@@ -75,6 +75,8 @@ function template_main()
 		}
 
 		// render last added and most downloaded.
+	if($context['TPortal']['dl_showlatest']==1 && ($context['TPortal']['dl_showstats']==1))
+	{
 		echo '
 		<span class="upperframe"><span></span></span>
         <div class="roundframe">
@@ -94,6 +96,7 @@ function template_main()
 		<span class="lowerframe" style="margin-bottom: 5px;"><span></span></span>
 		<div class="windowbg2">
 		<div style="padding: 1em;">';
+	}
 	
 		if($context['TPortal']['dl_showlatest']==1)
 		{	
@@ -176,7 +179,22 @@ function template_main()
 			</div>';
 		echo '
 		</div>
-	</div>
+	</div>';
+	if($context['TPortal']['dl_showlatest'] ==0)
+		echo '
+		<script type="text/javascript"><!-- // --><![CDATA[
+		function dlshowtab( target )
+		{
+			document.getElementById(\'dlpop\').style.display= \'none\';
+			document.getElementById(\'dlweekpop\').style.display= \'none\';
+			
+			document.getElementById(target).style.display= \'\';
+		}
+	// ]]></script>';
+	elseif($context['TPortal']['dl_showstats']==0)
+	echo '';
+	else
+	echo '
 
 	<script type="text/javascript"><!-- // --><![CDATA[
 		function dlshowtab( target )
