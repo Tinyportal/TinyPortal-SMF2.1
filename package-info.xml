@@ -21,7 +21,9 @@
 	<uninstall for="2.1.* - 2.1.99">
 		<readme type="inline">Uninstalling TinyPortal v2.0 for SMF2.1</readme>
 		<modification reverse="true">install.xml</modification>
-		<remove-dir name="$boarddir/tp-files" />
+		<remove-dir name="$boarddir/tp-files/tp-modules" />
+		<remove-dir name="$boarddir/tp-files/tp-blockcodes" />
+		<remove-dir name="$boarddir/tp-files/tp-plugins" />
 		<remove-dir name="$themedir/images/tinyportal" />
 		<remove-file name="$sourcedir/TPassimilate.php" />
 		<remove-file name="$sourcedir/TPcommon.php" />
