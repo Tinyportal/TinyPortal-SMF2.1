@@ -1473,7 +1473,7 @@ function tp_renderarticle($intro = '')
 		}
 		else
 		{
-			echo $context['TPortal']['article']['intro'];
+		echo $context['TPortal']['article']['intro'], '<p><b><a href="' .$scripturl . '?page=' , !empty($context['TPortal']['article']['shortname']) ? $context['TPortal']['article']['shortname'] : $context['TPortal']['article']['id'] , '' , '">'.$txt['tp-readmore'].'</a></b></p>';
 		}
 	}
 	else
