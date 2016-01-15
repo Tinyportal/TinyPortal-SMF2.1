@@ -39,32 +39,30 @@ function template_tp_articles()
 
 	if($context['TPortal']['profile_action'] == ''){
 		echo '
-	<div>
-		<table width="100%" cellpadding="8" cellspacing="1" border="0">
-			<tr class="windowbg2">
-				<td colspan="7" style="padding: 1em;">';
-
+		<div class="roundframe">';
+		
 		echo $txt['tp-prof_allarticles']. ' <b>'.$context['TPortal']['all_articles'].'</b><br>';
-		if($context['TPortal']['approved_articles']>0)
+		if(AllowedTo('tp_articles') && $context['TPortal']['approved_articles']>0)
 			echo $txt['tp-prof_waitapproval1'].' <b>'.$context['TPortal']['approved_articles'].'</b> '.$txt['tp-prof_waitapproval2'].'<br>';
 
-		if($context['TPortal']['off_articles']==0)
+		if(AllowedTo('tp_articles') && $context['TPortal']['off_articles']==0)
 			echo $txt['tp-prof_offarticles2'].'<br>';
-		else
+		elseif (AllowedTo('tp_articles'))
 			echo $txt['tp-prof_offarticles'].' <b>'.$context['TPortal']['off_articles'].'</b><br>';
-
+		echo'  </div>';
+		
 		echo '
-				</td>
-			</tr>
-			<tr class="catbg">
-				<td align="center" nowrap="nowrap">', $context['TPortal']['tpsort']=='subject' ? '<img src="' .$settings['tp_images_url']. '/TPsort_down.png" alt="" /> ' : '' ,'<a href="'.$scripturl.'?action=profile;u='.$context['TPortal']['memID'].';area=tparticles;tpsort=subject">'.$txt['subject'].'</a></td>
-				<td align="center" nowrap="nowrap">', ($context['TPortal']['tpsort']=='date'  || $context['TPortal']['tpsort']=='') ? '<img src="' .$settings['tp_images_url']. '/TPsort_down.png" alt="" /> ' : '' ,'<a href="'.$scripturl.'?action=profile;u='.$context['TPortal']['memID'].';area=tparticles;tpsort=date">'.$txt['date'].'</a></td>
-				<td align="center" nowrap="nowrap">', $context['TPortal']['tpsort']=='views' ? '<img src="' .$settings['tp_images_url']. '/TPsort_down.png" alt="" /> ' : '' ,'<a href="'.$scripturl.'?action=profile;u='.$context['TPortal']['memID'].';area=tparticles;tpsort=views">'.$txt['views'].'</a></td>
-				<td align="center" nowrap="nowrap">'.$txt['tp-ratings'].'</td>
-				<td align="center" nowrap="nowrap">', $context['TPortal']['tpsort']=='comments' ? '<img src="' .$settings['tp_images_url']. '/TPsort_down.png" alt="" /> ' : '' ,'<a href="'.$scripturl.'?action=profile;u='.$context['TPortal']['memID'].';area=tparticles;tpsort=comments">'.$txt['tp-comments'].'</a></td>
-				<td align="center" nowrap="nowrap">', $context['TPortal']['tpsort']=='category' ? '<img src="' .$settings['tp_images_url']. '/TPsort_down.png" alt="" /> ' : '' ,'<a href="'.$scripturl.'?action=profile;u='.$context['TPortal']['memID'].';area=tparticles;tpsort=category">'.$txt['tp-category'].'</a></td>
-				<td align="center" nowrap="nowrap">'.$txt['tp-edit'].'</td>
-			</tr>';
+				<div class="roundframe"><table class="table_grid clear" width="100%" cellpadding="8" cellspacing="1">
+				<thead>
+			<tr class="title_bar">
+				<th align="center" nowrap="nowrap">', $context['TPortal']['tpsort']=='subject' ? '<img src="' .$settings['tp_images_url']. '/TPsort_down.png" alt="" /> ' : '' ,'<a href="'.$scripturl.'?action=profile;u='.$context['TPortal']['memID'].';area=tparticles;tpsort=subject">'.$txt['subject'].'</a></td>
+				<th align="center" nowrap="nowrap">', ($context['TPortal']['tpsort']=='date'  || $context['TPortal']['tpsort']=='') ? '<img src="' .$settings['tp_images_url']. '/TPsort_down.png" alt="" /> ' : '' ,'<a href="'.$scripturl.'?action=profile;u='.$context['TPortal']['memID'].';area=tparticles;tpsort=date">'.$txt['date'].'</a></td>
+				<th align="center" nowrap="nowrap">', $context['TPortal']['tpsort']=='views' ? '<img src="' .$settings['tp_images_url']. '/TPsort_down.png" alt="" /> ' : '' ,'<a href="'.$scripturl.'?action=profile;u='.$context['TPortal']['memID'].';area=tparticles;tpsort=views">'.$txt['views'].'</a></td>
+				<th align="center" nowrap="nowrap">'.$txt['tp-ratings'].'</td>
+				<th align="center" nowrap="nowrap">', $context['TPortal']['tpsort']=='comments' ? '<img src="' .$settings['tp_images_url']. '/TPsort_down.png" alt="" /> ' : '' ,'<a href="'.$scripturl.'?action=profile;u='.$context['TPortal']['memID'].';area=tparticles;tpsort=comments">'.$txt['tp-comments'].'</a></td>
+				<th align="center" nowrap="nowrap">', $context['TPortal']['tpsort']=='category' ? '<img src="' .$settings['tp_images_url']. '/TPsort_down.png" alt="" /> ' : '' ,'<a href="'.$scripturl.'?action=profile;u='.$context['TPortal']['memID'].';area=tparticles;tpsort=category">'.$txt['tp-category'].'</a></td>
+				<th align="center" nowrap="nowrap">'.$txt['tp-edit'].'</td>
+			</tr></thead>';
 		if(isset($context['TPortal']['profile_articles']) && sizeof($context['TPortal']['profile_articles'])>0){
 			foreach($context['TPortal']['profile_articles'] as $art){
 				echo '
@@ -90,7 +88,7 @@ function template_tp_articles()
 		</table>
 	</div>';
 	}
-	elseif($context['TPortal']['profile_action'] == 'settings'){
+	if($context['user']['is_owner']|| AllowedTo('profile_forum_any')){
 		echo '
 	<div class="bordercolor" style="margin-left: 1ex;">
 		<table width="100%" cellpadding="4" cellspacing="1" border="0">

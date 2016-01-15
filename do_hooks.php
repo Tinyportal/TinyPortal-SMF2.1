@@ -24,7 +24,7 @@ $hooks = array(
 	'integrate_menu_buttons' => 'tpAddMenuItems',
 	'integrate_display_buttons' => 'addPromoteButton',
 	'integrate_actions' => 'addTPActions',
-	'integrate_profile_areas' => 'tpAddProfileMenu',
+	'integrate_pre_profile_areas' => 'tpAddProfileMenu',
 );
 $mod_name = 'TinyPortal';
 

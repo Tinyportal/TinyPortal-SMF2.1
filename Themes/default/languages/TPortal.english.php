@@ -25,7 +25,6 @@ $txt['tp-adminpanels'] = 'Panels and Blocks';
 $txt['tp-settingsfrontpage'] = 'Settings and Frontpage';
 $txt['tp-forum'] = 'Forum';
 $txt['tp-smfhelp'] = 'SMF';
-$txt['tp-tphelp'] = 'TinyPortal';
 $txt['tp-tpnews'] = 'News and Credits';
 $txt['tp-adminmodules1'] = 'Modules';
 

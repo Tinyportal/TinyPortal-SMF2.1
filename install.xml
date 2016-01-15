@@ -116,4 +116,11 @@
 			<add><![CDATA[<a href="', $scripturl, '?action=tpmod;sa=help">', $txt['tp-tphelp'], '</a> | ]]></add>
 		</operation>
 	</file>
+	<file name="$languagedir/Modifications.english.php">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[
+$txt['tp-tphelp'] = 'TinyPortal';]]></add>
+		</operation>
+	</file>
 </modification>
