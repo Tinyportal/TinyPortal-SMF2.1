@@ -144,10 +144,6 @@ function tpAddProfileMenu(&$profile_areas)
 			'own' => 'profile_view_own',
 			'any' => 'profile_view_any',
 		),
-		'subsections' => array(
-			'articles' => array($txt['tp-articles'], array('profile_view_own', 'profile_view_any')),
-			'settings' => array($txt['tp-settings'], array('profile_view_own', 'profile_view_any')),
-		),
 	);
 
 	$profile_areas['tp']['areas']['tpdownload'] = array(
