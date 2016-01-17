@@ -95,9 +95,9 @@ function TPortal_init()
 
 	// finally..any errors finding an article or category?
 	if(!empty($context['art_error']))
-		fatal_error($txt['tp-articlenotexist'], false);
+		fatal_lang_error('tp-articlenotexist', false);
 	if(!empty($context['cat_error']))
-		fatal_error($txt['tp-categorynotexist'], false);
+		fatal_lang_error('tp-categorynotexist', false);
 
 	// let a module take over
 	if($context['TPortal']['front_type'] == 'module' && !isset($_GET['page']) && !isset($_GET['cat']) && !isset($_GET['action']))

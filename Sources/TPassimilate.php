@@ -151,8 +151,8 @@ function tpAddProfileMenu(&$profile_areas)
 		'file' => 'TPmodules.php',
 		'function' => 'tp_download',
 		'permission' => array(
-			'own' => 'profile_view_own',
-			'any' => 'profile_view_any',
+			'own' => 'profile_view_own' && !empty($context['TPortal']['show_download']),
+			'any' => 'profile_view_any' && !empty($context['TPortal']['show_download']),
 		),
 	);
 

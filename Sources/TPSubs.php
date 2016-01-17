@@ -177,7 +177,7 @@ function tp_getbuttons()
 		$buts['tpeditwonarticle'] = array(
 			'title' => $txt['tp-myarticles'],
 			'href' => $scripturl . '?action=tpmod;sa=myarticles',
-			'show' => !empty($context['TPortal']['show_download']),
+			'show' => allowedTo('tp_editownarticle'),
 			'active_button' => false,
 			'sub_buttons' => array(),			
 		);
@@ -285,7 +285,7 @@ function tp_getbuttons()
 		$buts['tpdlmanager'] = array(
 			'title' => $txt['permissionname_tp_dlmanager'],
 			'href' => $scripturl . '?action=tpmod;dl=admin',
-			'show' => allowedTo('tp_dlmanager'),
+			'show' => allowedTo('tp_dlmanager') && !empty($context['TPortal']['show_download']),
 			'active_button' => false,
 			'sub_buttons' => array(
 			),			

@@ -715,7 +715,7 @@ function do_blocks()
 		}
 		// if not throw an error
 		else
-			fatal_error($txt['tp-blockfailure']);
+			fatal_lang_error('tp-blockfailure');
 	}
 	// or maybe adding it?
 	elseif(isset($_GET['addblock']))
@@ -1995,7 +1995,7 @@ function do_news($tpsub = 'overview')
 	if($tpsub == 'overview')
 	{
 		if(!TPcheckAdminAreas())
-			fatal_error($txt['tp-notallowed']);
+			fatal_lang_error('tp-notallowed', false);
 	}
 	elseif($tpsub == 'permissions')
 	{

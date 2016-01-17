@@ -94,7 +94,7 @@ function TPuploadpicture($what, $prefix, $maxsize='1800', $exts='jpg,gif,png', $
 
 	// check that nothing happended
 	if(!file_exists($_FILES[$what]['tmp_name']) || !is_uploaded_file($_FILES[$what]['tmp_name']))
-		fatal_error($txt['tp-dlnotuploaded']);
+		fatal_lang_error('tp-dlnotuploaded', false);
 	// process the file
 	$filename=$_FILES[$what]['name'];
 	$name = strtr($filename, 'ŠŽšžŸÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïñòóôõöøùúûüýÿ', 'SZszYAAAAAACEEEEIIIINOOOOOOUUUUYaaaaaaceeeeiiiinoooooouuuuyy');
