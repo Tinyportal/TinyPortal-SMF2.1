@@ -21,7 +21,7 @@ function template_main()
 
 	// if dl manager is off, throw a error screen but don't log it.
 	if($context['TPortal']['show_download']==0 && !allowedTo('tp_dlmanager'))
-		fatal_error($txt['tp-dlmanageroff'], false);
+		fatal_lang_error('tp-dlmanageroff', false);
 		
 		echo '
 	<div class="dl_container">
@@ -424,7 +424,7 @@ function template_main()
 		if(allowedTo('tp_dlmanager') || allowedTo('tp_dlupload'))
 			$show=true;
 		else
-			fatal_error($txt['tp-adminonly']);
+			fatal_lang_error('tp-adminonly', false);
 
 	   echo '
 	 <div class="tborder">

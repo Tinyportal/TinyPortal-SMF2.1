@@ -58,7 +58,7 @@ function TPortalDLManager()
 
 	// is even the manager active?
 	if(!$context['TPortal']['show_download'])
-		fatal_error($txt['tp-dlmanageroff']);
+		fatal_lang_error('tp-dlmanageroff', false);
 
 	$context['TPortal']['upshrinkpanel'] = '';
 	
@@ -110,13 +110,13 @@ function TPortalDLManager()
 			}			
 			// check that nothing happended
 			if(!file_exists($_FILES['tp-dluploadfile']['tmp_name']) || !is_uploaded_file($_FILES['tp-dluploadfile']['tmp_name']))
-				fatal_error($txt['tp-dluploadfailure']);
+				fatal_lang_error('tp-dluploadfailure', false);
 
 			// first, can we upload at all?
 			if(!$context['TPortal']['can_upload'])
 			{
 				unlink($_FILES['tp-dluploadfile']['tmp_name']);
-				fatal_error($txt['tp-dluploadnotallowed']);
+				fatal_lang_error('tp-dluploadnotallowed', false);
 			}
 		}
 		// a file it is
@@ -948,7 +948,7 @@ function TPortalDLManager()
 			$context['TPortal']['dlitem'] = array();
 			$start = 0;
 			if(isset($_GET['p']) && !is_numeric($_GET['p']))
-				fatal_error('Attempt to specify a non-integer value!');
+				fatal_lang_error('Attempt to specify a non-integer value!', false);
 			elseif(isset($_GET['p']) && is_numeric($_GET['p']))
 				$start = $_GET['p'];
 
@@ -1354,7 +1354,7 @@ function TPdlresults()
 
 	// nothing to search for?
 	if(empty($_POST['dl_search']))
-		fatal_error($txt['tp-nosearchentered']);
+		fatal_lang_error('tp-nosearchentered', false);
 
 	// clean the search
 	$what2 = str_replace(' ', '%', strip_tags($_POST['dl_search']));

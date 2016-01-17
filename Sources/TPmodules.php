@@ -133,7 +133,7 @@ function TPmodules()
 		checkSession('post');
 
 		if (!allowedTo('tp_artcomment'))
-			fatal_error($txt['tp-nocomments']);
+			fatal_lang_error('tp-nocomments', false);
 
 		$commenter = $context['user']['id'];
 		$article = $_POST['tp_article_id'];
@@ -277,7 +277,7 @@ function TPmodules()
 			$mem = 0;
 
 		if(!isset($mem) || (isset($mem) && !is_numeric($mem)))
-			fatalerror('Member doesn\'t exist.');
+			fatal_lang_error('Member doesn\'t exist.');
 
 		foreach($_POST as $what => $value){
 			if($what == 'tpwysiwyg' && $item > 0){
@@ -297,7 +297,7 @@ function TPmodules()
 
 		}
 		// go back to profile page
-		redirectexit('action=profile;u='.$mem.';area=tparticles;sa=settings');
+		redirectexit('action=profile;u='.$mem.';area=tparticles;sa=articles');
 	}
 	// edit or deleting a comment?
 	elseif((substr($tpsub, 0, 11) == 'killcomment' || substr($tpsub, 0, 11) == 'editcomment') && $context['user']['is_logged'])
@@ -305,7 +305,7 @@ function TPmodules()
 		// check that you indeed can edit or delete
 		$comment = substr($tpsub, 11);
 		if(!is_numeric($comment))
-			fatal_error($txt['tp-noadmincomments']);
+			fatal_lang_error('tp-noadmincomments', false);
 
 		$request = $smcFunc['db_query']('', '
 			SELECT * FROM {db_prefix}tp_variables 
@@ -340,7 +340,7 @@ function TPmodules()
 					loadtemplate('TPmodules');
 				}
 			}
-			fatal_error($txt['tp-notallowed']);
+			fatal_lang_error('tp-notallowed', false);
 		}
 	}
 	// rating is underway
@@ -475,7 +475,7 @@ function TPmodules()
 		// any parameters then?
 		// nothing to search for?
 		if(empty($_POST['tpsearch_what']))
-			fatal_error($txt['tp-nosearchentered']);
+			fatal_lang_error('tp-nosearchentered', false);
 		// clean the search
 		$what = strip_tags($_POST['tpsearch_what']);
 
@@ -547,7 +547,7 @@ function TPmodules()
 	{
 		$what = substr($tpsub, 11);
 		if(!is_numeric($what))
-			fatal_error($txt['tp-notanarticle']);
+			fatal_lang_error('tp-notanarticle', false);
 	   
 		// get one article
 		$context['TPortal']['subaction'] = 'editarticle';
@@ -562,12 +562,12 @@ function TPmodules()
 			$row = $smcFunc['db_fetch_assoc']($request);
 			// check permission
 			if(!allowedTo('tp_articles') && $ID_MEMBER != $row['author_id'])
-				fatal_error($txt['tp-articlenotallowed']);
+				fatal_lang_error('tp-articlenotallowed', false);
 			// can you edit your own then..?
 			isAllowedTo('tp_editownarticle');
 
 			if($row['locked'] == 1)
-				fatal_error($txt['tp-articlelocked']);			
+				fatal_lang_error('tp-articlelocked', false);			
 			
 			// Add in BBC editor before we call in template so the headers are there
 			if($row['type'] == 'bbc')
@@ -611,7 +611,7 @@ function TPmodules()
 			$smcFunc['db_free_result']($request);
 		}
 		else
-			fatal_error($txt['tp-notanarticlefound']);
+			fatal_lang_error('tp-notanarticlefound', false);
 		
 		if(loadLanguage('TPortalAdmin') == false)
 			loadLanguage('TPortalAdmin', 'english');
@@ -622,7 +622,7 @@ function TPmodules()
 	{
 		// not for guests
 		if($context['user']['is_guest'])
-			fatal_error($txt['tp-noarticlesfound']);
+			fatal_lang_error('tp-noarticlesfound', false);
 
 		// get all articles
 		$request = $smcFunc['db_query']('', '
@@ -798,7 +798,7 @@ function TPmodules()
 	{
 		$what = substr($tpsub, 9);
 		if(!is_numeric($what))
-			fatal_error($txt['tp-notablock']);
+			fatal_lang_error('tp-notablock', false);
 		// get one block
 		$context['TPortal']['subaction'] = 'editblock';
 		$context['TPortal']['blockedit'] = array();
@@ -817,7 +817,7 @@ function TPmodules()
 			if(allowedTo('tp_blocks') || $can_edit)
 				$ok=true;
 			else
-				fatal_error($txt['tp-blocknotallowed']);
+				fatal_lang_error('tp-blocknotallowed', false);
 
 			$context['TPortal']['editblock'] = array();
 			$context['TPortal']['blockedit']['id'] = $row['id'];
@@ -832,7 +832,7 @@ function TPmodules()
 			$smcFunc['db_free_result']($request);
 		}
 		else
-			fatal_error($txt['tp-notablock']);
+			fatal_lang_error('tp-notablock', false);
 
 		// Add in BBC editor before we call in template so the headers are there
 		if($context['TPortal']['blockedit']['type'] == '5')
@@ -877,7 +877,7 @@ function TPmodules()
 		
 		$whatID = substr($tpsub, 9);
 		if(!is_numeric($whatID))
-			fatal_error($txt['tp-notablock']);
+			fatal_lang_error('tp-notablock', false);
 		$request =  $smcFunc['db_query']('', '
 			SELECT editgroups FROM {db_prefix}tp_blocks 
 			WHERE id = {int:blockid} LIMIT 1',
@@ -890,7 +890,7 @@ function TPmodules()
 			if(allowedTo('tp_blocks') || get_perm($row['editgroups']))
 				$ok = true;
 			else
-				fatal_error($txt['tp-blocknotallowed']);
+				fatal_lang_error('tp-blocknotallowed', false);
 			$smcFunc['db_free_result']($request);
 			
 			// loop through the values and save them
@@ -975,7 +975,7 @@ function TPmodules()
 			redirectexit('action=tpmod;sa=editblock'.$whatID);
 		}
 		else
-			fatal_error($txt['tp-notablock']);
+			fatal_lang_error('tp-notablock', false);
 	}
 	// save an article
 	elseif($tpsub == 'savearticle')
@@ -1088,7 +1088,7 @@ function TPmodules()
 				redirectexit('action=tpadmin;sa=editarticle'.$val);
 			}
 			else
-				fatal_error($txt['tp-notallowed']);
+				fatal_lang_error('tp-notallowed', false);
 		}
 	}
 	elseif($tpsub == 'credits')
@@ -1178,14 +1178,14 @@ function tp_profile_articles($memID)
 	// get all articles currently being off
 	$request = $smcFunc['db_query']('', '
 		SELECT COUNT(*) FROM {db_prefix}tp_articles
-		WHERE author_id = {int:auth} AND off = {int:off}',
-		array('auth' => $memID, 'off' => 1)
+		WHERE author_id = {int:auth} AND off = {int:off} AND approved = {int:approved}',
+		array('auth' => $memID, 'off' => 1,  'approved' => 1)
 	);
 	$result = $smcFunc['db_fetch_row']($request);
 	$max_off = $result[0];
 	$smcFunc['db_free_result']($request);
 
-	$context['TPortal']['all_articles'] = $max;
+	$context['TPortal']['all_articles'] = $max - $max_approve - $max_off; 
 	$context['TPortal']['approved_articles'] = $max_approve;
 	$context['TPortal']['off_articles'] = $max_off;
 
@@ -1222,8 +1222,8 @@ function tp_profile_articles($memID)
 			
 			$can_see = true;
 
-			if(($row['approved'] != 1 || $row['off'] == 1) && !isAllowedTo('tp_articles'))
-				$can_see = false;
+			if(($row['approved'] != 1 || $row['off'] == 1))
+				$can_see = allowedTo('tp_articles');
 
 			if($can_see)
 				$context['TPortal']['profile_articles'][] = array(
@@ -1254,9 +1254,6 @@ function tp_profile_articles($memID)
 
 	// setup subaction
 	$context['TPortal']['profile_action'] = '';
-	if(isset($_GET['sa']) && $_GET['sa'] == 'settings')
-		$context['TPortal']['profile_action'] = 'settings';
-
 
 	// Create the tabs for the template.
 	$context[$context['profile_menu_name']]['tab_data'] = array(
@@ -1264,7 +1261,6 @@ function tp_profile_articles($memID)
 		'description' => $txt['articlesprofile2'],
 		'tabs' => array(
 			'articles' => array(),
-			'settings' => array(),
 		),
 	);
 
@@ -1302,7 +1298,7 @@ function tp_profile_download($memID)
 
 	// is dl manager on?
 	if($context['TPortal']['show_download']==0)
-		fatal_error($txt['tp-dlmanageroff']);
+		fatal_lang_error('tp-dlmanageroff', false);
 
 	if(isset($context['TPortal']['mystart']))
 		$start = $context['TPortal']['mystart'];

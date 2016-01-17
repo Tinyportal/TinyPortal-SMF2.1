@@ -170,6 +170,7 @@ $txt['tp-wysiwygchoice'] = 'Use WYSIWYG editor';
 $txt['downloadsprofile'] = 'Uploaded files';
 $txt['articlesprofile2'] = 'All the articles the member has written. Note that articles currently not active will give an error when viewed and are also marked in italic style. Articles not approved yet are likewise marked with surrounding parentheses.';
 $txt['downloadsprofile2'] = 'All the files uploaded in File Manager. Files not yet approved are shown in italic style.';
+$txt['tp-dlmanageroff'] = 'The DL Manager module is not active.';
 $txt['shoutboxprofile2'] = 'All shouts made by the member.';
 $txt['tp-prof_allarticles'] = 'Total number of articles written:';
 $txt['tp-prof_alldownloads'] = 'Total number of submitted files:';
